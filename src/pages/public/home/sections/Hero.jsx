@@ -37,11 +37,11 @@ const Hero = () => {
                         <div className="flex gap-4 items-center">
                             <div className="bg-gray-400 p-1 rounded-full"></div>
                             <p className="text-md md:text-sm font-montserrat t ">
-                                NEW ARRIVAL
+                                NEW OUTFIT
                             </p>
                         </div>
                         <h1 className="text-5xl md:text-5xl lg:text-7xl xl:text-7xl font-montserrat  ">
-                            Find Your <br /> Perfect Shoes
+                            Find Your <br /> Signature Outfit
                         </h1>
                     </div>
                     <p className="text-sm leading-tight py-2 max-w-sm md:text-sm lg:text-sm  font-light">
@@ -90,15 +90,15 @@ const Hero = () => {
                 <div className="flex justify-center items-center">
                     <div className="w-full p-5 relative">
                         <img
-                            src={newProduct?.image}
+                            src="/homeSection/heroImage.jpg"
                             alt={newProduct?.name}
                             width="500"
                             height="500"
                             loading="lazy"
                             decoding="async"
-                            className="w-full bg-[#FBFAF7] p-4"
+                            className="w-full  p-4"
                         />
-                        <div className="bg-[#0C0C0C] text-sm lg:text-md xl:text-lg text-white top-0 right-0 mb-7 p-2 absolute flex justify-center items-center w-40 xl:w-50">
+                        <div className="bg-[#0C0C0C] text-sm lg:text-md xl:text-lg text-white top-2 right-0 mb-4 p-2 absolute flex justify-center items-center w-40 xl:w-50">
                             <div>
                                 <p>NEW PRODUCT</p>
                             </div>
@@ -124,7 +124,7 @@ const Hero = () => {
                                 </div>
                             </div>
                             <p className="font-semibold text-sm xl:text-lg">
-                                ${newProduct?.price.toFixed(2)}
+                                ${newProduct?.price?.toFixed(2)}
                             </p>
                         </div>
                     </div>

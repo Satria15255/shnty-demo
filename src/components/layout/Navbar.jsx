@@ -91,26 +91,12 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         onClick={() => navigate("/products")}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
                     >
-                        RUNNING
+                        COLLECTION
                     </p>
                     <p
                         onClick={() => navigate("/products")}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    >
-                        BASKETBALL
-                    </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                    >
-                        SNEAKERS
-                    </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                    >
-                        CASUAL
-                    </p>
+                    ></p>
                 </div>
 
                 <div className="flex justify-end gap-3 lg:gap-6 items-center w-full px-2">

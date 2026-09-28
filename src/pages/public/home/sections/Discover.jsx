@@ -9,11 +9,11 @@ const Discover = () => {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 				<div className="relative h-80">
 					<img
-						src={runningImage}
+						src="/homeSection/discover1.jpg"
 						alt="run"
 						className="w-full h-full object-center object-cover"
 					/>
-					<div className="absolute inset-0 bg-black/30 flex flex-col gap-4 justify-between p-6">
+					<div className="absolute inset-0 bg-black/20 flex flex-col gap-4 justify-between p-6">
 						<div className="bg-white rounded-sm p-2 w-20 flex justify-center items-center">
 							<p className="text-xs font-bold">30% OFF</p>
 						</div>
@@ -29,11 +29,11 @@ const Discover = () => {
 				</div>
 				<div className="relative h-80">
 					<img
-						src={discountImage}
+						src="/homeSection/discover2.jpg"
 						alt="run"
 						className="w-full h-full object-center object-cover"
 					/>
-					<div className="absolute inset-0 bg-black/30 flex flex-col gap-4 justify-between p-6">
+					<div className="absolute inset-0 bg-black/20 flex flex-col gap-4 justify-between p-6">
 						<div className="bg-white rounded-sm p-2 w-20 flex justify-center items-center">
 							<p className="text-xs font-bold">30% OFF</p>
 						</div>
