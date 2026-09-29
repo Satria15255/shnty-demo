@@ -19,7 +19,7 @@ const Discover = () => {
 						</div>
 						<div className="flex flex-col gap-3">
 							<h1 className="text-3xl text-white">
-								Explore the <br /> Running collection
+								Explore the <br /> Man collection
 							</h1>
 							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4">
 								Shop Now <FaArrowRightLong />

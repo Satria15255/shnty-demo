@@ -2,6 +2,19 @@ import React from "react";
 import { MdAutoAwesome, MdOutlineExpandMore, MdSell } from "react-icons/md";
 
 const FilterSidebar = ({ categories, size, filter, setFilter }) => {
+  const handleSizeChange = (selectedSize) => {
+    setFilter((prev) => {
+      const isSelected = prev.size.includes(selectedSize);
+
+      return {
+        ...prev,
+        size: isSelected
+          ? prev.size.filter((item) => item !== selectedSize)
+          : [...prev.size, selectedSize],
+      };
+    });
+  };
+
   return (
     <div>
       <div className="lg:flex hidden flex-col md:w-full space-y-2 pr-3">
@@ -30,17 +43,24 @@ const FilterSidebar = ({ categories, size, filter, setFilter }) => {
           <p className="flex items-center justify-between md:text-sm lg:text-lg rounded-xl w-full text-left py-2 flex justify-between items-center text-left font-semibold w-full ">
             Size{" "}
           </p>
-          <div className="pl-4 py-2 grid grid-cols-4 ">
-            {size.map((size) => (
-              <button
-                key={size}
-                value={size}
-                onClick={() => setFilter((prev) => ({ ...prev, size: size }))}
-                className={`flex items-center justify-center w-[6vh] h-[6vh] rounded-xl transition text-[9px] md:text-sm text-gray-500 font-bold cursor-pointer transition-all duration-300 ease-in-out
-                ${filter.size === size ? "text-yellow-500 bg-gray-100 shadow-md" : "hover:text-yellow-500"}`}
+
+          <div className="space-y-3">
+            {size.map((item) => (
+              <label
+                key={item}
+                className="flex items-center gap-3 cursor-pointer group"
               >
-                {size}
-              </button>
+                <input
+                  type="checkbox"
+                  checked={filter.size.includes(item)}
+                  onChange={() => handleSizeChange(item)}
+                  className="w-4 h-4 accent-black cursor-pointer"
+                />
+
+                <span className="text-sm text-gray-600 group-hover:text-black transition">
+                  {item}
+                </span>
+              </label>
             ))}
           </div>
         </div>

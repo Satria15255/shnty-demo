@@ -92,11 +92,6 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
             </div>
 
             <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
-                <div>
-                    <p className="text-xs font-light">
-                        {product.brand} / {product.category}
-                    </p>
-                </div>
                 <div className="h-7">
                     <p className="text-sm  md:text-[15px] lg:text-sm  font-ysabeau font-bold">
                         {" "}

@@ -44,7 +44,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
     return (
         <div
             className={`fixed top-0 z-20 border-b  bg-white font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
-  ${scrolled ? " border-b border-gray-400   " : ""}`}
+  ${scrolled ? " border-b bg-white border-gray-400   " : ""}`}
         >
             {/* Top Section */}
             <div className="flex  justify-between items-center w-full  xl:px-6">

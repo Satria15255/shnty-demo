@@ -12,23 +12,23 @@ import "swiper/css/pagination";
 
 const collection = [
     {
-        image: `${basketballCollection}`,
-        title: "Basketball Collection",
+        image: "/collection/man.png",
+        title: "Man Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
     },
     {
-        image: `${runningCollection}`,
-        title: "Running Collection",
+        image: "/collection/woman.png",
+        title: "Woman Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
     },
     {
-        image: `${sneakersCollection}`,
-        title: "Sneakers Collection",
+        image: "/collection/accessories.png",
+        title: "Accessories Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
     },
     {
-        image: `${casualCollection}`,
-        title: "Casual Collection",
+        image: "/collection/unisex.png",
+        title: "Unisex Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
     },
 ];
@@ -37,7 +37,7 @@ const CategoryCollection = () => {
     const navigate = useNavigate();
 
     return (
-        <main className="h-auto py-12 px-2  w-full flex flex-col items-center ">
+        <main className="h-auto py-12 px-2  w-full flex flex-col  ">
             {/* Headline */}
             <header className="text-center py-2">
                 <h2 className="text-lg lg:text-3xl font-semibold">
@@ -49,10 +49,10 @@ const CategoryCollection = () => {
             </header>
 
             {/*Desktop Ver*/}
-            <section className="hidden   md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
+            <section className="  grid grid-cols-2  gap-2  lg:mt-4">
                 {collection.map((c) => (
-                    <article className="w-50 md:w-1/4 ">
-                        <div className="overflow-hidden">
+                    <article className="w-full flex bg-gray-100 rounded-xl">
+                        <div className=" h-40 w-40">
                             <img
                                 src={c.image}
                                 alt={c.title}
@@ -60,10 +60,10 @@ const CategoryCollection = () => {
                                 decoding="async"
                                 width="432"
                                 height="756"
-                                className="hover:scale-110 transition duration-300"
+                                className="hover:scale-110 w-full h-full object-center object-cover transition duration-300 rounded-l-xl"
                             />
                         </div>
-                        <div className="flex flex-col items-start gap-5 mt-6">
+                        <div className="flex flex-col justify-around items-start p-6">
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>
@@ -72,7 +72,7 @@ const CategoryCollection = () => {
                             </p>
                             <button
                                 onClick={() => navigate("/products")}
-                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 text-xs lg:text-sm font-semibold"
+                                className="underline cursor-pointer  text-gray-600 hover:text-[#0C0C0C] transition duration-200 text-xs lg:text-sm font-semibold"
                             >
                                 SHOP NOW
                             </button>

@@ -23,13 +23,13 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const [filterOpen, setFilterOpen] = useState(false);
     const [filter, setFilter] = useState({
         category: "All",
-        size: "All",
+        size: [],
         latest: false,
         discount: false,
     });
     const productsPerPage = 12;
     const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
-    const size = ["All", 38, 39, 40, 41, 42, 43, 44];
+    const size = [38, 39, 40, 41, 42, 43, 44];
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const searchQuery = searchParams.get("search") || "";
@@ -95,17 +95,19 @@ function ProductPages({ onAddToCart, onOpenModal }) {
             : filter.latest
               ? latestProducts
               : products || [];
-        return source.filter((products) => {
+        return source.filter((product) => {
             const matchCategory =
                 filter.category === "All" ||
-                products.category === filter.category;
+                product.category === filter.category;
             const matchSize =
-                filter.size === "All" ||
-                (Array.isArray(products.sizes) &&
-                    products.sizes.includes(Number(filter.size)));
+                filter.size.length === 0 ||
+                (Array.isArray(product.sizes) &&
+                    filter.size.some((selectedSize) =>
+                        product.sizes.includes(Number(selectedSize)),
+                    ));
             const matchSearch =
                 searchQuery.trim() === "" ||
-                products.name
+                product.name
                     .toLowerCase()
                     .includes(searchQuery.toLocaleLowerCase());
             return matchCategory && matchSize && matchSearch;
@@ -167,16 +169,11 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     }
 
     return (
-        <main className="md:mt-16 p-1 md:p-2 flex flex-col items-center">
-            <header
-                style={{ backgroundImage: `url(${bgProductPages})` }}
-                className="z-0 flex flex-col justify-center lg:justify-center w-full items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
-            >
-                <h1 className="text-4xl md:text-8xl font-bold text-white">
-                    Find Our Products
-                </h1>
-            </header>
+        <main className="pt-16 flex flex-col items-center">
             {/* Product Section */}
+            <div className="mt-12 flex justify-start w-full xl:max-w-7xl py-7">
+                <p className="text-sm "> Home / Products</p>
+            </div>
             <section className="flex justify-center w-full xl:max-w-7xl ">
                 <div className="flex flex-col justify-center md:flex-row  w-full   px-2">
                     <aside className="lg:w-1/5">
