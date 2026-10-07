@@ -9,8 +9,10 @@ import {
 import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import logoBrand from "@/assets/logo/brandLogo.png";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
+  const [searchparams, setSearchParams] = useSearchParams();
   const menuItems = [
     {
       name: "Dashboard",

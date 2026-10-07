@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import OrdersTable from "@/features/admin/orders/components/OrdersTable";
-import OrdersDetails from "@/features/admin/orders/components/OrdersDetails";
+import OrdersTable from "@/pages/admin/orders/components/OrdersTable";
+import OrdersDetails from "@/pages/admin/orders/components/OrdersDetails";
 import { toast } from "react-toastify";
-import { getOrdersSummary } from "@/features/admin/dashboard/services/adminDashboardService";
-import { getAllTransactions } from "@/features/admin/orders/services/adminOrderService";
-import { updateTransactionStatus } from "@/features/admin/orders/services/adminOrderService";
-import { ordersConfig } from "@/features/admin/orders/config/OrdersConfig";
+import { getOrdersSummary } from "@/pages/admin/dashboard/services/adminDashboardService";
+import { getAllTransactions } from "@/pages/admin/orders/services/adminOrderService";
+import { updateTransactionStatus } from "@/pages/admin/orders/services/adminOrderService";
+import { ordersConfig } from "@/pages/admin/orders/config/OrdersConfig";
 import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 
 const AdminOrders = () => {

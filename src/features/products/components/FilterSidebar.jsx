@@ -1,7 +1,7 @@
 import React from "react";
 import { MdAutoAwesome, MdOutlineExpandMore, MdSell } from "react-icons/md";
 
-const FilterSidebar = ({ categories, size, filter, setFilter }) => {
+const FilterSidebar = ({ category, size, filter, setFilter }) => {
   const handleSizeChange = (selectedSize) => {
     setFilter((prev) => {
       const isSelected = prev.size.includes(selectedSize);
@@ -15,6 +15,19 @@ const FilterSidebar = ({ categories, size, filter, setFilter }) => {
     });
   };
 
+  const handleCatChange = (selectedCat) => {
+    setFilter((prev) => {
+      const isSelected = prev.category.includes(selectedCat);
+
+      return {
+        ...prev,
+        category: isSelected
+          ? prev.category.filter((item) => item !== selectedCat)
+          : [...prev.category, selectedCat],
+      };
+    });
+  };
+
   return (
     <div>
       <div className="lg:flex hidden flex-col md:w-full space-y-2 pr-3">
@@ -23,18 +36,22 @@ const FilterSidebar = ({ categories, size, filter, setFilter }) => {
             Category
           </p>
           <div className="py-2 flex md:flex-col pl-4 text-left space-y-2 ">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                value={cat}
-                onClick={() =>
-                  setFilter((prev) => ({ ...prev, category: cat }))
-                }
-                className={`flex items-center justify-start py-2 text-[9px] md:text-sm lg:text-lg text-left text-gray-500 font-semibold px-2 cursor-pointer rounded-xl transition-all transition-discrete duration-300 ease-in-out
-                ${filter.category === cat ? "text-yellow-500 bg-gray-100 shadow-md" : "hover:text-yellow-500"}`}
+            {category.map((item) => (
+              <label
+                key={item}
+                className="flex items-center gap-3 cursor-pointer group"
               >
-                - {cat}
-              </button>
+                <input
+                  type="checkbox"
+                  checked={filter.category.includes(item)}
+                  onChange={() => handleCatChange(item)}
+                  className="w-4 h-4 accent-black cursor-pointer"
+                />
+
+                <span className="text-sm text-gray-600 group-hover:text-black transition">
+                  {item}
+                </span>
+              </label>
             ))}
           </div>
         </div>
@@ -44,7 +61,7 @@ const FilterSidebar = ({ categories, size, filter, setFilter }) => {
             Size{" "}
           </p>
 
-          <div className="space-y-3">
+          <div className="py-2 flex md:flex-col pl-4 text-left space-y-2">
             {size.map((item) => (
               <label
                 key={item}

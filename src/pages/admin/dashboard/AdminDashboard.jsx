@@ -2,16 +2,16 @@ import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 import {
 	getSalesData,
 	getDashboardSummary,
-} from "@/features/admin/dashboard/services/adminDashboardService";
-import { getAllTransactions } from "@/features/admin/orders/services/adminOrderService";
-import { getAllProducts } from "@/features/products/services/productService";
+} from "@/pages/admin/dashboard/services/adminDashboardService";
+import { getAllTransactions } from "@/pages/admin/orders/services/adminOrderService";
+import { getAllProducts } from "@/pages/products/services/productService";
 import React, { useState, useEffect } from "react";
-import { dashboardConfig } from "@/features/admin/dashboard/config/DashboardConfig";
+import { dashboardConfig } from "@/pages/admin/dashboard/config/DashboardConfig";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
-import SalesChart from "@/features/admin/dashboard/components/SalesChart";
-import LatestTransactionsTabel from "@/features/admin/dashboard/components/LatestTransactionsTabel";
-import TopProductCard from "@/features/admin/dashboard/components/TopProductCard";
+import SalesChart from "@/pages/admin/dashboard/components/SalesChart";
+import LatestTransactionsTabel from "@/pages/admin/dashboard/components/LatestTransactionsTabel";
+import TopProductCard from "@/pages/admin/dashboard/components/TopProductCard";
 import { useAuth } from "@/context/AuthContext";
 
 import { getGreeting, isWeekend } from "@/utils/GetGreeting";

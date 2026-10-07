@@ -22,13 +22,13 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const [loading, setLoading] = useState(true);
     const [filterOpen, setFilterOpen] = useState(false);
     const [filter, setFilter] = useState({
-        category: "All",
+        category: [],
         size: [],
         latest: false,
         discount: false,
     });
     const productsPerPage = 12;
-    const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
+    const category = ["Basketball", "Sneakers", "Running", "Casual"];
     const size = [38, 39, 40, 41, 42, 43, 44];
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -97,8 +97,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
               : products || [];
         return source.filter((product) => {
             const matchCategory =
-                filter.category === "All" ||
-                product.category === filter.category;
+                filter.category.length === 0 ||
+                filter.category.includes(product.category);
             const matchSize =
                 filter.size.length === 0 ||
                 (Array.isArray(product.sizes) &&
@@ -179,7 +179,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     <aside className="lg:w-1/5">
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
-                            categories={categories}
+                            category={category}
                             size={size}
                             filter={filter}
                             setFilter={setFilter}
