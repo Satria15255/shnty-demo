@@ -4,7 +4,7 @@ import {
 	getDashboardSummary,
 } from "@/pages/admin/dashboard/services/adminDashboardService";
 import { getAllTransactions } from "@/pages/admin/orders/services/adminOrderService";
-import { getAllProducts } from "@/pages/products/services/productService";
+import { getAllProducts } from "@/features/products/services/productService";
 import React, { useState, useEffect } from "react";
 import { dashboardConfig } from "@/pages/admin/dashboard/config/DashboardConfig";
 import { MdOutlineCalendarMonth } from "react-icons/md";

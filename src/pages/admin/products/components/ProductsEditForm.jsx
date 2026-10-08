@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { updateProduct } from "@/features/admin/products/services/adminProductService";
+import { updateProduct } from "@/pages/admin/products/services/adminProductService";
 
 const ProductsEditForm = ({ product, onClose, onSucces }) => {
   const [form, setForm] = useState({

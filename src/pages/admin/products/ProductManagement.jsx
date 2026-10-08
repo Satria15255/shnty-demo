@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ProductsTable from "@/pages/admin/products/components/ProductsTable";
 import ProductsUploadForm from "@/pages/admin/products/components/ProductsUploadForm";
 import ProductsEditForm from "@/pages/admin/products/components/ProductsEditForm";
 import { deleteProduct } from "@/pages/admin/products/services/adminProductService";
-import { getAllProducts } from "@/pages/products/services/productService";
+import { getAllProducts } from "@/features/products/services/productService";
 import { getProductsSummary } from "@/pages/admin/dashboard/services/adminDashboardService";
 import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 import { productsManagementConfig } from "@/pages/admin/products/config/ProductsManagementConfig";
@@ -16,6 +17,7 @@ const ProductManagement = () => {
   const [summary, setSummary] = useState([]);
   const [range, setRange] = useState("7d");
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
   const [filter, setFilter] = useState({
     brand: "All Brand",
     category: "All Category",
@@ -161,7 +163,7 @@ const ProductManagement = () => {
         </div>
 
         <button
-          onClick={() => setIsUploadOpen(true)}
+          onClick={() => navigate("/admin/product/new-product")}
           className=" border border-black bg-black text-sm text-white hover:bg-white transition duration-100 hover:text-black py-2 px-5 rounded-lg flex items-center justify-center"
         >
           + Add New Product
