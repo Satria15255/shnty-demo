@@ -3,6 +3,28 @@
 @theme {
   --font-montserrat: "Montserrat", sans-serif;
   --font-ysabeau: "Ysabeau Office", sans-serif;
+  --font-dmsans: "DM Sans", sans-serif;
+  --font-moda: "Bodoni Moda", sans-serif;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/dm-sans-v17-latin-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/bodoni-moda-v28-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
 }
 
 :root {

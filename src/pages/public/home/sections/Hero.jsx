@@ -40,7 +40,7 @@ const Hero = () => {
                                 NEW OUTFIT
                             </p>
                         </div>
-                        <h1 className="text-5xl md:text-5xl lg:text-7xl xl:text-7xl font-montserrat  ">
+                        <h1 className="text-5xl md:text-5xl lg:text-7xl xl:text-7xl font-moda  ">
                             Find Your <br /> Signature Outfit
                         </h1>
                     </div>

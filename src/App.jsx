@@ -89,99 +89,91 @@ function App() {
   return (
     <main>
       <ScrollToTop />
-      <CartProvider>
-        <Suspense
-          fallback={
-            <div className="min-h-screen flex  justify-center items-center">
-              {" "}
-              Loading....
-            </div>
-          }
-        >
-          <Routes>
+      <Suspense
+        fallback={
+          <div className="min-h-screen flex  justify-center items-center">
+            {" "}
+            Loading....
+          </div>
+        }
+      >
+        <Routes>
+          <Route
+            element={
+              <MainLayout
+                handleOpenCart={() => setSidebarCartOpen(true)}
+                onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+              />
+            }
+          >
+            <Route path="/" element={<HomePages />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/products" element={<ProductsPages />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/my-cart" element={<ShoppingCartPages />} />
+            <Route path="/checkout" element={<CheckoutPages />} />
+            <Route path="/success-order/:id" element={<SuccessOrderPages />} />
+            <Route path="/paymentOrder/:id" element={<PaymentOrderPages />} />
             <Route
-              element={
-                <MainLayout
-                  handleOpenCart={() => setSidebarCartOpen(true)}
-                  onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-                />
-              }
-            >
-              <Route path="/" element={<HomePages />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/products" element={<ProductsPages />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-              <Route path="/my-cart" element={<ShoppingCartPages />} />
-              <Route path="/checkout" element={<CheckoutPages />} />
-              <Route
-                path="/success-order/:id"
-                element={<SuccessOrderPages />}
-              />
-              <Route path="/paymentOrder/:id" element={<PaymentOrderPages />} />
-              <Route
-                path="/payment-success/:id"
-                element={<PaymentSuccessPages />}
-              />
-              <Route path="/my-orders" element={<OrderPages />} />
-              <Route path="/my-favorite" element={<FavoriteProducts />} />
-              <Route path="/dashboard" element={<UserDashboard />} />
-            </Route>
-            <Route path="/admin-login" element={<AdminLogin />} />
-
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminLayout />
-                </AdminRoute>
-              }
-            >
-              <Route
-                index
-                element={<Navigate to="/admin/dashboard" replace />}
-              />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/product" element={<AdminProduct />} />
-              <Route
-                path="/admin/product/new-product"
-                element={<UploadProduct />}
-              />
-              <Route path="/admin/all-orders" element={<AdminOrder />} />
-              <Route path="/admin/user" element={<AdminUserList />} />
-            </Route>
-          </Routes>
-        </Suspense>
-
-        {sidebarCartOpen && (
-          <Suspense fallback={null}>
-            <SidebarCart closeSidebarCart={() => setSidebarCartOpen(false)} />
-          </Suspense>
-        )}
-        {isSidebarOpen && (
-          <>
-            <div
-              className="fixed inset-0 z-40"
-              onClick={() => setIsSidebarOpen(false)}
+              path="/payment-success/:id"
+              element={<PaymentSuccessPages />}
             />
-            <Suspense fallback={null}>
-              <SidebarProfile closeSidebar={() => setIsSidebarOpen(false)} />
-            </Suspense>
-          </>
-        )}
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="light"
-        />
-      </CartProvider>
+            <Route path="/my-orders" element={<OrderPages />} />
+            <Route path="/my-favorite" element={<FavoriteProducts />} />
+            <Route path="/dashboard" element={<UserDashboard />} />
+          </Route>
+          <Route path="/admin-login" element={<AdminLogin />} />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminLayout />
+              </AdminRoute>
+            }
+          >
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/product" element={<AdminProduct />} />
+            <Route
+              path="/admin/product/new-product"
+              element={<UploadProduct />}
+            />
+            <Route path="/admin/all-orders" element={<AdminOrder />} />
+            <Route path="/admin/user" element={<AdminUserList />} />
+          </Route>
+        </Routes>
+      </Suspense>
+
+      {sidebarCartOpen && (
+        <Suspense fallback={null}>
+          <SidebarCart closeSidebarCart={() => setSidebarCartOpen(false)} />
+        </Suspense>
+      )}
+      {isSidebarOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+          <Suspense fallback={null}>
+            <SidebarProfile closeSidebar={() => setIsSidebarOpen(false)} />
+          </Suspense>
+        </>
+      )}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
     </main>
   );
 }

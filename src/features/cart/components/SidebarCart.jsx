@@ -71,7 +71,7 @@ const SidebarCart = ({ closeSidebarCart }) => {
                                                     <td className="flex items-center py-2">
                                                         <img
                                                             src={
-                                                                item.productId
+                                                                item?.productId
                                                                     .image
                                                             }
                                                             alt={

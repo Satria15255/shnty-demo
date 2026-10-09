@@ -36,7 +36,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
             key={product.id}
             className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2  rounded-xl"
         >
-            {product === true ? (
+            {product ? (
                 <div>
                     <div className="w-full h-auto relative ">
                         <img
@@ -56,7 +56,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                             height="500"
                             loading="lazy"
                             decoding="async"
-                            className="w-full h-auto object-cover bg-[#FBFAF7] p-2 rounded-lg md:rounded-xl md:rounded-bottom-5 object-center"
+                            className="w-full h-auto object-cover    object-center"
                         />
                         <div>
                             {product.isBestSeller === true && (
@@ -100,7 +100,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
 
                     <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
                         <div className="h-7">
-                            <p className="text-sm  md:text-[15px] lg:text-sm  font-ysabeau font-bold">
+                            <p className="text-sm  md:text-[15px] lg:text-sm  font-ysabeau ">
                                 {" "}
                                 {product.name}
                             </p>

@@ -43,11 +43,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20 border-b  bg-white font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
+            className={`fixed top-0 z-20 border-b  bg-transparent font-ysabeau border-gray-200 md:pb-5  m py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
   ${scrolled ? " border-b bg-white border-gray-400   " : ""}`}
         >
             {/* Top Section */}
-            <div className="flex  justify-between items-center w-full  xl:px-6">
+            <div className="flex  justify-between items-center w-full xl:max-w-4/5 ">
                 <div className="md:flex items-center md:w-2/4">
                     {/* Hamburger icon */}
                     <button
@@ -57,24 +57,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     >
                         <FaBars />
                     </button>
-                    <picture
+                    <h1
                         onClick={() => navigate("/")}
-                        className="hidden md:block w-40 lg:w-50 h-auto"
+                        className="hidden md:block w-40 lg:w-50 h-auto text-3xl font-moda"
                     >
-                        <source
-                            media="(max-width: 640px)"
-                            srcSet={brandLogo1}
-                            className=""
-                        />
-                        <img
-                            src={brandLogo2}
-                            alt="Brand Logo"
-                            width="862"
-                            height="116"
-                        />
-                    </picture>
+                        S H N TY
+                    </h1>
                 </div>
-                <div className=" gap-7 hidden lg:flex  font-light text-xs lg:text-sm items-center w-full">
+                <div className=" gap-7 hidden lg:flex  font-semibold text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
@@ -99,7 +89,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     ></p>
                 </div>
 
-                <div className="flex justify-end gap-3 lg:gap-6 items-center w-full px-2">
+                <div className="flex justify-end gap-3 lg:gap-6 items-center w-full ">
                     <div className="flex justify-center items-center w-full ">
                         <SearchModal />
                     </div>
