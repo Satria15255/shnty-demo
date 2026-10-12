@@ -5,7 +5,7 @@ const CallAction = () => {
     const navigate = useNavigate();
     return (
         <section className="p-3 md:p-6 xl:p-2 w-full   h-auto overflow-hidden ">
-            <div className="relative h-full h-50 md:h-90 lg:h-120 xl:h-120 overflow-hidden group">
+            <div className="relative h-full h-50 md:h-90 lg:h-120 xl:h-140 overflow-hidden group">
                 <div
                     style={{
                         backgroundImage: `url(/homeSection/callAction.jpg)`,

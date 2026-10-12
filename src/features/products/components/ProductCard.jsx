@@ -67,20 +67,20 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                                 </div>
                             )}
                             <div className="absolute inset-0 flex justify-center items-end translate-y-1 opacity-0 hover:translate-y-0 hover:opacity-100 transition duration-200 ">
-                                <div className="mb-3 flex gap-3  ">
+                                <div className="mb-5 flex gap-3  ">
                                     <button
                                         aria-label="Add product to favorite list"
                                         onClick={() =>
                                             toggleFavorite(product._id)
                                         }
-                                        className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : " text-[#0C0C0C]"}`}
+                                        className={`p-2 rounded-full bg-white text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : " text-[#0C0C0C]"}`}
                                     >
                                         <IoHeartOutline />
                                     </button>
                                     <button
                                         aria-label="See Product Detail"
                                         onClick={() => productDetails(product)}
-                                        className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
+                                        className="p-2 rounded-full bg-white text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
                                     >
                                         <IoSearchOutline />
                                     </button>
@@ -89,7 +89,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                                         onClick={() =>
                                             openProductModal(product)
                                         }
-                                        className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
+                                        className="p-2 rounded-full bg-white text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
                                     >
                                         <IoBagHandleOutline />
                                     </button>
@@ -98,9 +98,9 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                         </div>
                     </div>
 
-                    <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
+                    <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-3 lg:justify-center">
                         <div className="h-7">
-                            <p className="text-sm  md:text-[15px] lg:text-sm  font-ysabeau ">
+                            <p className="text-sm  md:text-[15px] lg:text-lg  font-ysabeau ">
                                 {" "}
                                 {product.name}
                             </p>
@@ -110,16 +110,16 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                             <div className="flex  items-center justify-center font-montserrat">
                                 {isDiscount ? (
                                     <div className="flex flex-col xl:flex-row gap-1 items-start">
-                                        <p className=" text-sm lg:text-lg xl:text-sm line-through">
+                                        <p className=" text-sm lg:text-lg xl:text-lg line-through">
                                             ${product.price.toFixed(2)}
                                         </p>
-                                        <p className="text-sm lg:text-lg xl:text-sm   font-bold">
+                                        <p className="text-sm lg:text-lg xl:text-lg   font-bold">
                                             ${discountPrice.toFixed(2)}
                                         </p>
                                     </div>
                                 ) : (
                                     <div>
-                                        <p className="text-sm lg:text-lg xl:text-sm   font-bold">
+                                            <p className="text-sm lg:text-lg xl:text-lg   font-bold">
                                             ${product.price.toFixed(2)}
                                         </p>
                                     </div>

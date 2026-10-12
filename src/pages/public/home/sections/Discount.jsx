@@ -33,39 +33,7 @@ const OnSale = () => {
     const navigate = useNavigate();
     return (
         <main className=" mt-6 flex justify-center w-full h-auto">
-            {/*<div className="w-100 md:w-full h-50 md:h-60 lg:h-80 flex  bg-[#0C0C0C] ">
-                <picture className="w-2/5">
-                    <source
-                        media="(max-width: 640px)"
-                        srcSet={discountImage}
-                        className="w-full h-full  object-cover object-center"
-                    />
-                    <img
-                        src="/homeSection/discountImage.webp"
-                        alt="discountImage"
-                        width="1024"
-                        height="1278"
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full  object-cover object-center"
-                    />
-                </picture>
-                <header className="w-3/5 text-white flex p-4 flex-col justify-center gap-1 md:gap-3 font-montserrat">
-                    <p className="text-[8px]  md:text-xs lg:text-sm">
-                        LIMITED OFFER
-                    </p>
-                    <p className="text-lg md:text-4xl lg:text-5xl xl:text-6xl">
-                        30% off every day for <br /> our dream products
-                    </p>
-                    <button
-                        onClick={() => navigate("/products")}
-                        className="py-1 lg:py-2 text-[7px] md:text-xs lg:text-lg px-4 rounded-lg text-black w-1/3 lg:w-1/5 bg-white border border-gray-300"
-                    >
-                        Get Now
-                    </button>
-                </header>
-            </div>*/}
-            <div className="flex flex-col md:flex-row w-full h-auto md:h-90   bg-[#ffff]">
+            <div className="flex flex-col md:flex-row w-full h-auto md:h-90 xl:h-100   bg-[#ffff]">
                 <div className="w-full md:w-full grid grid-col-1 md:grid-cols-2">
                     <div className="bg-[#1C1C1A] w-full  p-4 h-100 md:h-80 lg:h-full flex flex-col justify-around">
                         <div className=" flex flex-col justify-center ">
@@ -99,7 +67,12 @@ const OnSale = () => {
                                     />
                                 </div>
                                 <div className="w-full lg:w-1/2 flex items-center">
-                                    <button className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-[#D2A14A] rounded-lg text-white text-sm md:text-xs lg:text-sm">
+                                    <button
+                                        onClick={() =>
+                                            navigate("/products?discount=true")
+                                        }
+                                        className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-[#D2A14A] hover:bg-[#C9892C]   rounded-lg text-white text-sm md:text-xs lg:text-sm transition duration-200"
+                                    >
                                         SHOP THE DROP <FaArrowRightLong />
                                     </button>
                                 </div>
@@ -133,7 +106,7 @@ const OnSale = () => {
                                 <p className="line-through text-lg font-semibold">
                                     ${mainProduct?.productId?.price.toFixed(2)}
                                 </p>
-                                <p className="text-xl text-[#C9892C] font-bold">
+                                <p className="text-xl  font-bold">
                                     ${mainProduct?.discountPrice.toFixed(2)}
                                 </p>
                             </div>

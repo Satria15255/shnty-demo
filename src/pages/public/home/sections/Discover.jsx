@@ -5,9 +5,9 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const Discover = () => {
 	return (
-		<div className="h-auto py-16">
+		<div className="h-auto w-full py-16 px-2">
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<div className="relative h-80">
+				<div className="relative h-80 xl:h-120 w-full">
 					<img
 						src="/homeSection/discover1.jpg"
 						alt="run"
@@ -21,13 +21,13 @@ const Discover = () => {
 							<h1 className="text-3xl text-white">
 								Explore the <br /> Man collection
 							</h1>
-							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4">
+							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4 hover:bg-black hover:text-white transition duration-300">
 								Shop Now <FaArrowRightLong />
 							</button>
 						</div>
 					</div>
 				</div>
-				<div className="relative h-80">
+				<div className="relative h-80 xl:h-120 w-full">
 					<img
 						src="/homeSection/discover2.jpg"
 						alt="run"
@@ -41,7 +41,7 @@ const Discover = () => {
 							<h1 className="text-3xl text-white">
 								Check out today's <br /> Discounted products.
 							</h1>
-							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4">
+							<button className="flex items-center hover:bg-black hover:text-white justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4 transition duration-300">
 								Shop Now <FaArrowRightLong />
 							</button>
 						</div>

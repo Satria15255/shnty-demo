@@ -39,7 +39,7 @@ const SearchModal = ({ onClose }) => {
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
 					placeholder="Search Products..."
-					className="w-full border border-gray-300 px-2 rounded-l-xl font-ysabeau py-2"
+					className="w-full border border-[#0C0C0C] px-2 rounded-l-xl font-ysabeau py-2"
 				/>
 			</form>
 			<button className="p-3 rounded-r-xl bg-[#0C0C0C] text-white">

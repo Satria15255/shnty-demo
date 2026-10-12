@@ -60,7 +60,7 @@ const CategoryCollection = () => {
                                 decoding="async"
                                 width="432"
                                 height="756"
-                                className="hover:scale-110 w-full h-full object-center object-cover transition duration-300 rounded-l-xl"
+                                className="  w-full h-full object-center object-cover  rounded-l-xl"
                             />
                         </div>
                         <div className="flex flex-col justify-around items-start p-6">
@@ -72,7 +72,7 @@ const CategoryCollection = () => {
                             </p>
                             <button
                                 onClick={() => navigate("/products")}
-                                className="underline cursor-pointer  text-gray-600 hover:text-[#0C0C0C] transition duration-200 text-xs lg:text-sm font-semibold"
+                                className=" cursor-pointer  text-gray-600 hover:text-[#0C0C0C] hover:underline transition duration-200 text-xs lg:text-sm font-semibold"
                             >
                                 SHOP NOW
                             </button>

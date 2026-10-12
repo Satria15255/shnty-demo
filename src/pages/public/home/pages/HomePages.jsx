@@ -10,14 +10,12 @@ const HomePages = () => {
 	return (
 		<main className="flex flex-col items-center  overflow-hidden">
 			<Hero />
-			<div className="w-full xl:max-w-4/5">
 				<Discover />
 				<BestSeller />
 				<DiscountSection />
 				<NewArrival />
 				<CategoryCollection />
-				<CallAction />
-			</div>
+			<CallAction />
 		</main>
 	);
 };
