@@ -43,12 +43,37 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20   font-ysabeau md:pb-5  m py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
+            className={`fixed top-0 z-40   font-ysabeau md:pb-5   py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
   ${scrolled ? "   bg-[#F1EEEA]    " : ""}`}
         >
             {/* Top Section */}
-            <div className="flex  justify-between items-center w-full px-5">
-                <div className="md:flex items-center md:w-2/4">
+            <div className="grid grid-cols-3 place-items-center w-full px-7">
+
+                <div className=" gap-7 hidden lg:flex  font-semibold text-xs lg:text-sm items-center w-full">
+                    <p
+                        onClick={() => navigate("/")}
+                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                    >
+                        HOME
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                    >
+                        SHOP
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                    >
+                        COLLECTION
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                    ></p>
+                </div>
+                <div className="flex items-center justify-center ">
                     {/* Hamburger icon */}
                     <button
                         aria-label="Open navigation menu"
@@ -59,36 +84,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     </button>
                     <h1
                         onClick={() => navigate("/")}
-                        className="hidden md:block w-40 lg:w-50 h-auto text-3xl font-moda"
+                        className="w-full h-auto text-4xl font-moda"
                     >
                         S H N TY
                     </h1>
                 </div>
-                <div className=" gap-7 hidden lg:flex  font-semibold text-xs lg:text-sm items-center w-full">
-                    <p
-                        onClick={() => navigate("/")}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    >
-                        HOME
-                    </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    >
-                        SHOP
-                    </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    >
-                        COLLECTION
-                    </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    ></p>
-                </div>
-
                 <div className="flex justify-end gap-3 lg:gap-6 items-center w-full ">
                     <div className="flex justify-center items-center w-full ">
                         <SearchModal />
@@ -97,7 +97,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label="Open favorites"
                             onClick={handleFavoriteNav}
-                            className="text-2xl hover:text-yellow-500 transition duration-100"
+                            className="text-2xl border-b border-transparent hover:border-black  transition duration-300 pb-3 pt-3"
                         >
                             <IoHeartOutline />
                         </button>
@@ -106,7 +106,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleOpenCart}
-                            className="relative text-2xl  hover:text-yellow-500 transition duration-100"
+                            className="relative text-2xl border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (
@@ -122,7 +122,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="User Profile"
                                 onClick={onToggleSidebar}
-                                className="relative flex items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
+                                className="relative flex items-center text-2xl gap-2 hidden md:flex border-b border-transparent hover:border-black pb-3 pt-3 transition duration-300"
                             >
                                 <LuUserRound />{" "}
                                 <span className="hidden lg:flex w- text-sm">
@@ -133,7 +133,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="Login Navigation"
                                 onClick={() => navigate("/login")}
-                                className="text-2xl hover:text-yellow-500 transition duration-100"
+                                    className="text-2xl border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
                             >
                                 {" "}
                                 <LuUserRound />
