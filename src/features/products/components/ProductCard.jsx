@@ -113,13 +113,13 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                                         <p className=" text-sm lg:text-lg xl:text-sm line-through">
                                             ${product.price.toFixed(2)}
                                         </p>
-                                        <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
+                                        <p className="text-sm lg:text-lg xl:text-sm   font-bold">
                                             ${discountPrice.toFixed(2)}
                                         </p>
                                     </div>
                                 ) : (
                                     <div>
-                                        <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
+                                        <p className="text-sm lg:text-lg xl:text-sm   font-bold">
                                             ${product.price.toFixed(2)}
                                         </p>
                                     </div>

@@ -43,11 +43,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20 border-b  bg-transparent font-ysabeau border-gray-200 md:pb-5  m py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
-  ${scrolled ? " border-b bg-white border-gray-400   " : ""}`}
+            className={`fixed top-0 z-20   font-ysabeau md:pb-5  m py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
+  ${scrolled ? "   bg-[#F1EEEA]    " : ""}`}
         >
             {/* Top Section */}
-            <div className="flex  justify-between items-center w-full xl:max-w-4/5 ">
+            <div className="flex  justify-between items-center w-full px-5">
                 <div className="md:flex items-center md:w-2/4">
                     {/* Hamburger icon */}
                     <button
@@ -117,7 +117,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         </button>
                     </div>
 
-                    <div className="hidden md:flex items-center">
+                    <div className="hidden md:flex items-center min-w-20">
                         {user ? (
                             <button
                                 aria-label="User Profile"
@@ -125,7 +125,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                                 className="relative flex items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
                             >
                                 <LuUserRound />{" "}
-                                <span className="hidden lg:flex w-30 text-sm">
+                                <span className="hidden lg:flex w- text-sm">
                                     Hi {user.name}
                                 </span>
                             </button>
