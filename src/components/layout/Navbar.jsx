@@ -44,44 +44,46 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-40   font-ysabeau md:pb-5   py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
-  ${scrolled ? "   bg-[#F1EEEA]    " : ""}`}
+            className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5   pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
+  ${scrolled ? "   bg-[#F1EEEA]  shadow-md  " : ""}`}
         >
             {/* Top Section */}
-            <div className="grid grid-cols-3 place-items-center w-full px-7">
-                <div className=" gap-7 hidden lg:flex  font-semibold text-xs lg:text-sm items-center w-full">
+            <div className="grid grid-cols-3 place-items-center w-full px-3 lg:px-7">
+                <div className=" gap-7 flex  font-semibold text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
-                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                        className="cursor-pointer hidden lg:block border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
                     >
                         HOME
                     </p>
                     <p
                         onClick={() => navigate("/products")}
-                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                        className="cursor-pointer hidden lg:block border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
                     >
                         SHOP
                     </p>
-                    <CatalogDropdown />
-                </div>
-                <div className="flex items-center justify-center ">
+                    <div className="hidden lg:block">
+                        <CatalogDropdown />
+                    </div>
                     {/* Hamburger icon */}
                     <button
                         aria-label="Open navigation menu"
                         onClick={() => setIsSidebarOpen(true)}
-                        className="relative md:hidden text-lg px-2 hover:text-yellow-500 transition duration-100"
+                        className="relative lg:hidden text-lg px-2 hover:text-yellow-500 transition duration-100"
                     >
                         <FaBars />
                     </button>
+                </div>
+                <div className="flex items-center justify-center ">
                     <h1
                         onClick={() => navigate("/")}
-                        className="w-full h-auto text-4xl font-moda"
+                        className="w-full h-auto  text-xl md:text-4xl font-moda"
                     >
                         S H N TY
                     </h1>
                 </div>
                 <div className="flex justify-end gap-3 lg:gap-6 items-center w-full ">
-                    <div className="flex justify-center items-center w-full ">
+                    <div className="hidden lg:flex justify-center items-center w-full ">
                         <SearchModal />
                     </div>
                     <div className="flex justify-center items-center">
@@ -108,7 +110,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         </button>
                     </div>
 
-                    <div className="hidden md:flex items-center min-w-20">
+                    <div className="hidden md:flex items-center ">
                         {user ? (
                             <button
                                 aria-label="User Profile"
@@ -131,7 +133,9 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </div>
             </div>
             {/* Bottom Section */}
-
+            <div className="flex lg:hidden justify-center md:justify-start items-center w-full  px-3 lg:px-7">
+                <SearchModal />
+            </div>
             {isSidebarOpen && (
                 <SidebarMobile
                     user={user}

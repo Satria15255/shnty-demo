@@ -1,0 +1,87 @@
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-navbar {
+  animation: slideDown 600ms ease-out both;
+}
+
+.animate-hero-image {
+  animation: fadeIn 900ms ease-out 150ms both;
+}
+
+.animate-from-left {
+  animation: slideRight 650ms ease-out 350ms both;
+}
+
+.animate-from-right {
+  animation: slideLeft 650ms ease-out 450ms both;
+}
+
+.animate-vertical-text {
+  animation: slideUp 650ms ease-out 600ms both;
+}
+
+.animate-bottom-text {
+  animation: slideUp 650ms ease-out 700ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-navbar,
+  .animate-hero-image,
+  .animate-from-left,
+  .animate-from-right,
+  .animate-vertical-text,
+  .animate-bottom-text {
+    animation: none;
+  }
+}
