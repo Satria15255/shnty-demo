@@ -9,6 +9,7 @@ import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
 import brandLogo2 from "@/assets/logo/brandLogo.webp";
 import SidebarMobile from "./SidebarMobile";
 import SearchModal from "@/features/search/components/SearchModal";
+import CatalogDropdown from "./NavbarDropdown";
 import { IoHeartOutline, IoSearchOutline, IoBagOutline } from "react-icons/io5";
 import { LuUserRound } from "react-icons/lu";
 
@@ -48,7 +49,6 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         >
             {/* Top Section */}
             <div className="grid grid-cols-3 place-items-center w-full px-7">
-
                 <div className=" gap-7 hidden lg:flex  font-semibold text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
@@ -62,16 +62,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     >
                         SHOP
                     </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
-                    >
-                        COLLECTION
-                    </p>
-                    <p
-                        onClick={() => navigate("/products")}
-                        className="cursor-pointer border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
-                    ></p>
+                    <CatalogDropdown />
                 </div>
                 <div className="flex items-center justify-center ">
                     {/* Hamburger icon */}
@@ -133,7 +124,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="Login Navigation"
                                 onClick={() => navigate("/login")}
-                                    className="text-2xl border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                                className="text-2xl border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
                             >
                                 {" "}
                                 <LuUserRound />

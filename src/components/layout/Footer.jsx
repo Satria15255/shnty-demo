@@ -13,22 +13,12 @@ const Footer = () => {
         <div className="flex flex-col bg-gray-100 justify-center items-center h-auto font-montserrat ">
             <div className="flex flex-col md:flex-row justify-between gap-4 px-2 md:px-7 xl:px-6 py-6 md:py-12 w-full ">
                 <div className="flex flex-col  gap-5">
-                    <picture
+                    <h1
                         onClick={() => navigate("/")}
-                        className=" w-40 lg:w-50 h-auto"
+                        className="w-full h-auto text-4xl font-moda"
                     >
-                        <source
-                            media="(max-width: 640px)"
-                            srcSet={brandLogo1}
-                            className=""
-                        />
-                        <img
-                            src={brandLogo2}
-                            alt="Brand Logo"
-                            width="862"
-                            height="116"
-                        />
-                    </picture>
+                        S H N TY
+                    </h1>
                     <div>
                         <p className="text-[10px] max-w-xs lg:text-xs ">
                             From casual looks to streetwear, every pair is

@@ -99,7 +99,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     </div>
 
                     <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-3 lg:justify-center">
-                        <div className="h-7">
+                        <div className="h-12">
                             <p className="text-sm  md:text-[15px] lg:text-lg  font-ysabeau ">
                                 {" "}
                                 {product.name}
