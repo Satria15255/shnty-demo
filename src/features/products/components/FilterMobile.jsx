@@ -1,75 +1,53 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
+import FilterForm from "./FilterForm";
 
-const FilterMobile = ({ open, onClose, categories, sizes, currentFilter, onApply }) => {
-    const [tempFilter, setTempFilter] = useState(currentFilter);
+export default function FilterMobile({ searchParams, onApply, onClose }) {
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === "Escape") onClose();
+        };
+
+        document.addEventListener("keydown", handleEscape);
+
+        return () => document.removeEventListener("keydown", handleEscape);
+    }, [onClose]);
 
     return (
-        <div className="fixed top-0 z-50 inset-0 bg-black/40 h-screen">
-            <div
-                className={`bg-white transform transition-transform duration-300 mt-12 rounded-t-xl max-h-[90vh] overflow-y-auto
-      ${open ? "translate-x-0" : "translate-x-full"}`}
+        <div className="fixed inset-0 z-[100]">
+            {/* Backdrop */}
+            <button
+                type="button"
+                aria-label="Close filter panel"
+                onClick={onClose}
+                className="absolute inset-0 h-full w-full bg-black/50"
+            />
+
+            {/* Drawer */}
+            <aside
+                role="dialog"
+                aria-modal="true"
+                aria-label="Product filters"
+                className="absolute right-0 top-0 h-full w-full max-w-sm overflow-y-auto bg-white p-6 shadow-xl"
             >
-                {/* Header */}
-                <div className="flex justify-between p-4 border-b">
-                    <h2 className="font-bold">Filter Product</h2>
-                    <button onClick={onClose}>✕</button>
-                </div>
+                <div className="mb-6 flex items-center justify-between">
+                    <h2 className="text-lg font-semibold">Filter Products</h2>
 
-                {/* Body */}
-                <div className="p-4 space-y-3 overflow-y-auto">
-                    {/* Category */}
-                    {categories.map((cat) => (
-                        <button
-                            key={cat}
-                            onClick={() => setTempFilter((p) => ({ ...p, category: cat }))}
-                            className={`block w-full text-left py-2
-              ${tempFilter.category === cat ? "font-bold" : ""}`}
-                        >
-                            {cat}
-                        </button>
-                    ))}
-
-                    {/* Size */}
-                    <div className="grid grid-cols-4 gap-2">
-                        {sizes.map((s) => (
-                            <button
-                                key={s}
-                                onClick={() => setTempFilter((p) => ({ ...p, size: s }))}
-                                className={`py-2 border rounded
-                ${tempFilter.size === s ? "bg-black text-white" : ""}`}
-                            >
-                                {s}
-                            </button>
-                        ))}
-                    </div>
-
-                    <label className="flex gap-2">
-                        <input type="checkbox" checked={tempFilter.latest} onChange={() => setTempFilter((p) => ({ ...p, latest: !p.latest }))} />
-                        New Arrival
-                    </label>
-
-                    <label className="flex gap-2">
-                        <input type="checkbox" checked={tempFilter.discount} onChange={() => setTempFilter((p) => ({ ...p, discount: !p.discount }))} />
-                        Discount
-                    </label>
-                </div>
-
-                {/* Footer */}
-                <div className="p-4 border-t">
                     <button
-                        onClick={() => {
-                            onApply(tempFilter);
-                            onClose();
-                        }}
-                        className="w-full bg-black text-white py-3 rounded"
+                        type="button"
+                        onClick={onClose}
+                        aria-label="Close"
+                        className="text-2xl text-neutral-600"
                     >
-                        Apply Filter
+                        ×
                     </button>
                 </div>
-            </div>
+
+                <FilterForm
+                    searchParams={searchParams}
+                    onApply={onApply}
+                    onCancel={onClose}
+                />
+            </aside>
         </div>
-
     );
-};
-
-export default FilterMobile;
+}

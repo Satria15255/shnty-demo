@@ -13,159 +13,97 @@ import Loader from "@/components/common/Loader";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { TbMoodSadSquint, TbAdjustmentsHorizontal } from "react-icons/tb";
+import { createFilterParams } from "@/constants/filterOption";
 
 function ProductPages({ onAddToCart, onOpenModal }) {
     const [products, setProducts] = useState([]);
-    const [latestProducts, setLatestProducts] = useState([]);
-    const [discountProducts, setDiscountProducts] = useState([]);
     const [currentPages, setCurrentPages] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
     const [filterOpen, setFilterOpen] = useState(false);
-    const [filter, setFilter] = useState({
-        category: [],
-        size: [],
-        latest: false,
-        discount: false,
-    });
-    const productsPerPage = 12;
-    const category = ["Basketball", "Sneakers", "Running", "Casual"];
-    const size = [38, 39, 40, 41, 42, 43, 44];
+
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
-    const searchQuery = searchParams.get("search") || "";
 
-    const normalizeDiscount = (discount) => {
-        return {
-            ...discount.productId,
-            price: Number(discount.productId.price),
-            isDiscount: true,
-            discountPercent: Number(discount.discountPercent),
-            discountPrice: Number(discount.discountPrice),
-            expiresAt: discount.expiresAt,
-        };
-    };
+    const [searchParams, setSearchParams] = useSearchParams();
+    const queryString = searchParams.toString();
 
-    const fetchProductsData = useCallback(async () => {
-        try {
-            setLoading(true);
+    const productsPerPage = 12;
 
-            const [allProductsRes, latestProductsRes, discountProductsRes] =
-                await Promise.all([
-                    getAllProducts(),
-                    getLatestProducts(),
-                    getDiscountProducts(),
-                ]);
-
-            // All Products
-            setProducts(allProductsRes.data);
-
-            // Latest Products
-            setLatestProducts(latestProductsRes.data);
-
-            // Normalize Discount Products
-            const normalizedDiscounts =
-                discountProductsRes.data.map(normalizeDiscount);
-
-            setDiscountProducts(normalizedDiscounts);
-
-            // Merge Discount Into Products
-            setProducts((prev) =>
-                prev.map((p) => {
-                    const found = normalizedDiscounts.find(
-                        (d) => d._id === p._id,
-                    );
-
-                    return found ? found : p;
-                }),
-            );
-        } catch (err) {
-            console.log(err);
-        } finally {
-            setLoading(false);
-        }
-    }, []);
-
+    // Fetch products berdasarkan applied filters di URL
     useEffect(() => {
-        fetchProductsData();
-    }, [fetchProductsData]);
+        let active = true;
 
-    const filterProducts = () => {
-        const source = filter.discount
-            ? discountProducts
-            : filter.latest
-              ? latestProducts
-              : products || [];
-        return source.filter((product) => {
-            const matchCategory =
-                filter.category.length === 0 ||
-                filter.category.includes(product.category);
-            const matchSize =
-                filter.size.length === 0 ||
-                (Array.isArray(product.sizes) &&
-                    filter.size.some((selectedSize) =>
-                        product.sizes.includes(Number(selectedSize)),
-                    ));
-            const matchSearch =
-                searchQuery.trim() === "" ||
-                product.name
-                    .toLowerCase()
-                    .includes(searchQuery.toLocaleLowerCase());
-            return matchCategory && matchSize && matchSearch;
-        });
-    };
-    const filteredProducts = filterProducts();
+        const fetchProducts = async () => {
+            try {
+                setLoading(true);
+                setError("");
 
-    const handleProductSearch = (value) => {
-        setFilter((prev) => ({
-            ...prev,
-            search: value,
-        }));
+                const response = await getAllProducts(queryString);
 
-        const params = new URLSearchParams(searchParams);
+                if (active) {
+                    setProducts(response.data);
+                }
+            } catch (err) {
+                console.error("Failed fetching products:", err);
 
-        if (value.trim()) {
-            params.set("search", value);
-        } else {
-            params.delete("search");
-        }
-
-        setSearchParams(params, {
-            replace: true,
-        });
-    };
-
-    useEffect(() => {
-        const search = searchParams.get("search") || "";
-
-        setFilter((prev) => {
-            if (prev.search === search) {
-                return prev;
+                if (active) {
+                    setProducts([]);
+                    setError("Failed to load products.");
+                }
+            } finally {
+                if (active) {
+                    setLoading(false);
+                }
             }
+        };
 
-            return {
-                ...prev,
-                search,
-            };
-        });
-    }, [searchParams]);
+        fetchProducts();
 
-    // Function Products Pagination
+        // Mencegah response request lama menimpa data terbaru
+        return () => {
+            active = false;
+        };
+    }, [queryString]);
+
+    // Reset pagination ketika filter/search berubah
     useEffect(() => {
         setCurrentPages(1);
-    }, [
-        filter.category,
-        filter.size,
-        filter.latest,
-        filter.discount,
-        searchQuery,
-    ]);
+    }, [queryString]);
+
+    // Dipakai oleh sidebar maupun mobile filter
+    const handleApplyFilter = (newFilters) => {
+        const params = createFilterParams(searchParams, newFilters);
+
+        setSearchParams(params);
+        setCurrentPages(1);
+        setFilterOpen(false);
+    };
+
+    // Backend sudah menjalankan filtering
+    const filteredProducts = products;
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(filteredProducts.length / productsPerPage),
+    );
+
     const indexOfLast = currentPages * productsPerPage;
     const indexOfFirst = indexOfLast - productsPerPage;
+
     const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
     if (loading) {
         return <Loader />;
+    }
+
+    if (error) {
+        return (
+            <main className="flex min-h-screen items-center justify-center">
+                <p role="alert" className="text-neutral-600">
+                    {error}
+                </p>
+            </main>
+        );
     }
 
     return (
@@ -179,10 +117,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     <aside className="lg:w-1/5">
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
-                            category={category}
-                            size={size}
-                            filter={filter}
-                            setFilter={setFilter}
+                            searchParams={searchParams}
+                            onApply={handleApplyFilter}
                         />
                     </aside>
                     <div className="flex flex-col w-full">
@@ -289,12 +225,9 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 </div>
                 {filterOpen && (
                     <FilterMobile
-                        open={filterOpen}
+                        searchParams={searchParams}
+                        onApplu={handleApplyFilter}
                         onClose={() => setFilterOpen(false)}
-                        categories={categories}
-                        sizes={size}
-                        currentFilter={filter}
-                        onApply={(newFilter) => setFilter(newFilter)}
                     />
                 )}
             </section>
