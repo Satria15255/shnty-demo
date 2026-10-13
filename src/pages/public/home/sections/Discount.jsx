@@ -27,8 +27,6 @@ const OnSale = () => {
     }, []);
     const mainProduct = product[0];
     const otherProduct = product.slice(1, -1);
-    console.log(mainProduct);
-    console.log(otherProduct);
 
     const navigate = useNavigate();
     return (

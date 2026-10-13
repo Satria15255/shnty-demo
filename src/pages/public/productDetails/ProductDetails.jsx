@@ -123,18 +123,6 @@ function ProductModal() {
                             <p className="text-3xl lg:text-5xl font-semibold">
                                 {product.name}
                             </p>
-                            <div className="flex items-center text-sm lg:text-lg">
-                                <FaStar className="text-yellow-500" />
-                                <FaStar className="text-yellow-500" />
-                                <FaStar className="text-yellow-500" />
-                                <FaStar className="text-yellow-500" />
-                                <FaStar className="text-yellow-500" />
-                                <FaStar className="text-yellow-500" />
-                                <p className="text-sm lg:text-lg text-gray-400 pl-4">
-                                    {" "}
-                                    4.9 (120 Reviews)
-                                </p>
-                            </div>
                         </header>
 
                         <div className="flex items-center ">
@@ -182,20 +170,20 @@ function ProductModal() {
                                             </button>
                                         ))
                                     ) : (
-                                        <p className="text-gray-400 text-sm">
+                                        <p className="text-gray-400 text-sm mt-5">
                                             Size not available
                                         </p>
                                     )}
                                 </div>
 
                                 {!selectedSize ? (
-                                    <p className="text-red-500 text-sm mt-2">
+                                    <p className="text-red-500 text-sm mt-5">
                                         Please select a size
                                     </p>
                                 ) : (
                                     <div>
                                         {currentVariant?.stock <= 3 ? (
-                                            <p className="text-red-500 text-sm mt-2">
+                                            <p className="text-red-500 text-sm mt-5">
                                                 <span>
                                                     {currentVariant?.stock}
                                                 </span>{" "}
@@ -244,13 +232,42 @@ function ProductModal() {
                     </div>
                 </article>
 
-                <section className="mt-9">
-                    <p className="text-xl lg:text-2xl font-semibold">
-                        Product Description
-                    </p>
-                    <p className="py-3 text-sm lg:text-lg border-bottom w-full ">
-                        {product.description}
-                    </p>
+                <section className="mt-9 flex flex-col gap-4">
+                    <div>
+                        <p className="text-xl lg:text-2xl font-semibold">
+                            Product Description
+                        </p>
+                        <p className="py-3 text-sm lg:text-lg text-gray-600 pl-4 border-bottom w-full ">
+                            {product.description}
+                        </p>
+                    </div>
+                    <div>
+                        <p className="text-xl lg:text-2xl font-semibold">
+                            Specification
+                        </p>
+                        <div className="grid grid-cols-2 pl-4">
+                            <p className="py-3 text-gray-600 text-sm lg:text-lg border-bottom w-full ">
+                                Type :{" "}
+                                <span className="text-black">
+                                    {product.type}
+                                </span>
+                            </p>
+
+                            <p className="py-3 text-sm text-gray-600 lg:text-lg border-bottom w-full ">
+                                Color :{" "}
+                                <span className="text-black">
+                                    {product.color}
+                                </span>
+                            </p>
+
+                            <p className="py-3 text-sm lg:text-lg text-gray-600 border-bottom w-full ">
+                                Material :{" "}
+                                <span className="text-black">
+                                    {product.material}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
                 </section>
 
                 <section
