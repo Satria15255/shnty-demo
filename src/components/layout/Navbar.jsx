@@ -42,6 +42,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         }
     };
 
+    const handleViewCart = () => {
+        if (!user) {
+            navigate("/login");
+        } else {
+            navigate("/my-cart");
+        }
+    };
+
     return (
         <div
             className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5   pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
@@ -82,15 +90,15 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         S H N TY
                     </h1>
                 </div>
-                <div className="flex justify-end gap-3 lg:gap-6 items-center w-full ">
+                <div className="flex justify-end gap-3 lg:gap-6 items-center w-full px-2">
                     <div className="hidden lg:flex justify-center items-center w-full ">
                         <SearchModal />
                     </div>
-                    <div className="flex justify-center items-center">
+                    <div className="hidden lg:flex justify-center items-center">
                         <button
                             aria-label="Open favorites"
                             onClick={handleFavoriteNav}
-                            className="text-2xl border-b border-transparent hover:border-black  transition duration-300 pb-3 pt-3"
+                            className="text-2xl hover:text-yellow-500 transition duration-100"
                         >
                             <IoHeartOutline />
                         </button>
@@ -99,23 +107,47 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleOpenCart}
-                            className="relative text-2xl border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                            className="hidden md:block relative text-2xl p-2 hover:text-yellow-500 transition duration-100"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (
-                                <span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                <span className="absolute top-0 right-0 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                    <p>{totalItems}</p>
+                                </span>
+                            )}
+                        </button>
+                        <button
+                            aria-label={`Open shopping cart, ${totalItems} items`}
+                            onClick={handleViewCart}
+                            className="relative md:hidden text-2xl p-2 hover:text-yellow-500 transition duration-100"
+                        >
+                            <IoBagOutline />
+                            {totalItems > 0 && (
+                                <span className="absolute top-0 right-0 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
                                     <p>{totalItems}</p>
                                 </span>
                             )}
                         </button>
                     </div>
+                    <div className=" flex md:hidden justify-center items-center">
+                        <button
+                            aria-label="Login Navigation"
+                            onClick={() =>
+                                handleNavigate("/dashboard?tab=profile")
+                            }
+                            className="text-2xl md:hidden hover:text-yellow-500 transition duration-100"
+                        >
+                            {" "}
+                            <LuUserRound />
+                        </button>
+                    </div>
 
-                    <div className="hidden md:flex items-center ">
+                    <div className="hidden md:flex items-center">
                         {user ? (
                             <button
                                 aria-label="User Profile"
                                 onClick={onToggleSidebar}
-                                className="relative flex items-center text-2xl gap-2 hidden md:flex border-b border-transparent hover:border-black pb-3 pt-3 transition duration-300"
+                                className="relative  items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
                             >
                                 <LuUserRound />{" "}
                             </button>
@@ -123,7 +155,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="Login Navigation"
                                 onClick={() => navigate("/login")}
-                                className="text-2xl border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
+                                className="text-2xl hover:text-yellow-500 transition duration-100"
                             >
                                 {" "}
                                 <LuUserRound />

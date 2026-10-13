@@ -24,14 +24,16 @@ const SidebarCart = ({ closeSidebarCart }) => {
         <main className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
             <div className="bg-white w-full md:w-1/2 lg:w-2/5 xl:w-1/4 flex flex-col overflow-y-auto items-center">
                 {/* Tombol Close */}
-                <header className="w-full flex justify-between p-5 border-b border-gray-400">
-                    <button
-                        onClick={closeSidebarCart}
-                        className="top-4 left-4 text-2xl font-bold text-gray-600 hover:text-gray-900"
-                    >
-                        ×
-                    </button>
-                    <p className="text-md mt-3 lg:text-2xl font-semibold mb-4 md:mb-6">
+                <header className="w-full grid grid-cols-3 p-5 border-b border-gray-400">
+                    <div className="flex justify-start">
+                        <button
+                            onClick={closeSidebarCart}
+                            className="top-4 left-4 text-2xl font-bold  text-gray-600 hover:text-gray-900"
+                        >
+                            ×
+                        </button>
+                    </div>
+                    <p className="text-md mt-3 text-center lg:text-2xl font-semibold mb-4 md:mb-6">
                         Your cart
                     </p>
                 </header>
@@ -71,7 +73,7 @@ const SidebarCart = ({ closeSidebarCart }) => {
                                                     <td className="flex items-center py-2">
                                                         <img
                                                             src={
-                                                                item?.productId
+                                                                item.productId
                                                                     .image
                                                             }
                                                             alt={

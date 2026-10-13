@@ -1,9 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const orderDetails = ({ order, handleCancel, handleConfirm }) => {
+const orderCard = ({ order, handleCancel, handleConfirm }) => {
   const navigate = useNavigate();
+  const isPending = order.status === "Pending";
+  const isDelivered = order.status === "Delivered";
+  const isCompleted = order.status === "Completed";
+  const isCancelled = order.status === "Cancelled";
+  const isExpired = order.status === "Expired";
 
+  const isTransfer = order.paymentMethod === "Transfer";
+  const isUnpaid = order.paymentStatus === "Unpaid";
+
+  const canPay = isPending && isTransfer && isUnpaid;
+
+  const canCancel = isPending;
+
+  const canConfirm = isDelivered;
+
+  const canBuyAgain = isCompleted || isCancelled || isExpired;
   return (
     <article className="p-2 pt-6 ">
       <div
@@ -20,22 +35,20 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
             <p>Order Status:</p>
             {order.status}
           </p>
-          <div className="w-full rounded-lg bg-black p-5 ">
+          <div className="w-full rounded-lg border border-gray-300 p-5 ">
             {order.products.map((item) => (
               <div
                 key={item._id}
-                className="flex justify-between items-center gap-4 mt-2"
+                className="flex justify-between items-center  gap-4 mt-2"
               >
                 <div className="flex gap-2 w-full lg:w-3/5 items-center">
                   <img
-                    src={item.product.image}
-                    alt={item.product.name}
-                    className="w-14 h-14 object-cover rounded"
+                    src={item.image || item.product?.image}
+                    alt={item.name || item.product?.name}
+                    className="w-14 h-14 object-cover bg-[#FBFAF7] rounded"
                   />
-                  <div className="flex text-white flex-col">
-                    <p className="text-xs md:text-lg font-bold">
-                      {item.product.name}
-                    </p>
+                  <div className="flex   flex-col">
+                    <p className="text-xs md:text-lg font-bold">{item?.name}</p>
                     <div>
                       <p className="md:hidden text-xs">
                         {item.size} x {item.quantity}
@@ -66,77 +79,67 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
               <p>Total Product:</p>
               {order.totalProducts}
             </p>
-            <p className="flex justify-between">
-              <p>Voucher :</p>
-              {order.voucherCode}
-            </p>
-            <p className="flex justify-between">
-              <p>Total Price:</p>${order.totalPrice.toFixed(2)}
-            </p>
-            <p className="flex justify-between">
-              <p>Total Saving:</p>
-              -${order.discountAmount.toFixed(2)}
-            </p>
+
             <p className="flex justify-between">
               <p>Total Paid:</p>${order.finalPrice.toFixed(2)}
             </p>
-            <p className="flex h-auto justify-between">
-              <p>Address:</p>
-              {order.shippingAddress}
-            </p>
-            <p className="flex justify-between">
-              <p>Shipping Method:</p>
-              {order.shippingMethod}
-            </p>
-            <p className="flex justify-between">
-              <p>Payment Method: </p>
-              {order.paymentMethod}
-            </p>
+
             <p className="flex justify-between">
               <p>Order Time:</p>
               {new Date(order.createdAt).toLocaleString()}
             </p>
-            <div className="flex justify-end gap-1">
-              <button
-                onClick={() => handleCancel(order._id)}
-                disabled={
-                  order.status === "Completed" || order.status === "Cancelled"
-                }
-                className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
+
+            <div className="flex justify-end w-full  gap-1">
+              <div className="flex w-1/2 gap-2">
+                {canCancel && (
+                  <button
+                    onClick={() => handleCancel(order._id)}
+                    className="text-xs md:text-md lg:text-lg border border-gray-300  px-1 py-1 w-full rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
+              }
     disabled:cursor-not-allowed
     disabled:hover:bg-transparent
     disabled:hover:text-current"
-              >
-                Cancel
-              </button>
-              {order.status === "Pending" ? (
+                  >
+                    Cancel Order
+                  </button>
+                )}
+
                 <button
-                  onClick={() => {
-                    console.log("Buttonn Clicked");
-                    navigate(`/paymentOrder/${order._id}`);
-                  }}
-                  disabled={order.paymentStatus === "Expired"}
-                  className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50  disabled:cursor-not-allowed
+                  onClick={() => navigate(`/my-orders/${order._id}`)}
+                  className="text-xs md:text-md lg:text-lg border border-gray-300 w-full px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300"
+                >
+                  Details
+                </button>
+
+                {canPay && (
+                  <button
+                    onClick={() => navigate(`/paymentOrder/${order._id}`)}
+                    className="text-xs md:text-md lg:text-lg border border-gray-300 w-full px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300"
+                  >
+                    Pay Now
+                  </button>
+                )}
+
+                {canConfirm && (
+                  <button
+                    onClick={() => handleConfirm(order._id)}
+                    className="text-xs md:text-md lg:text-lg border border-gray-300  px-1 py-1 w-full rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 "
+                  >
+                    Confirm Received
+                  </button>
+                )}
+
+                {canBuyAgain && (
+                  <button
+                    onClick={() => navigate("/products")}
+                    className="text-xs md:text-md lg:text-lg border border-gray-300  px-1 py-1 w-full rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50  disabled:cursor-not-allowed
     disabled:hover:bg-transparent
     disabled:hover:text-current"
-                >
-                  Pay Now
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    console.log("Buttonn Clicked");
-                    handleConfirm(order._id);
-                  }}
-                  disabled={order.status !== "Delivered"}
-                  className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
-    disabled:cursor-not-allowed
-    disabled:hover:bg-transparent
-    disabled:hover:text-current"
-                >
-                  Submitted
-                </button>
-              )}
+                  >
+                    Buy Again
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -145,4 +148,4 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
   );
 };
 
-export default orderDetails;
+export default orderCard;

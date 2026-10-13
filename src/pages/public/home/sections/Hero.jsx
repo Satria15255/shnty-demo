@@ -48,7 +48,7 @@ const Hero = () => {
                 <div className="relative z-20 flex flex-col justify-center items-center h-full w-full md:p-5 ">
                     <div className="flex h-full w-full">
                         <div className="flex flex-col justify-center items-center h-full w-full">
-                            <div className="w-full flex flex-col justify-end  md:items-start h-full md:pl-16 px-2 md:px-0">
+                            <div className="w-full flex flex-col justify-center md:justify-end  md:items-start h-full md:pl-16 px-2 md:px-0">
                                 <h1 className="text-4xl md:text-5xl  text-left lg:text-7xl xl:text-9xl text-[#14213D] font-moda  pr-16">
                                     LESS NOISE
                                 </h1>

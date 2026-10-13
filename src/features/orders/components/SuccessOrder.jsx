@@ -169,7 +169,7 @@ const SuccesTransaction = () => {
                                             </div>
                                             <div className="flex justify-end w-full">
                                                 <p className="text-yellow-500 hidden md:flex text-xl font-semibold">
-                                                    ${item.pricePerUnit}.00
+                                                    ${item.pricePerUnit}
                                                 </p>
                                                 <p className="font-ysabeau md:hidden text-gray-600 font-bold text-lg">
                                                     {item.quantity}x

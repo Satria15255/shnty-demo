@@ -45,7 +45,7 @@ export default function CatalogDropdown() {
     <nav
       ref={containerRef}
       aria-label="Shop navigation"
-      className="flex items-center gap-8"
+      className="flex flex-col md:flex-row lg:items-center lg:gap-8"
     >
       {catalogMenus.map((menu) => {
         const isOpen = openMenu === menu.id;
@@ -58,9 +58,9 @@ export default function CatalogDropdown() {
               aria-expanded={isOpen}
               aria-controls={isOpen ? `menu-${menu.id}` : undefined}
               onClick={() => handleToggle(menu.id)}
-              className="group flex items-center gap-2 py-3 text-xs lg:text-sm font-semibold text-[#0C0C0C]"
+              className="group flex items-center gap-2 py-4 text-xs lg:text-sm border-t border-gray-300 w-full font-semibold text-[#0C0C0C]"
             >
-              <span className="border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3">
+              <span className=" lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3">
                 {menu.label}
               </span>
 

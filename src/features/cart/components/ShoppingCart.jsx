@@ -215,9 +215,12 @@ const ShoppingCart = () => {
 									})}
 								</tbody>
 								<div className="w-40 py-4">
-									<p className="text-sm  cursor-pointer lg:text-lg w-full  text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b border-gray-400 pb-1">
+									<button
+										onClick={() => navigate("/products")}
+										className="text-sm  cursor-pointer lg:text-lg w-full  text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b border-gray-400 pb-1"
+									>
 										Continue Shopping
-									</p>
+									</button>
 								</div>
 							</table>
 						)}

@@ -1,26 +1,21 @@
-import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { updateProfile } from "@/features/auth/services/authService";
 import { toast } from "react-toastify";
 import { MdCheckCircleOutline } from "react-icons/md";
 import { PiUserCircle } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePages = () => {
     const { user, setUser } = useAuth();
+    const [isEditing, setIsEditing] = useState(false);
     const [updateForm, setUpdateForm] = useState({
-        name: user?.name || "Your Fullname",
-        birthDay: user?.birthDay || "dd/mm/yy",
-        gender: user?.gender || "Male/Female",
-        email: user?.email || "example@gmail.com",
-        phoneNumber: user?.phoneNumber || "0123456778",
-        address: user?.address || "Your Address",
+        name: "",
+        email: "",
+        phoneNumber: "",
     });
-
-    const handleChange = (e) => {
-        setUpdateForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    };
+    const navigate = useNavigate();
+    const defaultAddress = user?.address?.find((address) => address.isDefault);
 
     useEffect(() => {
         if (user) {
@@ -28,19 +23,31 @@ const ProfilePages = () => {
                 name: user.name || "",
                 email: user.email || "",
                 phoneNumber: user.phoneNumber || "",
-                address: user.address || "",
             });
         }
     }, [user]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUpdateForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleCancel = (e) => {
+        setUpdateForm({
+            name: user?.name || "",
+            email: user?.email || "",
+            phoneNumber: user?.phoneNumber || "",
+        });
+
+        setIsEditing(false);
+    };
 
     const handleUpdateForm = async (e) => {
         e.preventDefault();
         try {
             const inputForm = {
                 name: updateForm.name,
-                email: updateForm.email,
                 phoneNumber: updateForm.phoneNumber,
-                address: updateForm.address,
             };
 
             const res = await updateProfile(inputForm);
@@ -52,133 +59,229 @@ const ProfilePages = () => {
         }
     };
     return (
-        <section className="flex flex-col bg-[#FAFAFA] gap-10 p-5 h-full">
-            <header className="flex flex-row bg-white items-center border border-gray-100 shadow-lg rounded-xl  gap-2 py-7 px-2 lg:p-9 ">
-                <div className="text-5xl lg:text-6xl">
+        <section className="flex flex-col bg-[#FAFAFA] gap-8 p-5 h-full">
+            {/* Profile Header */}
+            <header className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-6">
+                <div className="text-6xl">
                     <PiUserCircle />
                 </div>
-                <div className="w-60 flex flex-col justify-center">
-                    <p className="text-xl lg:text-3xl  font-montserrat">
+
+                <div>
+                    <h1 className="text-2xl font-montserrat font-semibold">
                         {user?.name}
-                    </p>
-                    <p className=" text-[10px] md:text-xs font-ysabeau bg-green-200 flex gap-1 w-25 md:w-35 justify-center items-center rounded-full">
+                    </h1>
+
+                    <p className="text-sm text-gray-500">{user?.email}</p>
+
+                    <div className="mt-2 inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">
                         <MdCheckCircleOutline size={15} />
                         Verified Account
-                    </p>
+                    </div>
                 </div>
             </header>
 
-            {/* User Details & Upate Form*/}
-            <div className="w-full">
-                <form
-                    onSubmit={handleUpdateForm}
-                    className="grid grid-cols-1 text-sm gap-7 md:gap-14 w-full"
-                >
-                    {/* Personal Information */}
-                    <section>
-                        <header>
-                            <p className="text-xl  font-montserrats">
-                                {" "}
-                                Personal Information
-                            </p>
-                        </header>
-                        <div className="border bg-white mt-3 border-gray-100 shadow-lg p-3 py-5 flex font-ysabeau flex-col gap-3 rounded-2xl">
-                            <div className="w-full flex flex-col ">
-                                <h3 className="text-left font-semibold">
-                                    Full Name
-                                </h3>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={updateForm.name}
-                                    onChange={handleChange}
-                                    className="w-full border-b border-gray-100 text-gray-600 pb-3 text-lg  "
-                                />
-                            </div>
-                            <div className="w-full flex flex-col ">
-                                <h3 className="text-left font-semibold">
-                                    Gender
-                                </h3>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={updateForm.gender}
-                                    onChange={handleChange}
-                                    className="w-full border-b border-gray-100 text-gray-600 pb-3 text-lg "
-                                />
-                            </div>
-                            <div className="w-full flex flex-col ">
-                                <h3 className="text-left  font-semibold">
-                                    Birth Day
-                                </h3>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={updateForm.birthDay}
-                                    onChange={handleChange}
-                                    className="w-full   text-gray-600  pb-3  text-lg "
-                                />
-                            </div>
-                        </div>
-                    </section>
+            {/* Personal Information */}
+            <section className="bg-white border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 className="text-xl font-montserrat font-semibold">
+                            Personal Information
+                        </h2>
 
-                    {/* Account Information */}
-                    <section>
-                        <header>
-                            <p className="text-xl  font-montserrats">
-                                {" "}
-                                Accounts Details
+                        <p className="text-sm text-gray-500 mt-1">
+                            Manage your personal account information.
+                        </p>
+                    </div>
+
+                    {!isEditing && (
+                        <button
+                            type="button"
+                            onClick={() => setIsEditing(true)}
+                            className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-lg text-sm hover:bg-gray-50 transition"
+                        >
+                            Edit
+                        </button>
+                    )}
+                </div>
+
+                {!isEditing ? (
+                    /* ================= VIEW MODE ================= */
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <p className="text-sm text-gray-500">Full Name</p>
+
+                            <p className="mt-1 font-medium">
+                                {user?.name || "-"}
                             </p>
-                        </header>
-                        <div className="border bg-white mt-3 border-gray-100 shadow-lg p-3 font-ysabeau flex flex-col gap-3 rounded-2xl">
-                            <div className="w-full flex flex-col ">
-                                <h3 className="text-left  font-semibold">
-                                    Email
-                                </h3>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={updateForm.email}
-                                    onChange={handleChange}
-                                    className="w-full border-b border-gray-100 text-gray-600 pb-3 text-lg  "
-                                />
-                            </div>
-                            <div className="w-full flex flex-col">
-                                <h3 className="text-left  font-semibold">
-                                    Phone
-                                </h3>
-                                <input
-                                    type="text"
-                                    name="phoneNumber"
-                                    value={updateForm.phoneNumber}
-                                    onChange={handleChange}
-                                    className="w-full border-b border-gray-100 text-gray-600 pb-3 text-lg  "
-                                />
-                            </div>
-                            <div className="w-full flex flex-col">
-                                <h3 className="text-left  font-semibold">
-                                    Address
-                                </h3>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    value={updateForm.address}
-                                    onChange={handleChange}
-                                    className="w-full   text-gray-600 text-lg "
+                        </div>
+
+                        <div>
+                            <p className="text-sm text-gray-500">
+                                Phone Number
+                            </p>
+
+                            <p className="mt-1 font-medium">
+                                {user?.phoneNumber || "Not provided"}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p className="text-sm text-gray-500">
+                                Email Address
+                            </p>
+
+                            <div className="flex items-center gap-2 mt-1">
+                                <p className="font-medium">{user?.email}</p>
+
+                                <MdCheckCircleOutline
+                                    className="text-green-600"
+                                    size={17}
                                 />
                             </div>
                         </div>
-                    </section>
-                </form>
-                <div className="w-full flex justify-end    px-4 my-4 lg:my-10">
-                    <button
-                        onClick={handleUpdateForm}
-                        className="bg-black w-1/2 lg:w-1/5 text-white font-ysabeau border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4"
+                    </div>
+                ) : (
+                    /* ================= EDIT MODE ================= */
+                    <form
+                        onSubmit={handleUpdateForm}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     >
-                        Save Change
+                        {/* Name */}
+                        <div>
+                            <label
+                                htmlFor="name"
+                                className="block text-sm font-medium mb-2"
+                            >
+                                Full Name
+                            </label>
+
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                value={updateForm.name}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        {/* Phone */}
+                        <div>
+                            <label
+                                htmlFor="phoneNumber"
+                                className="block text-sm font-medium mb-2"
+                            >
+                                Phone Number
+                            </label>
+
+                            <input
+                                id="phoneNumber"
+                                type="text"
+                                name="phoneNumber"
+                                value={updateForm.phoneNumber}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:border-black"
+                            />
+                        </div>
+
+                        {/* Email */}
+                        <div className="md:col-span-2">
+                            <label
+                                htmlFor="email"
+                                className="block text-sm font-medium mb-2"
+                            >
+                                Email Address
+                            </label>
+
+                            <input
+                                id="email"
+                                type="email"
+                                value={updateForm.email}
+                                readOnly
+                                className="w-full border border-gray-200 bg-gray-100 text-gray-500 rounded-lg px-4 py-3 cursor-not-allowed"
+                            />
+
+                            <p className="text-xs text-gray-500 mt-2">
+                                Your email address cannot be changed.
+                            </p>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="md:col-span-2 flex justify-end gap-3 mt-3">
+                            <button
+                                type="button"
+                                onClick={handleCancel}
+                                className="border border-gray-300 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                className="bg-black text-white px-5 py-2.5 rounded-lg border border-black hover:bg-white hover:text-black transition"
+                            >
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                )}
+            </section>
+
+            <section className="bg-white border border-gray-200 rounded-2xl p-6">
+                <div className="flex items-center justify-between mb-5">
+                    <div>
+                        <h2 className="text-xl font-semibold">
+                            Default Address
+                        </h2>
+
+                        <p className="text-sm text-gray-500 mt-1">
+                            Address used as your primary delivery destination.
+                        </p>
+                    </div>
+
+                    <button
+                        onClick={() => navigate("/dashboard?tab=addresses")}
+                        className="border border-gray-300 px-4 py-2 rounded-lg text-sm hover:bg-gray-50 transition"
+                    >
+                        Manage Addresses
                     </button>
                 </div>
-            </div>
+
+                {defaultAddress ? (
+                    <div>
+                        <div className="flex items-center gap-2 mb-2">
+                            <p className="font-medium">
+                                {defaultAddress.label}
+                            </p>
+
+                            <span className="text-xs bg-black text-white px-2 py-1 rounded-full">
+                                Default
+                            </span>
+                        </div>
+
+                        <p className="text-gray-600">
+                            {defaultAddress.specificAddress}
+                        </p>
+
+                        <p className="text-gray-600">
+                            {defaultAddress.city}, {defaultAddress.country}
+                        </p>
+                    </div>
+                ) : (
+                    <div>
+                        <p className="text-gray-500">
+                            No default address has been added.
+                        </p>
+
+                        <button
+                            onClick={() => navigate("/dashboard?tab=addresses")}
+                            className="mt-3 text-sm font-medium underline"
+                        >
+                            Add an address
+                        </button>
+                    </div>
+                )}
+            </section>
         </section>
     );
 };

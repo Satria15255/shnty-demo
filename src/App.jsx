@@ -44,6 +44,9 @@ const SuccessOrderPages = lazy(
 );
 
 const OrderPages = lazy(() => import("@/pages/customer/MyOrderPages"));
+const OrderDetailPage = lazy(
+  () => import("@/features/orders/components/OrderDetailPage"),
+);
 
 // PAYMENT
 const PaymentOrderPages = lazy(
@@ -115,6 +118,8 @@ function App() {
             <Route path="/checkout" element={<CheckoutPages />} />
             <Route path="/success-order/:id" element={<SuccessOrderPages />} />
             <Route path="/paymentOrder/:id" element={<PaymentOrderPages />} />
+            <Route path="/my-orders/:id" element={<OrderDetailPage />} />
+
             <Route
               path="/payment-success/:id"
               element={<PaymentSuccessPages />}

@@ -29,7 +29,9 @@ export const CartProvider = ({ children }) => {
     const fetchCart = async () => {
         try {
             const res = await getCart();
-            setCart(res.data.items || []);
+            const items = res.data.items || [];
+            setCart(items);
+            return items;
         } catch (err) {
             console.log(err);
         }
@@ -52,9 +54,12 @@ export const CartProvider = ({ children }) => {
         if (!size) {
             return toast.error("Please Select a size");
         }
+        if (size == 0) {
+            return toast.error("Stock not available");
+        }
         try {
             const res = await addToCart(product._id, 1, size);
-            fetchCart();
+            await fetchCart();
             resetVoucher();
             toast.success("Product added to cart");
         } catch (err) {

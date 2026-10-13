@@ -111,7 +111,7 @@ const OrderPages = () => {
                 </nav>
 
                 {/* Order Section */}
-                <section className="w-full h-auto lg:max-h-120 lg:overflow-y-auto">
+                <section className="w-full h-auto lg:max-h-screen lg:overflow-y-auto">
                     {sortedOrder.length === 0 ? (
                         <p className="pt-20 text-center">Belum ada order.</p>
                     ) : (

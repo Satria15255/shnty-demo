@@ -109,12 +109,12 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     return (
         <main className="pt-16 flex flex-col items-center">
             {/* Product Section */}
-            <div className="mt-12 flex justify-start w-full xl:max-w-7xl py-7">
+            <div className="mt-12 flex justify-center md:justify-start w-full xl:max-w-7xl py-7">
                 <p className="text-sm "> Home / Products</p>
             </div>
             <section className="flex justify-center w-full xl:max-w-7xl ">
                 <div className="flex flex-col justify-center md:flex-row  w-full   px-2">
-                    <aside className="lg:w-1/5">
+                    <aside className="hidden md:block lg:w-1/5">
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
                             searchParams={searchParams}
@@ -226,7 +226,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 {filterOpen && (
                     <FilterMobile
                         searchParams={searchParams}
-                        onApplu={handleApplyFilter}
+                        onApply={handleApplyFilter}
                         onClose={() => setFilterOpen(false)}
                     />
                 )}

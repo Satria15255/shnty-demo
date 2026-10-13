@@ -3,6 +3,8 @@ import { PiUserCircle } from "react-icons/pi";
 import { useAuth } from "@/context/AuthContext";
 import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
 import brandLogo2 from "@/assets/logo/brandLogo.webp";
+import CatalogDropdown from "@/components/layout/NavbarDropdown";
+import { FaBars } from "react-icons/fa";
 
 const SidebarMobile = ({ onClose }) => {
     const { user, logout } = useAuth();
@@ -13,113 +15,87 @@ const SidebarMobile = ({ onClose }) => {
         navigate("/");
         toast.success("Logout Successfully");
     };
+
+    const handleNavigate = (path) => {
+        navigate(path);
+        onClose();
+    };
     return (
-        <div
-            onClick={onClose}
-            className="fixed bg-black/20 inset-0 flex justify-start"
-        >
+        <div className="fixed bg-black/20 inset-0 flex justify-start">
             <div className="w-1/2 h-screen bg-white p-5 flex flex-col ">
                 {/* Logos */}
-                <picture
-                    onClick={() => navigate("/")}
-                    className=" w-40 lg:w-50 h-auto"
-                >
-                    <source
-                        media="(max-width: 640px)"
-                        srcSet={brandLogo1}
-                        className=""
-                    />
-                    <img
-                        src={brandLogo2}
-                        alt="Brand Logo"
-                        width="862"
-                        height="116"
-                    />
-                </picture>
+                <div className="flex items-center gap-3 ">
+                    <button
+                        aria-label="Open navigation menu"
+                        onClick={onClose}
+                        className="relative lg:hidden text-lg hover:text-yellow-500 transition duration-100"
+                    >
+                        <FaBars />
+                    </button>
+                    <h1
+                        onClick={() => handleNavigate("/")}
+                        className="w-full h-auto  text-xl md:text-4xl font-moda"
+                    >
+                        S H N TY
+                    </h1>
+                </div>
                 {/* User Validation */}
                 <div>
                     {user && (
-                        <p className="relative flex flex-col items-center gap-2 flex px-2 hover:text-yellow-500 transition duration-100">
+                        <div className="relative flex py-4 justify-start items-center gap-1 flex  hover:text-yellow-500 transition duration-100">
                             <PiUserCircle size={40} />{" "}
-                            <span className="text-left">{user.name}</span>
-                        </p>
+                            <div className="flex flex-col gap-1">
+                                <p className="text-sm">{user.name}</p>
+                                <p className="text-xs text-gray-500">
+                                    {user.email}
+                                </p>
+                            </div>
+                        </div>
                     )}
                 </div>
                 {/* Sidebar Menu */}
                 <div className="">
-                    <div className="flex flex-col font-semibold text-sm ">
+                    <div className="flex flex-col  text-sm ">
                         <p
-                            onClick={() => navigate("/")}
+                            onClick={() => handleNavigate("/")}
                             className="cursor-pointer hover:text-yellow-500 transition duration-100 py-4 border-t border-gray-300"
                         >
                             Home
                         </p>
-                        <div className="text-sm py-4 border-t border-gray-300">
-                            <p className="cursor-pointer hover:text-yellow-500 transition duration-100">
-                                Category :
-                            </p>
-                            <div className="pl-2 flex flex-col gap-4 mt-4">
-                                <p
-                                    onClick={() => navigate("/products")}
-                                    className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                                >
-                                    Running
-                                </p>
-                                <p
-                                    onClick={() => navigate("/products")}
-                                    className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                                >
-                                    Basketball
-                                </p>
-                                <p
-                                    onClick={() => navigate("/products")}
-                                    className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                                >
-                                    Sneakers
-                                </p>
-                                <p
-                                    onClick={() => navigate("/products")}
-                                    className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                                >
-                                    Casual
-                                </p>
-                                <p
-                                    onClick={() => navigate("/products")}
-                                    className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                                >
-                                    Footbal
-                                </p>
-                            </div>
+                        <div>
+                            <CatalogDropdown />
                         </div>
                         {user ? (
                             <>
                                 <p
                                     onClick={() =>
-                                        navigate("/dashboard?tab=profile")
+                                        handleNavigate("/my-favorite")
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    PROFILE
+                                    Favorite
                                 </p>
                                 <p
                                     onClick={() =>
-                                        navigate("/dashboard?tab=my-orders")
+                                        handleNavigate(
+                                            "/dashboard?tab=my-orders",
+                                        )
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    MY ORDERS
+                                    My Orders
                                 </p>
                             </>
                         ) : (
                             <div className="text-sm">
                                 <p
-                                    onClick={() => navigate("/login")}
+                                    onClick={() => handleNavigate("/login")}
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
                                     Login
                                 </p>
                                 <p
-                                    onClick={() => navigate("/register")}
+                                    onClick={() => handleNavigate("/register")}
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
                                     Register
@@ -130,19 +106,19 @@ const SidebarMobile = ({ onClose }) => {
                             <>
                                 <p
                                     onClick={() =>
-                                        navigate(
+                                        handleNavigate(
                                             "/dashboard?tab=change-password",
                                         )
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    SETTINGS
+                                    Settings
                                 </p>
                                 <p
                                     onClick={handleLogout}
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
+                                    className="cursor-pointer text-red-500 py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    LOGOUT
+                                    Logout
                                 </p>
                             </>
                         )}
