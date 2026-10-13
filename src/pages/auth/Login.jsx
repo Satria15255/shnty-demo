@@ -29,10 +29,7 @@ const Login = () => {
         }
     };
     return (
-        <main
-            className="fixed inset-0 z-50 bg-cover bg-center"
-            style={{ backgroundImage: `url(${background})` }}
-        >
+        <main className="fixed inset-0 z-50 bg-cover bg-center">
             <div className="md:inset-0 flex h-screen">
                 <div className="w-full md:w-1/2 lg:w-2/5 h-screen flex flex-col justify-around items-center bg-white rounded-xl p-1 md:p-4 ">
                     <div className="w-full flex justify-start p-4 ">
@@ -79,12 +76,9 @@ const Login = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
 
-                            <p className="font-semibold py-4">
-                                Forget Password?
-                            </p>
                             <button
                                 type="submit"
-                                className="text-sm md:text-lg border border-black bg-gray-900 text-white hover:text-black hover:bg-white transition duration-100 font-bold px-4 py-2 rounded-2xl"
+                                className="text-sm md:text-lg border  mt-4 border-black bg-gray-900 text-white hover:text-black hover:bg-white transition duration-100 font-bold px-4 py-2 rounded-2xl"
                             >
                                 Login
                             </button>
@@ -97,12 +91,19 @@ const Login = () => {
                                 onClick={() => {
                                     navigate("/register");
                                 }}
-                                className="text-gray-900 text-center text-xs md:text-sm mb-3 hover:underline font-bold"
+                                className="text-gray-900 text-center text-xs md:text-sm  hover:underline font-bold"
                             >
                                 Create Account
                             </p>
                         </div>
                     </div>
+                </div>
+                <div className="w-3/5 h-screen ">
+                    <img
+                        src="/homeSection/discover1.jpg"
+                        alt=""
+                        className="w-full h-full object-center object-cover"
+                    />
                 </div>
             </div>
         </main>

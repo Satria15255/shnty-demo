@@ -116,9 +116,6 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                                 className="relative flex items-center text-2xl gap-2 hidden md:flex border-b border-transparent hover:border-black pb-3 pt-3 transition duration-300"
                             >
                                 <LuUserRound />{" "}
-                                <span className="hidden lg:flex w- text-sm">
-                                    Hi {user.name}
-                                </span>
                             </button>
                         ) : (
                             <button
