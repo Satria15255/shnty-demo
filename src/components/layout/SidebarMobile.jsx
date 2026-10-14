@@ -63,7 +63,7 @@ const SidebarMobile = ({ onClose }) => {
                             Home
                         </p>
                         <div>
-                            <CatalogDropdown />
+                            <CatalogDropdown onClose={onClose} />
                         </div>
                         {user ? (
                             <>
