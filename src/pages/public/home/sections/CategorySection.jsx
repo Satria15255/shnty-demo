@@ -48,7 +48,7 @@ const CategoryCollection = () => {
                     Featured Collection
                 </h2>
                 <p className="text-sm lg:text-lg text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur.
+                    Explore styles that reflect your unique identity.
                 </p>
             </header>
 

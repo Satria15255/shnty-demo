@@ -41,7 +41,8 @@ function ProductList() {
                         New Arrivals
                     </p>
                     <p className="text-sm lg:text-lg text-gray-500">
-                        Lorem ipsum dolor sit amet consectetur.
+                        Discover the latest pieces, curated for your everyday
+                        style.
                     </p>
                 </header>
             </motion.div>
