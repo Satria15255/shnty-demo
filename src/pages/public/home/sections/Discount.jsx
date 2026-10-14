@@ -87,20 +87,20 @@ const OnSale = () => {
                         </div>
                     </div>
                     <div
-                        className="bg-[#FBFAF7] w-full h-100 lg:h-auto flex  justify-between bg-center bg-cover  p-6"
+                        className="bg-[#FBFAF7] w-full h-100 lg:h-auto flex justify-between bg-center bg-cover  p-6"
                         style={{
                             backgroundImage: `url(${mainProduct?.productId?.image})`,
                         }}
                     >
-                        <div className="pt-7 w-full h-full">
-                            <p className="text-lg font-bold">
+                        <div className="pt-7 w-full h-full flex flex-col justify-end">
+                            <p className="text-xl font-bold">
                                 {mainProduct?.productId?.name}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-lg text-gray-600">
                                 {mainProduct?.productId?.brand} /{" "}
                                 {mainProduct?.productId?.category}
                             </p>
-                            <div className="flex gap-2 ">
+                            <div className="flex gap-2 text-lg">
                                 <p className="line-through text-lg font-semibold">
                                     ${mainProduct?.productId?.price.toFixed(2)}
                                 </p>

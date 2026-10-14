@@ -40,7 +40,7 @@ function ProductList() {
                     <p className="text-lg lg:text-3xl font-semibold">
                         New Arrivals
                     </p>
-                    <p className="text-sm lg:text-lg text-gray-500">
+                    <p className="text-sm lg:text-lg text-gray-500 max-w-xs md:max-w-lg">
                         Discover the latest pieces, curated for your everyday
                         style.
                     </p>
