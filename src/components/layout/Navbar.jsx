@@ -52,7 +52,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5   pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
+            className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5 py-3  pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
   ${scrolled ? "   bg-[#F1EEEA]  shadow-md  " : ""}`}
         >
             {/* Top Section */}

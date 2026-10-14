@@ -14,25 +14,25 @@ const collection = [
     {
         image: "/collection/man.png",
         title: "Man Collection",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        desc: "Effortless elegance meets contemporary style in every detail.",
         collection: "Man",
     },
     {
         image: "/collection/woman.png",
         title: "Woman Collection",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        desc: "Effortless elegance meets contemporary style in every detail.",
         collection: "Woman",
     },
     {
         image: "/collection/accessories.png",
         title: "Accessories Collection",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        desc: "The finishing touches that elevate your look and define your style.",
         collection: "Accessories",
     },
     {
         image: "/collection/unisex.png",
         title: "Unisex Collection",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        desc: "Versatile everyday pieces that transcend boundaries and express individuality.",
         collection: "Unisex",
     },
 ];
