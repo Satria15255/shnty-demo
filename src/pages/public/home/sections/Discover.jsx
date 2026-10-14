@@ -1,9 +1,10 @@
 import runningImage from "@/assets/heroSection/discountpages_-_Copy_1200x800.webp";
 import discountImage from "@/assets/heroSection/dicountmaget.webp";
-
+import { useNavigate } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const Discover = () => {
+	const navigate = useNavigate();
 	return (
 		<div className="h-auto w-full py-16 px-2">
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -21,7 +22,12 @@ const Discover = () => {
 							<h1 className="text-3xl text-white">
 								Explore the <br /> Man collection
 							</h1>
-							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4 hover:bg-black hover:text-white transition duration-300">
+							<button
+								onClick={() =>
+									navigate("/products?category=Man")
+								}
+								className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4 hover:bg-black hover:text-white transition duration-300"
+							>
 								Shop Now <FaArrowRightLong />
 							</button>
 						</div>
@@ -41,7 +47,12 @@ const Discover = () => {
 							<h1 className="text-3xl text-white">
 								Check out today's <br /> Discounted products.
 							</h1>
-							<button className="flex items-center hover:bg-black hover:text-white justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4 transition duration-300">
+							<button
+								onClick={() =>
+									navigate("/products?discount=true")
+								}
+								className="flex items-center hover:bg-black hover:text-white justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4 transition duration-300"
+							>
 								Shop Now <FaArrowRightLong />
 							</button>
 						</div>

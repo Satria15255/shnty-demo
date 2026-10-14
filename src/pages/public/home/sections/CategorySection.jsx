@@ -15,21 +15,25 @@ const collection = [
         image: "/collection/man.png",
         title: "Man Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        collection: "Man",
     },
     {
         image: "/collection/woman.png",
         title: "Woman Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        collection: "Woman",
     },
     {
         image: "/collection/accessories.png",
         title: "Accessories Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        collection: "Accessories",
     },
     {
         image: "/collection/unisex.png",
         title: "Unisex Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        collection: "Unisex",
     },
 ];
 
@@ -48,11 +52,10 @@ const CategoryCollection = () => {
                 </p>
             </header>
 
-            {/*Desktop Ver*/}
-            <section className="  grid grid-cols-2  gap-2  lg:mt-4">
+            <section className="  grid grid-cols-1 md:grid-cols-2  gap-2  lg:mt-4">
                 {collection.map((c) => (
-                    <article className="w-full flex bg-gray-100 rounded-xl">
-                        <div className=" h-40 w-40">
+                    <article className="w-full flex bg-gray-100 rounded-sm">
+                        <div className=" h-60 w-1/2">
                             <img
                                 src={c.image}
                                 alt={c.title}
@@ -60,10 +63,10 @@ const CategoryCollection = () => {
                                 decoding="async"
                                 width="432"
                                 height="756"
-                                className="  w-full h-full object-center object-cover  rounded-l-xl"
+                                className="  w-full h-full object-center object-cover  rounded-l-sm"
                             />
                         </div>
-                        <div className="flex flex-col justify-around items-start p-6">
+                        <div className="flex w-1/2 flex-col justify-around items-start p-6">
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>
@@ -71,7 +74,11 @@ const CategoryCollection = () => {
                                 {c.desc}
                             </p>
                             <button
-                                onClick={() => navigate("/products")}
+                                onClick={() =>
+                                    navigate(
+                                        `/products?category=${c.collection}`,
+                                    )
+                                }
                                 className=" cursor-pointer  text-gray-600 hover:text-[#0C0C0C] hover:underline transition duration-200 text-xs lg:text-sm font-semibold"
                             >
                                 SHOP NOW
@@ -79,59 +86,6 @@ const CategoryCollection = () => {
                         </div>
                     </article>
                 ))}
-            </section>
-
-            {/* Mobile Ver */}
-            <section className="md:hidden h-auto py-12 px-4 w-full overflow-hidden">
-                <Swiper
-                    modules={[Pagination, Autoplay]}
-                    slidesPerView={1}
-                    slidesPerGroup={1}
-                    autoplay={{ delay: 3000 }}
-                    pagination={{
-                        el: ".swiper-pagination",
-                        clickable: true,
-                    }}
-                    className="h-full"
-                >
-                    {collection.map((c, index) => (
-                        <SwiperSlide key={index}>
-                            <article
-                                onClick={() => navigate("/products")}
-                                className="w-85"
-                            >
-                                <div className="overflow-hidden">
-                                    <img
-                                        src={c.image}
-                                        alt={c.title}
-                                        loading="lazy"
-                                        decoding="async"
-                                        width="432"
-                                        height="756"
-                                        className="hover:scale-110 transition duration-300"
-                                    />
-                                </div>
-
-                                <div className="flex flex-col items-start gap-5 mt-6">
-                                    <p className="text-lg font-semibold">
-                                        {c.title}
-                                    </p>
-                                    <p className="text-sm text-gray-500">
-                                        {c.desc}
-                                    </p>
-                                    <button className="underline pb-7 text-sm font-semibold cursor-pointer">
-                                        SHOP NOW
-                                    </button>
-                                </div>
-                            </article>
-                        </SwiperSlide>
-                    ))}
-
-                    {/* Navigation & Pagination */}
-                    <div className="swiper-button-prev"></div>
-                    <div className="swiper-button-next"></div>
-                    <div className="swiper-pagination"></div>
-                </Swiper>
             </section>
         </main>
     );

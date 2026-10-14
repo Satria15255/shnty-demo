@@ -79,7 +79,10 @@ const Hero = () => {
                             Redefining everyday essentials through effortless
                             style and individuality.
                         </p>
-                        <button className="flex items-center gap-1 text-sm md:text-xs lg:text-sm hover:underline transition duration-200">
+                        <button
+                            onClick={() => navigate("/products")}
+                            className="flex items-center gap-1 text-sm md:text-xs lg:text-sm hover:underline transition duration-200"
+                        >
                             EXPLORE COLLECTION <FaArrowRightLong />
                         </button>
                     </div>
