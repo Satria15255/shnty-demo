@@ -13,7 +13,7 @@ export const catalogMenus = [
 	{
 		id: "categroy",
 		label: "CATEGORY",
-		queryKey: "Type",
+		queryKey: "type",
 		items: [
 			{ label: "T-Shirt", value: "T-Shirt" },
 			{ label: "Shirt", value: "Shirt" },
