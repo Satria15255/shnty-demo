@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 const MobileBestSeller = ({ products, navigate }) => {
 	return (
-		<div className="w-100 h-auto pb-4 px-2 overflow-hidden">
+		<div className="w-100 lg:w-auto h-auto pb-4 px-2 overflow-hidden">
 			<Swiper
 				modules={[Pagination, Autoplay]}
 				slidesPerView={2}

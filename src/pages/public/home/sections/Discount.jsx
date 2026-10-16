@@ -10,6 +10,7 @@ import ProductCard from "@/features/products/components/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { LazyMotion, domAnimation } from "framer-motion";
+import ProductsSwiper from "@/features/products/components/ProductsSwiper";
 
 const OnSale = () => {
     const [product, setProduct] = useState([]);
@@ -26,36 +27,34 @@ const OnSale = () => {
         fetchProducts();
     }, []);
     const mainProduct = product[0];
-    const otherProduct = product.slice(1, -1);
+    const otherProduct = product.slice(1).map((discount) => ({
+        ...discount.productId,
+        discountPercent: discount.discountPercent,
+        discountPrice: discount.discountPrice,
+    }));
 
     const navigate = useNavigate();
+    console.log(otherProduct);
     return (
-        <main className=" mt-6 flex justify-center w-full h-auto">
-            <div className="flex flex-col md:flex-row w-full h-auto md:h-90 xl:h-100   bg-[#ffff]">
-                <div className="w-full md:w-full grid grid-col-1 md:grid-cols-2">
-                    <div className="bg-[#1C1C1A] w-full  p-4 h-100 md:h-80 lg:h-full flex flex-col justify-around">
+        <main className=" mt-6 flex justify-center w-full pb-6 h-auto">
+            <div className="flex flex-col md:flex-row w-full h-auto md:h-90 xl:h-120   bg-[#ffff]">
+                <div className="w-full md:w-full grid grid-col-1 md:grid-cols-3">
+                    <div className="bg-black w-full  p-4 h-100 md:h-80 lg:h-full flex flex-col gap-4 justify-center">
                         <div className=" flex flex-col justify-center ">
-                            <p className="flex text-sm md:text-xs lg:text-sm gap-4 text-[#D2A14A] items-center">
-                                <div className="flex">
-                                    <TfiLayoutLineSolid />
-                                    <TfiLayoutLineSolid />
-                                </div>
-                                24H DISCOUNT
-                            </p>
-                            <h1 className="text-white text-5xl md:text-4xl lg:text-6xl font-serif">
+                            <h1 className="text-white text-5xl md:text-4xl lg:text-6xl xl:text-7xl font-moda">
                                 DAILY{" "}
                                 <span className="text-[#D2A14A]">DROP</span>
                             </h1>
-                            <p className="text-white text-sm md:text-xs lg::text-xl font-serif">
-                                Selected for today, Gone tomorrow
+                            <p className="text-white text-sm md:text-xs lg::text-xl xl:text-xl">
+                                Get a 30% discount on selected products.
                             </p>
                         </div>
                         <div>
-                            <p className="text-sm md:text-xs lg:text-sm font-light text-white">
+                            <p className="text-sm md:text-xs lg:text-sm xl:text-lg font-light text-white">
                                 NEXT DROP IN
                             </p>
                             <div className="flex flex-col lg:flex-row gap-3 mt-2">
-                                <div>
+                                <div className="w-1/2">
                                     <CountdownTimer
                                         expiresAt={mainProduct?.expiresAt}
                                         onExpire={() => {
@@ -69,7 +68,7 @@ const OnSale = () => {
                                         onClick={() =>
                                             navigate("/products?discount=true")
                                         }
-                                        className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-[#D2A14A] hover:bg-[#C9892C]   rounded-lg text-white text-sm md:text-xs lg:text-sm transition duration-200"
+                                        className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-transparent border border-white hover:bg-white hover:text-black text-white text-sm md:text-xs lg:text-sm transition duration-200"
                                     >
                                         SHOP THE DROP <FaArrowRightLong />
                                     </button>
@@ -114,6 +113,19 @@ const OnSale = () => {
                                 -{mainProduct?.discountPercent}%
                             </p>
                         </div>
+                    </div>
+                    <div className="bg-[#F1EEEA] p-3">
+                        <div className="py-3 px-3 border-b border-gray-400">
+                            <p className="text-lg text-gray-700">
+                                Other Discount Products
+                            </p>
+                        </div>
+                        <LazyMotion features={domAnimation}>
+                            <ProductsSwiper
+                                products={otherProduct}
+                                navigate={navigate}
+                            />
+                        </LazyMotion>
                     </div>
                 </div>
             </div>

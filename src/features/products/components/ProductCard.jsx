@@ -20,7 +20,6 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
     const favorite = isFavorite(product._id);
 
     const isDiscount = discountPercent && discountPrice;
-
     return (
         <m.article
             initial={{ opacity: 0, y: 20 }}

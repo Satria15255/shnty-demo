@@ -5,6 +5,7 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import useMediaQuery from "@/helper/useMediaQuery";
 import DesktopBestSeller from "@/features/bestSeller/components/DesktopBestSeller";
 import MobileBestSeller from "@/features/bestSeller/components/MobileBestSeller";
+import ProductsSwiper from "@/features/products/components/ProductsSwiper";
 
 const Bestseller = () => {
     const [products, setProducts] = useState([]);
