@@ -49,7 +49,7 @@ function CountdownTimer({ expiresAt, onExpire }) {
   }, [expiresAt, onExpire]);
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-4">
+    <div className="rounded-xl border border-white/10 bg-white/5 px-3 w-full md:px-6 py-4">
       <div className="flex items-start justify-center gap-4 tabular-nums">
         <TimeBox value={formatTime(timeLeft.hours)} label="HH" />
 
@@ -67,7 +67,7 @@ function CountdownTimer({ expiresAt, onExpire }) {
 
 function TimeBox({ value, label }) {
   return (
-    <div className="w-[40px] text-center">
+    <div className="w-[20px] md:w-[40px] text-center">
       <p className="text-lg lg:text-3xl font-semibold tabular-nums text-white">
         {value}
       </p>

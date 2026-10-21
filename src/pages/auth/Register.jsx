@@ -100,7 +100,7 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-3/5 h-screen ">
+                <div className="w-3/5 hidden md:block h-screen ">
                     <img
                         src="/homeSection/discover2.jpg"
                         alt=""

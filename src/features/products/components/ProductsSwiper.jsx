@@ -9,16 +9,22 @@ import "swiper/css/pagination";
 const ProductsSwiper = ({ products, navigate }) => {
 	console.log("Dari swiper", products);
 	return (
-		<div className="w-100 lg:w-auto h-auto pb-4 px-2 overflow-hidden">
+		<div className="w-full lg:w-auto h-auto pb-4 px-2 overflow-hidden">
 			<Swiper
 				modules={[Pagination, Autoplay]}
-				slidesPerView={2}
-				slidesPerGroup={2}
+				slidesPerView={1}
+				slidesPerGroup={1}
 				autoplay={{ delay: 4000 }}
 				spaceBetween={8}
 				pagination={{
 					el: ".swiper-pagination",
 					clickable: true,
+				}}
+				breakpoints={{
+					1280: {
+						slidesPerView: 2,
+						slidesPerGroup: 2,
+					},
 				}}
 			>
 				{products.map((product) => (

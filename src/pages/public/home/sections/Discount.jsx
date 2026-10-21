@@ -37,15 +37,15 @@ const OnSale = () => {
     console.log(otherProduct);
     return (
         <main className=" mt-6 flex justify-center w-full pb-6 h-auto">
-            <div className="flex flex-col md:flex-row w-full h-auto md:h-90 xl:h-120   bg-[#ffff]">
-                <div className="w-full md:w-full grid grid-col-1 md:grid-cols-3">
-                    <div className="bg-black w-full  p-4 h-100 md:h-80 lg:h-full flex flex-col gap-4 justify-center">
+            <div className="flex flex-col md:flex-row w-full h-auto bg-[#ffff]">
+                <div className="w-full md:w-full flex flex-col md:flex-row palce-items-center">
+                    <div className="bg-black w-full h-100 md:h-80 lg:h-full p-4 flex flex-col gap-4 justify-center">
                         <div className=" flex flex-col justify-center ">
-                            <h1 className="text-white text-5xl md:text-4xl lg:text-6xl xl:text-7xl font-moda">
+                            <h1 className="text-white text-5xl md:text-4xl lg:text-4xl xl:text-7xl font-moda">
                                 DAILY{" "}
                                 <span className="text-[#D2A14A]">DROP</span>
                             </h1>
-                            <p className="text-white text-sm md:text-xs lg::text-xl xl:text-xl">
+                            <p className="text-white text-sm md:text-xs lg:text-xl xl:text-xl">
                                 Get a 30% discount on selected products.
                             </p>
                         </div>
@@ -53,8 +53,8 @@ const OnSale = () => {
                             <p className="text-sm md:text-xs lg:text-sm xl:text-lg font-light text-white">
                                 NEXT DROP IN
                             </p>
-                            <div className="flex flex-col lg:flex-row gap-3 mt-2">
-                                <div className="w-1/2">
+                            <div className="flex flex-col xl:flex-row gap-3 mt-2">
+                                <div className="w-full xl:w-1/2">
                                     <CountdownTimer
                                         expiresAt={mainProduct?.expiresAt}
                                         onExpire={() => {
@@ -63,7 +63,7 @@ const OnSale = () => {
                                         className="w-full"
                                     />
                                 </div>
-                                <div className="w-full lg:w-1/2 flex items-center">
+                                <div className="w-full xl:w-1/2 flex items-center">
                                     <button
                                         onClick={() =>
                                             navigate("/products?discount=true")
@@ -86,16 +86,16 @@ const OnSale = () => {
                         </div>
                     </div>
                     <div
-                        className="bg-[#FBFAF7] w-full h-100 lg:h-auto flex justify-between bg-center bg-cover  p-6"
+                        className="bg-[#FBFAF7] relative w-full h-100 lg:h-auto flex justify-between bg-center bg-cover  p-6"
                         style={{
                             backgroundImage: `url(${mainProduct?.productId?.image})`,
                         }}
                     >
-                        <div className="pt-7 w-full h-full flex flex-col justify-end">
+                        <div className="pt-7 w-full h-full flex flex-col  justify-end">
                             <p className="text-xl font-bold">
                                 {mainProduct?.productId?.name}
                             </p>
-                            <p className="text-lg text-gray-600">
+                            <p className="text-lg  ">
                                 {mainProduct?.productId?.brand} /{" "}
                                 {mainProduct?.productId?.category}
                             </p>

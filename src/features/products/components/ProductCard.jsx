@@ -97,7 +97,10 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                         </div>
                     </div>
 
-                    <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-3 lg:justify-center">
+                    <div
+                        onClick={() => productDetails(product)}
+                        className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-3 lg:justify-center"
+                    >
                         <div className="h-12">
                             <p className="text-sm  md:text-[15px] lg:text-lg  font-ysabeau ">
                                 {" "}
@@ -108,7 +111,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                         <div className="flex justify-between  items-center ">
                             <div className="flex  items-center justify-center font-montserrat">
                                 {isDiscount ? (
-                                    <div className="flex flex-col xl:flex-row gap-1 items-start">
+                                    <div className="flex  gap-1 items-start">
                                         <p className=" text-sm lg:text-lg xl:text-lg line-through">
                                             ${product.price.toFixed(2)}
                                         </p>

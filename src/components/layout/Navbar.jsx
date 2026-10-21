@@ -50,6 +50,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         }
     };
 
+    const handleLogin = () => {
+        if (!user) {
+            navigate("/login");
+        } else {
+            navigate("/dashboard?tab=profile");
+        }
+    };
+
     return (
         <div
             className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5 py-3  pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
@@ -132,9 +140,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     <div className=" flex md:hidden justify-center items-center">
                         <button
                             aria-label="Login Navigation"
-                            onClick={() =>
-                                handleNavigate("/dashboard?tab=profile")
-                            }
+                            onClick={handleLogin}
                             className="text-2xl md:hidden hover:text-yellow-500 transition duration-100"
                         >
                             {" "}

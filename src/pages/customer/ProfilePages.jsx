@@ -59,7 +59,7 @@ const ProfilePages = () => {
         }
     };
     return (
-        <section className="flex flex-col bg-[#FAFAFA] gap-8 p-5 h-full">
+        <section className="flex flex-col bg-[#FAFAFA] gap-8 p-5 mt-16 h-full">
             {/* Profile Header */}
             <header className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl p-6">
                 <div className="text-6xl">

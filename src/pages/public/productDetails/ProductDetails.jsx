@@ -105,7 +105,7 @@ function ProductModal() {
 
     return (
         <main className="w-full flex justify-center">
-            <div className="md:mt-16 pt-12 bg-white rounded-lg w-full  flex-col items-center  xl:max-w-7xl px-4">
+            <div className="mt-16 pt-12 bg-white rounded-lg w-full  flex-col items-center  xl:max-w-7xl px-4">
                 <article className="relative flex flex-col md:flex-row justify-center  ">
                     <div className="w-full h-full flex justify-center">
                         <img
