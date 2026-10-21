@@ -37,7 +37,7 @@ const ChangePassword = () => {
         }
     };
     return (
-        <section className="flex flex-col gap-10  h-auto lg:h-full p-8">
+        <section className="flex flex-col gap-10  h-auto lg:h-full pt-12 p-8">
             {/* Form*/}
             <div className="border border-gray-200 shadow-2xl rounded-xl p-5">
                 <form

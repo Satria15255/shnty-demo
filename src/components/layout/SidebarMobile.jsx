@@ -13,6 +13,7 @@ const SidebarMobile = ({ onClose }) => {
     const handleLogout = () => {
         logout();
         navigate("/");
+        onClose();
         toast.success("Logout Successfully");
     };
 

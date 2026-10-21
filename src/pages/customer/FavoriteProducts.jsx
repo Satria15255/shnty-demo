@@ -45,7 +45,7 @@ const FavoritesPage = () => {
     }
 
     return (
-        <main className="h-auto min-h-screen flex flex-col items-center pt-4 mt-16 md:pt-16">
+        <main className="h-auto min-h-screen flex flex-col items-center pt-4 mt-16 pt-16">
             <div className="w-full xl:max-w-7xl px-2">
                 <header className="flex justify-start w-full border-b border-gray-300 h-8 lg:h-12">
                     <p className="text-sm lg:text-2xl font-semibold mb-2 md:mb-6">
