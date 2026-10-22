@@ -126,6 +126,7 @@ const SidebarMobile = ({ onClose }) => {
                     </div>
                 </div>
             </div>
+            <div className="w-1/2 h-screen" onClick={onClose}></div>
         </div>
     );
 };
