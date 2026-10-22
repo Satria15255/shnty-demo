@@ -146,10 +146,12 @@ const AddressPages = () => {
     };
 
     return (
-        <section className="bg-[#FAFAFA] p-5 min-h-full">
+        <section className="bg-[#FAFAFA] p-5 mt-12 min-h-screen">
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-2xl font-semibold">My Addresses</h1>
+                    <h1 className="text-lg lg:text-2xl font-semibold">
+                        My Addresses
+                    </h1>
 
                     <p className="text-sm text-gray-500 mt-1">
                         Manage your delivery addresses.
@@ -158,7 +160,7 @@ const AddressPages = () => {
 
                 <button
                     onClick={handleAddAddress}
-                    className="bg-black text-white px-5 py-2.5 rounded-lg"
+                    className="bg-black text-white px-5 py-2.5 text-xs lg:text-lg rounded-lg"
                 >
                     + Add Address
                 </button>

@@ -13,11 +13,11 @@ const Footer = () => {
     const navigate = useNavigate();
     return (
         <div className="flex flex-col bg-gray-100 justify-center items-center h-auto font-montserrat ">
-            <div className="flex flex-col md:flex-row justify-between gap-4 px-2 md:px-7 xl:px-6 py-6 md:py-12 w-full ">
+            <div className="flex flex-col md:flex-row justify-between gap-4 px-2 md:px-7 xl:px-6 py-6 md:py-12 w-full h-full">
                 <div className="flex flex-col  gap-5">
                     <h1
                         onClick={() => navigate("/")}
-                        className="w-full h-auto text-4xl font-moda"
+                        className="w-full h-full text-4xl font-moda"
                     >
                         S H N TY
                     </h1>

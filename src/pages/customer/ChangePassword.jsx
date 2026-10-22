@@ -37,15 +37,18 @@ const ChangePassword = () => {
         }
     };
     return (
-        <section className="flex flex-col gap-10  h-auto lg:h-full pt-12 p-8">
+        <section className="flex flex-col gap-10  h-auto lg:h-full pt-12 md:p-8">
             {/* Form*/}
-            <div className="border border-gray-200 shadow-2xl rounded-xl p-5">
+            <div className="md:border border-gray-200 md:shadow-2xl rounded-xl p-5">
                 <form
                     onSubmit={handleForm}
                     className="gap-14 flex flex-col gap-7 font-ysabeau w-full px-4 text-sm lg:text-md "
                 >
                     <div className="w-full flex flex-col">
                         <p className="text-lg">Current Password</p>
+                        <p className="text-sm text-gray-600">
+                            Enter your current password.
+                        </p>
                         <input
                             type="text"
                             name="currentPassword"
@@ -56,6 +59,9 @@ const ChangePassword = () => {
                     </div>
                     <div className="w-full flex flex-col ">
                         <p className="text-lg">New Password</p>
+                        <p className="text-sm text-gray-600">
+                            Create a new password to secure your account.
+                        </p>
                         <input
                             type="text"
                             name="newPassword"
@@ -65,7 +71,7 @@ const ChangePassword = () => {
                         />
                     </div>
                 </form>
-                <div className="w-full flex justify-center lg:justify-end mt-10">
+                <div className="w-full flex justify-end mt-10 px-5">
                     <button
                         onClick={handleForm}
                         className="bg-black w-1/2 text-sm font-ysabeau lg:w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4"

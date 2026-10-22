@@ -7,6 +7,8 @@ import {
 } from "@/features/orders/services/orderService";
 import { toast } from "react-toastify";
 import Loader from "@/components/common/Loader";
+import RandomProduct from "@/features/products/components/RandomProduct";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);
@@ -111,9 +113,14 @@ const OrderPages = () => {
                 </nav>
 
                 {/* Order Section */}
-                <section className="w-full h-auto lg:max-h-screen lg:overflow-y-auto">
+                <section className="w-full h-120 lg:max-h-screen lg:overflow-y-auto">
                     {sortedOrder.length === 0 ? (
-                        <p className="pt-20 text-center">Belum ada order.</p>
+                        <div className="h-full w-full flex items-center">
+                            <p className="pt-20 text-center ">
+                                Oops!!..it looks like you haven't ordered
+                                anything yet
+                            </p>
+                        </div>
                     ) : (
                         <>
                             {sortedOrder.slice(0, pagination).map((order) => (
@@ -137,6 +144,11 @@ const OrderPages = () => {
                             </div>
                         </>
                     )}
+                </section>
+                <section className="w-full h-full">
+                    <LazyMotion features={domAnimation}>
+                        <RandomProduct />
+                    </LazyMotion>
                 </section>
             </div>
         </section>
