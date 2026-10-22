@@ -37,9 +37,9 @@ const OnSale = () => {
     console.log(otherProduct);
     return (
         <main className=" mt-6 flex justify-center w-full pb-6 h-auto">
-            <div className="flex flex-col md:flex-row w-full h-auto bg-[#ffff]">
-                <div className="w-full md:w-full flex flex-col md:flex-row palce-items-center">
-                    <div className="bg-black w-full h-100 md:h-80 lg:h-full p-4 flex flex-col gap-4 justify-center">
+            <div className="flex flex-col md:flex-row w-full h-full bg-[#ffff]">
+                <div className="w-full md:w-full flex flex-col md:flex-row place-items-center">
+                    <div className="bg-black w-full md:w-1/3 h-full p-4 flex flex-col gap-4 justify-center">
                         <div className=" flex flex-col justify-center ">
                             <h1 className="text-white text-5xl md:text-4xl lg:text-4xl xl:text-7xl font-moda">
                                 DAILY{" "}
@@ -86,16 +86,16 @@ const OnSale = () => {
                         </div>
                     </div>
                     <div
-                        className="bg-[#FBFAF7] relative w-full h-100 lg:h-auto flex justify-between bg-center bg-cover  p-6"
+                        className="bg-[#FBFAF7] relative w-full md:w-1/3 h-full  flex justify-between bg-center bg-cover  p-6"
                         style={{
                             backgroundImage: `url(${mainProduct?.productId?.image})`,
                         }}
                     >
                         <div className="pt-7 w-full h-full flex flex-col  justify-end">
-                            <p className="text-xl font-bold">
+                            <p className="text-lg md:text-xl font-bold">
                                 {mainProduct?.productId?.name}
                             </p>
-                            <p className="text-lg  ">
+                            <p className="text-xs md:text-lg  ">
                                 {mainProduct?.productId?.brand} /{" "}
                                 {mainProduct?.productId?.category}
                             </p>
@@ -103,18 +103,18 @@ const OnSale = () => {
                                 <p className="line-through text-lg font-semibold">
                                     ${mainProduct?.productId?.price.toFixed(2)}
                                 </p>
-                                <p className="text-xl  font-bold">
+                                <p className="text-xl font-bold">
                                     ${mainProduct?.discountPrice.toFixed(2)}
                                 </p>
                             </div>
                         </div>
                         <div className="px-4 h-10 flex items-center rounded-lg bg-[#D2A14A] text-black">
-                            <p className="text-lg">
+                            <p className="text-sm md:text-lg">
                                 -{mainProduct?.discountPercent}%
                             </p>
                         </div>
                     </div>
-                    <div className="bg-[#F1EEEA] p-3">
+                    <div className="bg-[#F1EEEA] p-3 w-full md:w-1/3">
                         <div className="py-3 px-3 border-b border-gray-400">
                             <p className="text-lg text-gray-700">
                                 Other Discount Products

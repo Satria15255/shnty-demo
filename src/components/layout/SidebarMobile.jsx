@@ -22,8 +22,8 @@ const SidebarMobile = ({ onClose }) => {
         onClose();
     };
     return (
-        <div className="fixed bg-black/20 inset-0 flex justify-start">
-            <div className="w-1/2 h-screen bg-white p-5 flex flex-col ">
+        <div className="fixed bg-black/20 z-0 inset-0 flex justify-start">
+            <div className="w-1/2 h-screen z-10 bg-white p-5 flex flex-col ">
                 {/* Logos */}
                 <div className="flex items-center gap-3 ">
                     <button
@@ -63,7 +63,7 @@ const SidebarMobile = ({ onClose }) => {
                         >
                             Home
                         </p>
-                        <div>
+                        <div className="z-20">
                             <CatalogDropdown onClose={onClose} />
                         </div>
                         {user ? (

@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 const ProductsSwiper = ({ products, navigate }) => {
 	console.log("Dari swiper", products);
 	return (
-		<div className="w-full lg:w-auto h-auto pb-4 px-2 overflow-hidden">
+		<div className="w-full h-auto pb-4 px-2 overflow-hidden">
 			<Swiper
 				modules={[Pagination, Autoplay]}
 				slidesPerView={1}
