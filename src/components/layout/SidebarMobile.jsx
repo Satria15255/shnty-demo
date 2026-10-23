@@ -66,28 +66,7 @@ const SidebarMobile = ({ onClose }) => {
                         <div className="z-20">
                             <CatalogDropdown onClose={onClose} />
                         </div>
-                        {user ? (
-                            <>
-                                <p
-                                    onClick={() =>
-                                        handleNavigate("/my-favorite")
-                                    }
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                                >
-                                    Favorite
-                                </p>
-                                <p
-                                    onClick={() =>
-                                        handleNavigate(
-                                            "/dashboard?tab=my-orders",
-                                        )
-                                    }
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                                >
-                                    My Orders
-                                </p>
-                            </>
-                        ) : (
+                        {!user ? (
                             <div className="text-sm">
                                 <p
                                     onClick={() => handleNavigate("/login")}
@@ -102,18 +81,15 @@ const SidebarMobile = ({ onClose }) => {
                                     Register
                                 </p>
                             </div>
-                        )}
-                        {user && (
+                        ) : (
                             <>
                                 <p
                                     onClick={() =>
-                                        handleNavigate(
-                                            "/dashboard?tab=change-password",
-                                        )
+                                        handleNavigate("/my-account")
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    Settings
+                                    My Account
                                 </p>
                                 <p
                                     onClick={handleLogout}

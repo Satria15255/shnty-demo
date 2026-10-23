@@ -6,9 +6,11 @@ import { FaBoxesPacking } from "react-icons/fa6";
 import { TbTruckDelivery } from "react-icons/tb";
 import { GrCompliance } from "react-icons/gr";
 import { IoIosArrowForward } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const MyAccount = () => {
 	const { user, setUser } = useAuth();
+	const navigate = useNavigate();
 
 	const orderStatusInfo = [
 		{
@@ -30,6 +32,25 @@ const MyAccount = () => {
 			title: "Completed",
 			icon: <GrCompliance />,
 			valueOrders: "2",
+		},
+	];
+
+	const navigation = [
+		{
+			label: "Profile",
+			url: "/dashboard?tab=profile",
+		},
+		{
+			label: "Address Management",
+			url: "/dashboard?tab=addresses",
+		},
+		{
+			label: "Favorites Products",
+			url: "/my-favorite",
+		},
+		{
+			label: "Password Management",
+			url: "/dashboard?tab=change-password",
 		},
 	];
 
@@ -72,18 +93,14 @@ const MyAccount = () => {
 				</div>
 			</section>
 			<section className="flex flex-col gap-2 justify-center rounded-2xl">
-				<button className="flex justify-between items-center text-sm border bg-white border-gray-200 p-5 rounded-2xl">
-					Profile <IoIosArrowForward />
-				</button>
-				<button className="flex justify-between items-center text-sm border bg-white border-gray-200 p-5 rounded-2xl">
-					Address Management <IoIosArrowForward />
-				</button>
-				<button className="flex justify-between items-center text-sm border bg-white border-gray-200 p-5 rounded-2xl">
-					Favorites Products <IoIosArrowForward />
-				</button>
-				<button className="flex justify-between items-center text-sm border bg-white border-gray-200 p-5 rounded-2xl">
-					Password Management <IoIosArrowForward />
-				</button>
+				{navigation.map((n) => (
+					<button
+						onClick={() => navigate(`${n.url}`)}
+						className="flex justify-between items-center text-sm border bg-white border-gray-200 p-5 rounded-2xl"
+					>
+						{n.label} <IoIosArrowForward />
+					</button>
+				))}
 			</section>
 		</main>
 	);
