@@ -85,7 +85,7 @@ const OrderPages = () => {
     }
 
     return (
-        <section className="p-5 pt-12">
+        <section className="p-3 lg:p-5 pt-12">
             <div>
                 {/* Filter Orders */}
                 <nav className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full overflow-x-auto px-2">
@@ -113,7 +113,7 @@ const OrderPages = () => {
                 </nav>
 
                 {/* Order Section */}
-                <section className="w-full h-120 lg:max-h-screen lg:overflow-y-auto">
+                <section className="w-full h-auto lg:max-h-screen lg:overflow-y-auto">
                     {sortedOrder.length === 0 ? (
                         <div className="h-full w-full flex items-center">
                             <p className="pt-20 text-center ">

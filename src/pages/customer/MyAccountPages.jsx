@@ -7,29 +7,35 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { GrCompliance } from "react-icons/gr";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useOrder } from "@/context/OrderContext";
 
 const MyAccount = () => {
 	const { user, setUser } = useAuth();
+	const { order } = useOrder();
 	const navigate = useNavigate();
-
+	console.log(order);
 	const orderStatusInfo = [
 		{
 			title: "To Paid",
+			status: "Pending",
 			icon: <TfiWallet />,
 			valueOrders: "2",
 		},
 		{
 			title: "Processing",
+			status: "Processing",
 			icon: <FaBoxesPacking />,
 			valueOrders: "2",
 		},
 		{
 			title: "Delivered",
+			status: "Shiped",
 			icon: <TbTruckDelivery />,
 			valueOrders: "2",
 		},
 		{
 			title: "Completed",
+			status: "Completed",
 			icon: <GrCompliance />,
 			valueOrders: "2",
 		},
@@ -54,6 +60,10 @@ const MyAccount = () => {
 		},
 	];
 
+	const orderCounts = orderStatusInfo.map((item) => ({
+		...item,
+		count: order.filter((order) => order.status === item.status).length,
+	}));
 	return (
 		<main className="min-h-screen  flex flex-col gap-3 p-3 pt-16 mt-12">
 			<section className="flex items-center   gap-4  h-auto w-full  border bg-white border-gray-200 rounded-2xl p-6">
@@ -78,16 +88,19 @@ const MyAccount = () => {
 			<section className="border bg-white border-gray-200 p-5 gap-4 rounded-2xl h-auto">
 				<div className="text-xs flex justify-between pb-3 mb-3  border-b border-gray-300">
 					<h1 className="font-semibold">My Orders</h1>
-					<button className="font-light underline text-gray-600">
+					<button
+						onClick={() => navigate("/dashboard?tab=my-orders")}
+						className="font-light underline text-gray-600"
+					>
 						View All
 					</button>
 				</div>
 				<div className="grid grid-cols-4 gap-5">
-					{orderStatusInfo.map((o) => (
+					{orderCounts.map((o) => (
 						<div className="flex flex-col justify-center items-center space-y-3">
 							<span className="text-4xl">{o.icon}</span>
 							<h1 className="text-sm">{o.title}</h1>
-							<span className="text-xs">{o.valueOrders}</span>
+							<span className="text-xs">{o.count}</span>
 						</div>
 					))}
 				</div>

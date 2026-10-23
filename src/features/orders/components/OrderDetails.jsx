@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
 
 const orderCard = ({ order, handleCancel, handleConfirm }) => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const orderCard = ({ order, handleCancel, handleConfirm }) => {
           </p>
           <p className="text-sm flex justify-between font-ysabeau">
             <p>Order Status:</p>
-            {order.status}
+            <OrderStatusBadge status={order.status} />
           </p>
           <div className="w-full rounded-lg border border-gray-300 p-5 ">
             {order.products.map((item) => (
@@ -91,43 +92,12 @@ const orderCard = ({ order, handleCancel, handleConfirm }) => {
 
             <div className="flex justify-end w-full  gap-1">
               <div className="flex w-1/2 gap-2">
-                {canCancel && (
-                  <button
-                    onClick={() => handleCancel(order._id)}
-                    className="text-xs md:text-md lg:text-lg border border-gray-300  px-1 py-1 w-full rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
-              }
-    disabled:cursor-not-allowed
-    disabled:hover:bg-transparent
-    disabled:hover:text-current"
-                  >
-                    Cancel Order
-                  </button>
-                )}
-
                 <button
                   onClick={() => navigate(`/my-orders/${order._id}`)}
                   className="text-xs md:text-md lg:text-lg border border-gray-300 w-full px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300"
                 >
                   Details
                 </button>
-
-                {canPay && (
-                  <button
-                    onClick={() => navigate(`/paymentOrder/${order._id}`)}
-                    className="text-xs md:text-md lg:text-lg border border-gray-300 w-full px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300"
-                  >
-                    Pay Now
-                  </button>
-                )}
-
-                {canConfirm && (
-                  <button
-                    onClick={() => handleConfirm(order._id)}
-                    className="text-xs md:text-md lg:text-lg border border-gray-300  px-1 py-1 w-full rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 "
-                  >
-                    Confirm Received
-                  </button>
-                )}
 
                 {canBuyAgain && (
                   <button

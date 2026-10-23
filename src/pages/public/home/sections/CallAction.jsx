@@ -1,20 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import actionImage from "@/assets/heroSection/action.webp";
+import AnimatedElement from "@/components/animation/AnimatedElement";
 
 const CallAction = () => {
     const navigate = useNavigate();
     return (
-        <section className="md:p-3 md:p-6 xl:p-2 w-full min-h-100 overflow-hidden ">
+        <main className="md:p-3 md:p-6 xl:p-2 w-full min-h-100 overflow-hidden ">
             <div className="relative h-100 overflow-hidden group">
-                <div
+                <AnimatedElement
+                    variant="fadeIn"
+                    duration={1}
                     style={{
                         backgroundImage: `url(/homeSection/callAction.jpg)`,
                     }}
                     className="absolute w-full min-h-100 h-full bg-cover bg-center transition-transform duration-500 "
-                ></div>
+                ></AnimatedElement>
 
                 {/* Content */}
-                <header className="relative z-10 gap-2 md:gap-4 lg:gap-5 flex flex-col  justify-center h-full md:h-full p-2 md:p-7  lg:ml-8 font-sans">
+                <AnimatedElement
+                    variant="slideRight"
+                    delay={0.4}
+                    duration={1}
+                    className="relative z-10 gap-2 md:gap-4 lg:gap-5 flex flex-col  justify-center h-full md:h-full p-2 md:p-7  lg:ml-8 font-sans"
+                >
                     <p className="text-xl md:text-5xl lg:text-5xl font-montserrat">
                         DESIGNED FOR <br /> EVERY SEASON
                     </p>
@@ -29,9 +37,9 @@ const CallAction = () => {
                             Shop Now
                         </button>
                     </div>
-                </header>
+                </AnimatedElement>
             </div>
-        </section>
+        </main>
     );
 };
 

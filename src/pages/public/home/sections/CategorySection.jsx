@@ -5,7 +5,7 @@ import runningCollection from "@/assets/category/running.webp";
 import sneakersCollection from "@/assets/category/sneakers.webp";
 import casualCollection from "@/assets/category/casual.webp";
 import { FaArrowRightLong } from "react-icons/fa6";
-
+import AnimatedElement from "@/components/animation/AnimatedElement";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -45,19 +45,27 @@ const CategoryCollection = () => {
     return (
         <main className="h-auto py-12 px-2  w-full flex flex-col  ">
             {/* Headline */}
-            <header className="text-center py-2">
+            <AnimatedElement
+                variant="slideUp"
+                duration={1}
+                className="text-center py-2"
+            >
                 <h2 className="text-lg lg:text-3xl font-semibold">
                     Featured Collection
                 </h2>
                 <p className="text-sm lg:text-lg text-gray-500">
                     Explore styles that reflect your unique identity.
                 </p>
-            </header>
+            </AnimatedElement>
 
             <section className="  grid grid-cols-1 md:grid-cols-2  gap-2  mt-4">
                 {collection.map((c) => (
                     <article className="w-full flex bg-gray-100 rounded-sm">
-                        <div className="h-40 md:h-60 w-1/2">
+                        <AnimatedElement
+                            variant="slideUp"
+                            duration={1}
+                            className="h-40 md:h-60 w-1/2"
+                        >
                             <img
                                 src={c.image}
                                 alt={c.title}
@@ -67,8 +75,13 @@ const CategoryCollection = () => {
                                 height="756"
                                 className="  w-full h-full object-center object-cover  rounded-l-sm"
                             />
-                        </div>
-                        <div className="flex w-1/2 flex-col justify-around items-start p-6">
+                        </AnimatedElement>
+                        <AnimatedElement
+                            variant="slideUp"
+                            delay={0.4}
+                            duration={1}
+                            className="flex w-1/2 flex-col justify-around items-start p-6"
+                        >
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>
@@ -85,7 +98,7 @@ const CategoryCollection = () => {
                             >
                                 SHOP NOW <FaArrowRightLong />
                             </button>
-                        </div>
+                        </AnimatedElement>
                     </article>
                 ))}
             </section>

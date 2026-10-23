@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { LazyMotion, domAnimation } from "framer-motion";
 import ProductsSwiper from "@/features/products/components/ProductsSwiper";
+import AnimatedElement from "@/components/animation/AnimatedElement";
 
 const OnSale = () => {
     const [product, setProduct] = useState([]);
@@ -40,7 +41,11 @@ const OnSale = () => {
             <div className="flex flex-col md:flex-row w-full h-full bg-[#ffff]">
                 <div className="w-full md:w-full flex flex-col md:flex-row place-items-center">
                     <div className="bg-black w-full md:w-1/3 h-full p-4 flex flex-col gap-4 justify-center">
-                        <div className=" flex flex-col justify-center ">
+                        <AnimatedElement
+                            variant="slideUp"
+                            duration={1}
+                            className=" flex flex-col justify-center "
+                        >
                             <h1 className="text-white text-5xl md:text-4xl lg:text-4xl xl:text-7xl font-moda">
                                 DAILY{" "}
                                 <span className="text-[#D2A14A]">DROP</span>
@@ -48,8 +53,12 @@ const OnSale = () => {
                             <p className="text-white text-sm md:text-xs lg:text-xl xl:text-xl">
                                 Get a 30% discount on selected products.
                             </p>
-                        </div>
-                        <div>
+                        </AnimatedElement>
+                        <AnimatedElement
+                            variant="slideUp"
+                            delay={0.4}
+                            duration={1}
+                        >
                             <p className="text-sm md:text-xs lg:text-sm xl:text-lg font-light text-white">
                                 NEXT DROP IN
                             </p>
@@ -74,15 +83,22 @@ const OnSale = () => {
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </AnimatedElement>
                     </div>
-                    <div
+                    <AnimatedElement
+                        variant="fadeIn"
+                        duration={1}
                         className="bg-[#FBFAF7] relative w-full md:w-1/3 h-70 md:h-full  flex justify-between bg-center bg-cover  p-6"
                         style={{
                             backgroundImage: `url(${mainProduct?.productId?.image})`,
                         }}
                     >
-                        <div className="w-4/5 h-full flex items-end">
+                        <AnimatedElement
+                            variant="slideUp"
+                            delay={0.4}
+                            duration={1}
+                            className="w-4/5 h-full flex items-end"
+                        >
                             <div className="pt-7 w-full h-full flex flex-col  justify-end">
                                 <p className="text-lg md:text-xl font-bold">
                                     {mainProduct?.productId?.name}
@@ -103,13 +119,17 @@ const OnSale = () => {
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                        <div className="px-4 h-10 flex items-center rounded-lg bg-[#D2A14A] text-black">
+                        </AnimatedElement>
+                        <AnimatedElement
+                            variant="slideUp"
+                            duration={1}
+                            className="px-4 h-10 flex items-center rounded-lg bg-[#D2A14A] text-black"
+                        >
                             <p className="text-sm md:text-lg">
                                 -{mainProduct?.discountPercent}%
                             </p>
-                        </div>
-                    </div>
+                        </AnimatedElement>
+                    </AnimatedElement>
                     <div className="bg-[#F1EEEA] p-3 w-full md:w-1/3">
                         <div className="py-3 px-3 border-b border-gray-400">
                             <p className="text-lg text-gray-700">
