@@ -4,7 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
 import brandLogo2 from "@/assets/logo/brandLogo.webp";
 import CatalogDropdown from "@/components/layout/NavbarDropdown";
-import { FaBars } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 
 const SidebarMobile = ({ onClose }) => {
     const { user, logout } = useAuth();
@@ -25,20 +25,20 @@ const SidebarMobile = ({ onClose }) => {
         <div className="fixed bg-black/20 z-0 inset-0 flex justify-start">
             <div className="w-1/2 h-screen z-10 bg-white p-5 flex flex-col ">
                 {/* Logos */}
-                <div className="flex items-center gap-3 ">
-                    <button
-                        aria-label="Open navigation menu"
-                        onClick={onClose}
-                        className="relative lg:hidden text-lg hover:text-yellow-500 transition duration-100"
-                    >
-                        <FaBars />
-                    </button>
+                <div className="flex justify-between items-center gap-3 pb-4">
                     <h1
                         onClick={() => handleNavigate("/")}
                         className="w-full h-auto  text-xl md:text-4xl font-moda"
                     >
                         S H N TY
                     </h1>
+                    <button
+                        aria-label="Open navigation menu"
+                        onClick={onClose}
+                        className="relative lg:hidden text-lg hover:text-yellow-500 transition duration-100"
+                    >
+                        <IoMdClose />
+                    </button>
                 </div>
                 {/* User Validation */}
                 <div>
@@ -66,28 +66,7 @@ const SidebarMobile = ({ onClose }) => {
                         <div className="z-20">
                             <CatalogDropdown onClose={onClose} />
                         </div>
-                        {user ? (
-                            <>
-                                <p
-                                    onClick={() =>
-                                        handleNavigate("/my-favorite")
-                                    }
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                                >
-                                    Favorite
-                                </p>
-                                <p
-                                    onClick={() =>
-                                        handleNavigate(
-                                            "/dashboard?tab=my-orders",
-                                        )
-                                    }
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                                >
-                                    My Orders
-                                </p>
-                            </>
-                        ) : (
+                        {!user ? (
                             <div className="text-sm">
                                 <p
                                     onClick={() => handleNavigate("/login")}
@@ -102,18 +81,15 @@ const SidebarMobile = ({ onClose }) => {
                                     Register
                                 </p>
                             </div>
-                        )}
-                        {user && (
+                        ) : (
                             <>
                                 <p
                                     onClick={() =>
-                                        handleNavigate(
-                                            "/dashboard?tab=change-password",
-                                        )
+                                        handleNavigate("/my-account")
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    Settings
+                                    My Account
                                 </p>
                                 <p
                                     onClick={handleLogout}

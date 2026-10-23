@@ -4,17 +4,17 @@ import actionImage from "@/assets/heroSection/action.webp";
 const CallAction = () => {
     const navigate = useNavigate();
     return (
-        <section className="p-3 md:p-6 xl:p-2 w-full   h-auto overflow-hidden ">
-            <div className="relative h-full h-50 md:h-90 lg:h-120 xl:h-140 overflow-hidden group">
+        <section className="md:p-3 md:p-6 xl:p-2 w-full min-h-100 overflow-hidden ">
+            <div className="relative h-100 overflow-hidden group">
                 <div
                     style={{
                         backgroundImage: `url(/homeSection/callAction.jpg)`,
                     }}
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 "
+                    className="absolute w-full min-h-100 h-full bg-cover bg-center transition-transform duration-500 "
                 ></div>
 
                 {/* Content */}
-                <header className="relative z-10 gap-2 md:gap-4 lg:gap-5 flex flex-col  justify-center h-50 md:h-full p-7  lg:ml-8 font-sans">
+                <header className="relative z-10 gap-2 md:gap-4 lg:gap-5 flex flex-col  justify-center h-full md:h-full p-2 md:p-7  lg:ml-8 font-sans">
                     <p className="text-xl md:text-5xl lg:text-5xl font-montserrat">
                         DESIGNED FOR <br /> EVERY SEASON
                     </p>

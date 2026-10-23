@@ -11,6 +11,7 @@ import SidebarMobile from "./SidebarMobile";
 import SearchModal from "@/features/search/components/SearchModal";
 import CatalogDropdown from "./NavbarDropdown";
 import { IoHeartOutline, IoSearchOutline, IoBagOutline } from "react-icons/io5";
+import AnimatedElement from "@/components/animation/AnimatedElement";
 import { LuUserRound } from "react-icons/lu";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
@@ -59,8 +60,12 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
     };
 
     return (
-        <div
+        <AnimatedElement
+            variant="slideDown"
+            duration={0.6}
             className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5 py-3  pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
+        }
+        }
   ${scrolled ? "   bg-[#F1EEEA]  shadow-md  " : ""}`}
         >
             {/* Top Section */}
@@ -183,7 +188,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             {isSearchOpen && (
                 <SearchModal onClose={() => setIsSearchOpen(false)} />
             )}
-        </div>
+        </AnimatedElement>
     );
 }
 
