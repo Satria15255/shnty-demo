@@ -4,6 +4,8 @@ import basketballCollection from "@/assets/category/basketball.webp";
 import runningCollection from "@/assets/category/running.webp";
 import sneakersCollection from "@/assets/category/sneakers.webp";
 import casualCollection from "@/assets/category/casual.webp";
+import { FaArrowRightLong } from "react-icons/fa6";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -52,10 +54,10 @@ const CategoryCollection = () => {
                 </p>
             </header>
 
-            <section className="  grid grid-cols-1 md:grid-cols-2  gap-2  lg:mt-4">
+            <section className="  grid grid-cols-1 md:grid-cols-2  gap-2  mt-4">
                 {collection.map((c) => (
                     <article className="w-full flex bg-gray-100 rounded-sm">
-                        <div className=" h-60 w-1/2">
+                        <div className="h-40 md:h-60 w-1/2">
                             <img
                                 src={c.image}
                                 alt={c.title}
@@ -79,9 +81,9 @@ const CategoryCollection = () => {
                                         `/products?category=${c.collection}`,
                                     )
                                 }
-                                className=" cursor-pointer  text-gray-600 hover:text-[#0C0C0C] hover:underline transition duration-200 text-xs lg:text-sm font-semibold"
+                                className=" cursor-pointer flex items-center gap-2  text-gray-600 hover:text-[#0C0C0C] hover:underline transition duration-200 text-xs lg:text-sm font-semibold"
                             >
-                                SHOP NOW
+                                SHOP NOW <FaArrowRightLong />
                             </button>
                         </div>
                     </article>

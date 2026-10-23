@@ -75,37 +75,33 @@ const OnSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <p className="flex text-sm md:text-xs lg:text-sm gap-4 text-white items-center">
-                                <div className="flex text-[#D2A14A]">
-                                    <TfiLayoutLineSolid />
-                                    <TfiLayoutLineSolid />
-                                </div>
-                                PREMIUM DISCOUNT EVERYDAY
-                            </p>
-                        </div>
                     </div>
                     <div
-                        className="bg-[#FBFAF7] relative w-full md:w-1/3 h-full  flex justify-between bg-center bg-cover  p-6"
+                        className="bg-[#FBFAF7] relative w-full md:w-1/3 h-70 md:h-full  flex justify-between bg-center bg-cover  p-6"
                         style={{
                             backgroundImage: `url(${mainProduct?.productId?.image})`,
                         }}
                     >
-                        <div className="pt-7 w-full h-full flex flex-col  justify-end">
-                            <p className="text-lg md:text-xl font-bold">
-                                {mainProduct?.productId?.name}
-                            </p>
-                            <p className="text-xs md:text-lg  ">
-                                {mainProduct?.productId?.brand} /{" "}
-                                {mainProduct?.productId?.category}
-                            </p>
-                            <div className="flex gap-2 text-lg">
-                                <p className="line-through text-lg font-semibold">
-                                    ${mainProduct?.productId?.price.toFixed(2)}
+                        <div className="w-4/5 h-full flex items-end">
+                            <div className="pt-7 w-full h-full flex flex-col  justify-end">
+                                <p className="text-lg md:text-xl font-bold">
+                                    {mainProduct?.productId?.name}
                                 </p>
-                                <p className="text-xl font-bold">
-                                    ${mainProduct?.discountPrice.toFixed(2)}
+                                <p className="text-xs md:text-lg  ">
+                                    {mainProduct?.productId?.brand} /{" "}
+                                    {mainProduct?.productId?.category}
                                 </p>
+                                <div className="flex gap-2 text-lg">
+                                    <p className="line-through text-lg font-semibold">
+                                        $
+                                        {mainProduct?.productId?.price.toFixed(
+                                            2,
+                                        )}
+                                    </p>
+                                    <p className="text-xl font-bold">
+                                        ${mainProduct?.discountPrice.toFixed(2)}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div className="px-4 h-10 flex items-center rounded-lg bg-[#D2A14A] text-black">
