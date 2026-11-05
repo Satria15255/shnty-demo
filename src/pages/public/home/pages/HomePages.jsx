@@ -10,11 +10,11 @@ const HomePages = () => {
 	return (
 		<main className="flex flex-col items-center  overflow-hidden">
 			<Hero />
-				<Discover />
-				<BestSeller />
-				<DiscountSection />
-				<NewArrival />
-				<CategoryCollection />
+			<CategoryCollection />
+			<Discover />
+			<BestSeller />
+			<DiscountSection />
+			<NewArrival />
 			<CallAction />
 		</main>
 	);

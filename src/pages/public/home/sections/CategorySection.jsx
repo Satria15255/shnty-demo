@@ -4,8 +4,8 @@ import basketballCollection from "@/assets/category/basketball.webp";
 import runningCollection from "@/assets/category/running.webp";
 import sneakersCollection from "@/assets/category/sneakers.webp";
 import casualCollection from "@/assets/category/casual.webp";
-import { FaArrowRightLong } from "react-icons/fa6";
 import AnimatedElement from "@/components/animation/AnimatedElement";
+import { IoIosArrowForward } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -43,7 +43,7 @@ const CategoryCollection = () => {
     const navigate = useNavigate();
 
     return (
-        <main className="h-auto py-12 px-2  w-full flex flex-col  ">
+        <main className="h-auto py-12 px-2  w-full flex flex-col items-center">
             {/* Headline */}
             <AnimatedElement
                 variant="slideUp"
@@ -53,18 +53,18 @@ const CategoryCollection = () => {
                 <h2 className="text-lg lg:text-3xl font-semibold">
                     Featured Collection
                 </h2>
-                <p className="text-sm lg:text-lg text-gray-500">
+                <p className="text-sm lg:text-sm text-gray-500">
                     Explore styles that reflect your unique identity.
                 </p>
             </AnimatedElement>
 
-            <section className="  grid grid-cols-1 md:grid-cols-2  gap-2  mt-4">
+            <section className="  grid grid-cols-1 md:grid-cols-4  gap-2  lg:mt-4 2xl:max-w-4/5">
                 {collection.map((c) => (
-                    <article className="w-full flex bg-gray-100 rounded-sm">
+                    <article className="w-full relative flex flex-col bg-gray-100 rounded-sm">
                         <AnimatedElement
                             variant="slideUp"
                             duration={1}
-                            className="h-40 md:h-60 w-1/2"
+                            className=" h-120 w-full"
                         >
                             <img
                                 src={c.image}
@@ -73,31 +73,21 @@ const CategoryCollection = () => {
                                 decoding="async"
                                 width="432"
                                 height="756"
-                                className="  w-full h-full object-center object-cover  rounded-l-sm"
+                                className=" w-full h-full  flex justify-center object-center object-cover  rounded-l-sm"
                             />
                         </AnimatedElement>
                         <AnimatedElement
                             variant="slideUp"
                             delay={0.4}
                             duration={1}
-                            className="flex w-1/2 flex-col justify-around items-start p-6"
+                            onClick={() =>
+                                navigate(`/products?category=${c.collection}`)
+                            }
+                            className="flex absolute  bottom-4 bg-white w-4/5 flex-col justify-around items-start p-4"
                         >
-                            <p className="text-sm lg:text-lg font-semibold">
-                                {c.title}
+                            <p className="text-sm flex w-full justify-between items-center font-semibold">
+                                {c.title} <IoIosArrowForward />
                             </p>
-                            <p className="text-xs lg:text-sm text-gray-500 max-w-sm">
-                                {c.desc}
-                            </p>
-                            <button
-                                onClick={() =>
-                                    navigate(
-                                        `/products?category=${c.collection}`,
-                                    )
-                                }
-                                className=" cursor-pointer flex items-center gap-2  text-gray-600 hover:text-[#0C0C0C] hover:underline transition duration-200 text-xs lg:text-sm font-semibold"
-                            >
-                                SHOP NOW <FaArrowRightLong />
-                            </button>
                         </AnimatedElement>
                     </article>
                 ))}

@@ -30,7 +30,7 @@ const Bestseller = () => {
 
     return (
         <main className="mb-6 lg:mb-12 flex flex-col items-center w-full">
-            <header className="flex  justify-between w-full px-2 md:px-7 items-center py-4 ">
+            <header className="flex  justify-between px-2 md:px-7 items-center py-4 w-full 2xl:max-w-4/5">
                 <p className="text-sm md:text-lg lg:text-2xl font-montserrat font-semibold border-b border-yellow-600 py-2">
                     Best Deals
                 </p>
@@ -41,7 +41,7 @@ const Bestseller = () => {
                     View Collection
                 </button>
             </header>
-            <section className="w-full">
+            <section className="w-full 2xl:max-w-4/5">
                 <LazyMotion features={domAnimation}>
                     {isMobile ? (
                         <MobileBestSeller

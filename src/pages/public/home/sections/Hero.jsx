@@ -31,65 +31,7 @@ const Hero = () => {
     console.log(newProduct);
 
     return (
-<<<<<<< HEAD
-        <section className="relative w-full   h-screen  md:h-120 lg:h-120 xl:h-screen  ">
-            <AnimatedElement
-                variant="fadeIn"
-                duration={1}
-                className="absolute animate-hero-image inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(/homeSection/hero.png)` }}
-            >
-                <div
-                    className="
-    absolute md:hidden bottom-0 left-0 w-full h-[45%] z-0
-    bg-gradient-to-t
-    from-black/75
-    via-black/30
-    to-transparent
-    pointer-events-none
-  "
-                />
-                <div className="relative z-20 flex flex-col justify-center items-center h-full w-full md:p-5 ">
-                    <div className="flex h-full w-full">
-                        <AnimatedElement
-                            variant="slideUp"
-                            delay={0.3}
-                            duration={0.7}
-                            className="flex flex-col justify-center items-center h-full w-full"
-                        >
-                            <div className="w-full flex flex-col justify-center md:justify-end  md:items-start h-full md:pl-16 px-2 md:px-0">
-                                <h1 className="text-4xl md:text-5xl  text-left lg:text-7xl xl:text-9xl text-[#14213D] font-moda  pr-16">
-                                    LESS NOISE
-                                </h1>
-                                <div className="w-full flex md:hidden justify-end items-center  md:pr-16">
-                                    <h1 className="text-4xl md:text-5xl lg:text-7xl xl:text-9xl text-[#14213D] font-moda  pl-16">
-                                        MORE STYLE
-                                    </h1>
-                                </div>
-                            </div>
-                            <div className="w-full flex justify-end items-end h-full ">
-                                <h1 className="text-5xl text-transparent md:text-5xl lg:text-7xl xl:text-9xl md:text-[#14213D] font-moda  md:pl-16">
-                                    MORE STYLE
-                                </h1>
-                            </div>
-                        </AnimatedElement>
-                        <div className="hidden w-15 h-full md:flex items-center">
-                            <p className="inline-block -rotate-90 whitespace-nowrap font-moda w-80">
-                                S H N T Y - 2 0 2 6
-                            </p>
-                        </div>
-                    </div>
-
-                    <AnimatedElement
-                        variant="slideUp"
-                        delay={0.4}
-                        duration={0.7}
-                        className="w-full font-sans flex flex-col text-white md:text-black items-center md:items-start pb-10 md:pb-0 justify-end"
-                    >
-                        <h1 className="text-2xl md:text-sm lg:text-2xl font-moda">
-                            S H N T Y - EST.2026
-=======
-        <section className="  w-full   h-screen  md:h-120 lg:h-120 xl:h-screen  ">
+        <main className="  w-full   h-screen  md:h-120 lg:h-120 xl:h-screen  ">
             <div className="relative animate-hero-image inset-0 bg-cover bg-center">
                 <div className="grid grid-cols-2 h-screen">
                     <img
@@ -111,7 +53,6 @@ const Hero = () => {
                         </span>
                         <h1 className="text-2xl lg:text-2xl 2xl:text-6xl font-moda">
                             Looking Elegant in Simplicity Every Day
->>>>>>> 1afecb7 (update hero section & navbar)
                         </h1>
                         <p className="text-lg max-w-sm text-center ">
                             The Women’s Collection features modern cuts that are
@@ -123,10 +64,10 @@ const Hero = () => {
                         >
                             EXPLORE COLLECTION <FaArrowRightLong />
                         </button>
-                    </AnimatedElement>
+                    </div>
                 </div>
-            </AnimatedElement>
-        </section>
+            </div>
+        </main>
     );
 };
 

@@ -60,19 +60,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
     };
 
     return (
-<<<<<<< HEAD
         <AnimatedElement
             variant="slideDown"
             duration={0.6}
-            className={`fixed top-0 z-40 animate-navbar  font-ysabeau md:pb-5 py-3  pb-3 md:py-2 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
-        }
-        }
-  ${scrolled ? "   bg-[#F1EEEA]  shadow-md  " : ""}`}
-=======
-        <div
             className={`fixed top-0 z-40 animate-navbar text-white font-ysabeau md:pb-5 py-3  pb-3 md:py-2 lg:py-3 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
   ${scrolled ? "   bg-[#0C0C0C]  shadow-md  " : ""}`}
->>>>>>> 1afecb7 (update hero section & navbar)
         >
             {/* Top Section */}
             <div className="grid grid-cols-3 place-items-center w-full px-3 lg:px-7">

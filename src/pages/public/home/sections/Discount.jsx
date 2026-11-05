@@ -38,99 +38,59 @@ const OnSale = () => {
     console.log(otherProduct);
     return (
         <main className=" mt-6 flex justify-center w-full pb-6 h-auto">
-            <div className="flex flex-col md:flex-row w-full h-full bg-[#ffff]">
+            <div className="flex flex-col md:flex-row w-full h-170 bg-[#ffff]">
                 <div className="w-full md:w-full flex flex-col md:flex-row place-items-center">
-                    <div className="bg-black w-full md:w-1/3 h-full p-4 flex flex-col gap-4 justify-center">
-                        <AnimatedElement
-                            variant="slideUp"
-                            duration={1}
-                            className=" flex flex-col justify-center "
-                        >
-                            <h1 className="text-white text-5xl md:text-4xl lg:text-4xl xl:text-7xl font-moda">
-                                DAILY{" "}
-                                <span className="text-[#D2A14A]">DROP</span>
-                            </h1>
-                            <p className="text-white text-sm md:text-xs lg:text-xl xl:text-xl">
-                                Get a 30% discount on selected products.
-                            </p>
-                        </AnimatedElement>
-                        <AnimatedElement
-                            variant="slideUp"
-                            delay={0.4}
-                            duration={1}
-                        >
-                            <p className="text-sm md:text-xs lg:text-sm xl:text-lg font-light text-white">
-                                NEXT DROP IN
-                            </p>
-                            <div className="flex flex-col xl:flex-row gap-3 mt-2">
-                                <div className="w-full xl:w-1/2">
-                                    <CountdownTimer
-                                        expiresAt={mainProduct?.expiresAt}
-                                        onExpire={() => {
-                                            console.log("Discount expired");
-                                        }}
-                                        className="w-full"
-                                    />
-                                </div>
-                                <div className="w-full xl:w-1/2 flex items-center">
-                                    <button
-                                        onClick={() =>
-                                            navigate("/products?discount=true")
-                                        }
-                                        className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-transparent border border-white hover:bg-white hover:text-black text-white text-sm md:text-xs lg:text-sm transition duration-200"
-                                    >
-                                        SHOP THE DROP <FaArrowRightLong />
-                                    </button>
+                    <div className=" relative w-full md:w-2/3 h-full ">
+                        <div className="w-full h-full">
+                            <img
+                                src="/homeSection/discountImage.jpg"
+                                alt=""
+                                className="w-full h-full  object-center object-cover"
+                            />
+                        </div>
+                        <div className="flex absolute bg-black/40 inset-0 flex-col justify-center items-center">
+                            <div className=" flex flex-col justify-center items-center">
+                                <span className="text-white text-sm md:text-xs lg:text-xl xl:text-lg">
+                                    Daily Discount
+                                </span>
+                                <h1 className="text-white text-5xl md:text-4xl text-center xl:text-6xl font-moda">
+                                    Save 30% on Today’s Picks
+                                </h1>
+                                <p className="text-white text-sm md:text-xs xl:text-lg max-w-lg text-center">
+                                    The discounted collection is updated every
+                                    24 hours—pick your favorites before it
+                                    changes.
+                                </p>
+                            </div>
+                            <div>
+                                <div className="flex flex-col   gap-3 mt-2">
+                                    <div className="w-full ">
+                                        <CountdownTimer
+                                            expiresAt={mainProduct?.expiresAt}
+                                            onExpire={() => {
+                                                console.log("Discount expired");
+                                            }}
+                                            className="w-full"
+                                        />
+                                    </div>
+                                    <div className="w-full flex justify-center items-center">
+                                        <button
+                                            onClick={() =>
+                                                navigate(
+                                                    "/products?discount=true",
+                                                )
+                                            }
+                                            className=" flex items-center font-semibold justify-center gap-3 py-5 px-7 bg-transparent border border-white hover:bg-white hover:text-black text-white text-sm md:text-xs lg:text-sm transition duration-200"
+                                        >
+                                            SHOP THE DROP <FaArrowRightLong />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </AnimatedElement>
+                        </div>
                     </div>
-                    <AnimatedElement
-                        variant="fadeIn"
-                        duration={1}
-                        className="bg-[#FBFAF7] relative w-full md:w-1/3 h-70 md:h-full  flex justify-between bg-center bg-cover  p-6"
-                        style={{
-                            backgroundImage: `url(${mainProduct?.productId?.image})`,
-                        }}
-                    >
-                        <AnimatedElement
-                            variant="slideUp"
-                            delay={0.4}
-                            duration={1}
-                            className="w-4/5 h-full flex items-end"
-                        >
-                            <div className="pt-7 w-full h-full flex flex-col  justify-end">
-                                <p className="text-lg md:text-xl font-bold">
-                                    {mainProduct?.productId?.name}
-                                </p>
-                                <p className="text-xs md:text-lg  ">
-                                    {mainProduct?.productId?.brand} /{" "}
-                                    {mainProduct?.productId?.category}
-                                </p>
-                                <div className="flex gap-2 text-lg">
-                                    <p className="line-through text-lg font-semibold">
-                                        $
-                                        {mainProduct?.productId?.price.toFixed(
-                                            2,
-                                        )}
-                                    </p>
-                                    <p className="text-xl font-bold">
-                                        ${mainProduct?.discountPrice.toFixed(2)}
-                                    </p>
-                                </div>
-                            </div>
-                        </AnimatedElement>
-                        <AnimatedElement
-                            variant="slideUp"
-                            duration={1}
-                            className="px-4 h-10 flex items-center rounded-lg bg-[#D2A14A] text-black"
-                        >
-                            <p className="text-sm md:text-lg">
-                                -{mainProduct?.discountPercent}%
-                            </p>
-                        </AnimatedElement>
-                    </AnimatedElement>
-                    <div className="bg-[#F1EEEA] p-3 w-full md:w-1/3">
+
+                    <div className="bg-[#F1EEEA] p-3 w-full h-full md:w-1/3">
                         <div className="py-3 px-3 border-b border-gray-400">
                             <p className="text-lg text-gray-700">
                                 Other Discount Products
