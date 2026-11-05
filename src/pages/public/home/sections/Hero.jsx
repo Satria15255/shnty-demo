@@ -31,6 +31,7 @@ const Hero = () => {
     console.log(newProduct);
 
     return (
+<<<<<<< HEAD
         <section className="relative w-full   h-screen  md:h-120 lg:h-120 xl:h-screen  ">
             <AnimatedElement
                 variant="fadeIn"
@@ -87,14 +88,38 @@ const Hero = () => {
                     >
                         <h1 className="text-2xl md:text-sm lg:text-2xl font-moda">
                             S H N T Y - EST.2026
+=======
+        <section className="  w-full   h-screen  md:h-120 lg:h-120 xl:h-screen  ">
+            <div className="relative animate-hero-image inset-0 bg-cover bg-center">
+                <div className="grid grid-cols-2 h-screen">
+                    <img
+                        src="/homeSection/heroImages.jpg"
+                        alt=""
+                        className="bg-center h-screen w-full object-bottom object-cover"
+                    />
+                    <img
+                        src="/homeSection/heroImages2.jpg"
+                        alt=""
+                        className="bg-center h-screen w-full object-bottom object-cover"
+                    />
+                </div>
+
+                <div className="absolute inset-0 bg-black/30 z-20 flex flex-col justify-center items-center h-full w-full md:p-5 ">
+                    <div className="w-full font-sans flex flex-col text-white  items-center gap-3 justify-center">
+                        <span className="text-lg max-w-xs text-center ">
+                            New Collection
+                        </span>
+                        <h1 className="text-2xl lg:text-2xl 2xl:text-6xl font-moda">
+                            Looking Elegant in Simplicity Every Day
+>>>>>>> 1afecb7 (update hero section & navbar)
                         </h1>
-                        <p className="text-sm max-w-xs md:text-xs lg:text-sm font-light text-center md:text-left">
-                            Redefining everyday essentials through effortless
-                            style and individuality.
+                        <p className="text-lg max-w-sm text-center ">
+                            The Women’s Collection features modern cuts that are
+                            comfortable to wear.
                         </p>
                         <button
                             onClick={() => navigate("/products")}
-                            className="flex items-center gap-1 text-sm md:text-xs lg:text-sm hover:underline transition duration-200"
+                            className="flex items-center gap-2 px-5 py-3 border border-white text-sm md:text-xs lg:text-sm hover:bg-white hover:text-black transition duration-200"
                         >
                             EXPLORE COLLECTION <FaArrowRightLong />
                         </button>
