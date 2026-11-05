@@ -38,22 +38,22 @@ const OnSale = () => {
     console.log(otherProduct);
     return (
         <main className=" mt-6 flex justify-center w-full pb-6 h-auto">
-            <div className="flex flex-col md:flex-row w-full h-170 bg-[#ffff]">
+            <div className="flex flex-col md:flex-row w-full h-auto xl:h-170 bg-[#ffff]">
                 <div className="w-full md:w-full flex flex-col md:flex-row place-items-center">
-                    <div className=" relative w-full md:w-2/3 h-full ">
+                    <div className=" relative w-full md:w-2/3 h-150 xl:h-full ">
                         <div className="w-full h-full">
                             <img
                                 src="/homeSection/discountImage.jpg"
                                 alt=""
-                                className="w-full h-full  object-center object-cover"
+                                className="w-full h-150 xl:h-full  object-center object-cover"
                             />
                         </div>
                         <div className="flex absolute bg-black/40 inset-0 flex-col justify-center items-center">
-                            <div className=" flex flex-col justify-center items-center">
+                            <div className=" flex flex-col justify-center items-center p-4">
                                 <span className="text-white text-sm md:text-xs lg:text-xl xl:text-lg">
                                     Daily Discount
                                 </span>
-                                <h1 className="text-white text-5xl md:text-4xl text-center xl:text-6xl font-moda">
+                                <h1 className="text-white  text-4xl text-center xl:text-6xl font-moda">
                                     Save 30% on Today’s Picks
                                 </h1>
                                 <p className="text-white text-sm md:text-xs xl:text-lg max-w-lg text-center">

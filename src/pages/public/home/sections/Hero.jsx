@@ -31,30 +31,30 @@ const Hero = () => {
     console.log(newProduct);
 
     return (
-        <main className="  w-full   h-screen  md:h-120 lg:h-120 xl:h-screen  ">
+        <main className="  w-full h-150 lg:h-120 xl:h-screen  ">
             <div className="relative animate-hero-image inset-0 bg-cover bg-center">
-                <div className="grid grid-cols-2 h-screen">
+                <div className="grid grid-cols-2 h-150 xl:h-screen">
                     <img
                         src="/homeSection/heroImages.jpg"
                         alt=""
-                        className="bg-center h-screen w-full object-bottom object-cover"
+                        className=" h-150 xl:h-screen w-full object-bottom object-cover"
                     />
                     <img
                         src="/homeSection/heroImages2.jpg"
                         alt=""
-                        className="bg-center h-screen w-full object-bottom object-cover"
+                        className="bg-center h-150 xl:h-screen w-full object-bottom object-cover"
                     />
                 </div>
 
                 <div className="absolute inset-0 bg-black/30 z-20 flex flex-col justify-center items-center h-full w-full md:p-5 ">
                     <div className="w-full font-sans flex flex-col text-white  items-center gap-3 justify-center">
-                        <span className="text-lg max-w-xs text-center ">
+                        <span className=" text-sm lg:text-lg max-w-xs text-center ">
                             New Collection
                         </span>
-                        <h1 className="text-2xl lg:text-2xl 2xl:text-6xl font-moda">
+                        <h1 className="text-xl lg:text-2xl 2xl:text-6xl font-moda">
                             Looking Elegant in Simplicity Every Day
                         </h1>
-                        <p className="text-lg max-w-sm text-center ">
+                        <p className="text-sm lg:text-lg max-w-sm text-center ">
                             The Women’s Collection features modern cuts that are
                             comfortable to wear.
                         </p>

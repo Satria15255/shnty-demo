@@ -58,13 +58,13 @@ const CategoryCollection = () => {
                 </p>
             </AnimatedElement>
 
-            <section className="  grid grid-cols-1 md:grid-cols-4  gap-2  lg:mt-4 2xl:max-w-4/5">
+            <section className="flex overflow-x-auto w-full gap-2 pb-4 lg:mt-4 2xl:max-w-4/5">
                 {collection.map((c) => (
-                    <article className="w-full relative flex flex-col bg-gray-100 rounded-sm">
+                    <article className="w-full whitespace-nowrap md:w-full relative flex flex-col bg-gray-100 rounded-sm">
                         <AnimatedElement
                             variant="slideUp"
                             duration={1}
-                            className=" h-120 w-full"
+                            className=" h-120 w-80"
                         >
                             <img
                                 src={c.image}
@@ -76,19 +76,16 @@ const CategoryCollection = () => {
                                 className=" w-full h-full  flex justify-center object-center object-cover  rounded-l-sm"
                             />
                         </AnimatedElement>
-                        <AnimatedElement
-                            variant="slideUp"
-                            delay={0.4}
-                            duration={1}
+                        <div
                             onClick={() =>
                                 navigate(`/products?category=${c.collection}`)
                             }
-                            className="flex absolute  bottom-4 bg-white w-4/5 flex-col justify-around items-start p-4"
+                            className="flex absolute bottom-4 bg-white w-4/5 flex-col justify-around items-start p-4"
                         >
                             <p className="text-sm flex w-full justify-between items-center font-semibold">
                                 {c.title} <IoIosArrowForward />
                             </p>
-                        </AnimatedElement>
+                        </div>
                     </article>
                 ))}
             </section>
