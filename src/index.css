@@ -94,3 +94,14 @@ code {
   line-height: 135%;
   background: var(--code-bg);
 }
+
+.product-swiper {
+  /* Pagination jadi garis */
+  --swiper-pagination-color: #0c0c0c;
+  --swiper-pagination-bullet-inactive-color: #0c0c0c;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+  --swiper-pagination-bullet-width: 40px;
+  --swiper-pagination-bullet-height: 3px;
+  --swiper-pagination-bullet-border-radius: 0;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+}

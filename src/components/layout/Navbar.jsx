@@ -1,7 +1,7 @@
 import { FaBars } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { PiUserCircle } from "react-icons/pi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
@@ -15,22 +15,31 @@ import AnimatedElement from "@/components/animation/AnimatedElement";
 import { LuUserRound } from "react-icons/lu";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
-    const [scrolled, setScrolled] = useState(false);
+    const [scrolled, setIsScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const { cart } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
+
+    const isHome = pathname === "/";
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 50;
-            setScrolled(isScrolled);
+            setIsScrolled(window.scrollY > 50);
         };
 
+        handleScroll();
+
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [pathname]);
+
+    const navbarClass = `fixed top-0 z-40 animate-navbar   font-ysabeau md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out   ${scrolled ? "bg-[#0C0C0C] text-white" : isHome ? "bg-transparent text-white" : " bg-transparent text-black"}`;
 
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -63,8 +72,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         <AnimatedElement
             variant="slideDown"
             duration={0.6}
-            className={`fixed top-0 z-40 animate-navbar text-white font-ysabeau md:pb-5  pb-3  md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
-  ${scrolled ? "   bg-[#0C0C0C]  shadow-md  " : ""}`}
+            className={navbarClass}
         >
             <div className="w-full py-2 bg-black flex justify-center items-center">
                 <p className="text-xs lg:text-sm text-white">
@@ -101,7 +109,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 <div className="flex items-center justify-center ">
                     <h1
                         onClick={() => navigate("/")}
-                        className="w-full h-auto  text-xl md:text-4xl font-moda"
+                        className="w-full h-auto flex items-center text-current text-xl md:text-4xl font-moda"
                     >
                         S H N T Y
                     </h1>

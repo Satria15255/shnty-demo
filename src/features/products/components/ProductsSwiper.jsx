@@ -26,6 +26,7 @@ const ProductsSwiper = ({ products, navigate }) => {
 						slidesPerGroup: 2,
 					},
 				}}
+				className="product-swiper"
 			>
 				{products.map((product) => (
 					<SwiperSlide key={product._id} className="pb-6 p-2">

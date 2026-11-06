@@ -32,14 +32,14 @@ const SearchModal = ({ onClose }) => {
 	};
 
 	return (
-		<main className="w-full flex border px-3 rounded-2xl">
+		<main className="w-full flex border px-3 border-gray-400 rounded-2xl">
 			<form onSubmit={handleSearch} className="w-full">
 				<input
 					type="text"
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
 					placeholder="Search.."
-					className="w-full px-2  py-2"
+					className="w-full px-2  py-2 border-none outline-none ring-0 focus:ring-0 focus:outline-none"
 				/>
 			</form>
 			<button className="  text-2xl ">

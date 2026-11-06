@@ -26,6 +26,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const queryString = searchParams.toString();
+    const searchTerm = searchParams.get("search") || "";
 
     const productsPerPage = 12;
 
@@ -109,7 +110,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     return (
         <main className="pt-16 flex flex-col items-center">
             {/* Product Section */}
-            <div className="mt-12 flex justify-center md:justify-start w-full xl:max-w-7xl py-7">
+            <div className="h-30 mt-6 flex bg-gray-100 justify-center items-center md:justify-start w-full xl:max-w-7xl py-7">
                 <p className="text-sm "> Home / Products</p>
             </div>
             <section className="flex justify-center w-full xl:max-w-7xl ">
@@ -124,12 +125,22 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     <div className="flex flex-col w-full">
                         {/* Filter Mobile Version */}
                         <section className=" w-full flex items-center justify-between lg:justify-end gap-3 mb-2 mt-2 mr-2">
-                            <p className="text-md">
-                                {filteredProducts?.length}{" "}
-                                <span className="text-gray-500 text-sm font-semibold">
-                                    Products{" "}
-                                </span>
-                            </p>
+                            <div className="flex flex-col bagp-2">
+                                {searchTerm && (
+                                    <div className="flex flex-col gap-2">
+                                        <h1 className="text-md">
+                                            Result for "{searchTerm}"
+                                        </h1>
+                                    </div>
+                                )}
+
+                                <p className="text-md">
+                                    {filteredProducts?.length}{" "}
+                                    <span className="text-gray-500 text-sm font-semibold">
+                                        Products{" "}
+                                    </span>
+                                </p>
+                            </div>
                             <button
                                 onClick={() => setFilterOpen(true)}
                                 className="flex lg:hidden py-1 px-3 gap-1 text-sm  border border-gray-300 rounded-xl "
@@ -142,7 +153,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                         </section>
 
                         {/* Products Section */}
-                        <section className="flex flex-col justify-between w-full  min-h-[100vh]">
+                        <section className="flex flex-col justify-between w-full h-auto md:min-h-[100vh]">
                             <LazyMotion features={domAnimation}>
                                 {currentProducts.length > 0 ? (
                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

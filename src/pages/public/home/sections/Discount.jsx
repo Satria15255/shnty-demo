@@ -90,7 +90,7 @@ const OnSale = () => {
                         </div>
                     </div>
 
-                    <div className="bg-[#F1EEEA] p-3 w-full h-full md:w-1/3">
+                    <div className="bg-[#F1EEEA] hidden lg:block p-3 w-full h-full md:w-1/3">
                         <div className="py-3 px-3 border-b border-gray-400">
                             <p className="text-lg text-gray-700">
                                 Other Discount Products

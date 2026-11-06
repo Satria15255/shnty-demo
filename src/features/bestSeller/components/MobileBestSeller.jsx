@@ -19,6 +19,7 @@ const MobileBestSeller = ({ products, navigate }) => {
 					el: ".swiper-pagination",
 					clickable: true,
 				}}
+				className="product-swiper"
 			>
 				{products.map((product) => (
 					<SwiperSlide key={product._id} className="pb-6 p-2">
