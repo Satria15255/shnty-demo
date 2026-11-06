@@ -27,8 +27,8 @@ const SearchModal = ({ onClose }) => {
 			navigate("/products");
 			return;
 		}
-
 		navigate(`/products?search=${encodeURIComponent(keyword)}`);
+		onClose();
 	};
 
 	return (

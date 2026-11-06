@@ -59,7 +59,7 @@ const SidebarMobile = ({ onClose }) => {
                 <div className="">
                     <div className="flex flex-col  text-sm ">
                         <div className="flex lg:hidden justify-center md:justify-start items-center w-full">
-                            <SearchModal />
+                            <SearchModal onClose={onClose} />
                         </div>
                         <p
                             onClick={() => handleNavigate("/")}
