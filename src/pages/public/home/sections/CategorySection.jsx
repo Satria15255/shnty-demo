@@ -60,11 +60,11 @@ const CategoryCollection = () => {
 
             <section className="flex overflow-x-auto w-full gap-2 pb-4 lg:mt-4 2xl:max-w-4/5">
                 {collection.map((c) => (
-                    <article className="w-full whitespace-nowrap md:w-full relative flex flex-col bg-gray-100 rounded-sm">
+                    <article className="w-full whitespace-nowrap md:w-full relative flex flex-col bg-gray-100  ">
                         <AnimatedElement
                             variant="slideUp"
                             duration={1}
-                            className=" h-120 w-80"
+                            className=" h-120 w-80 xl:w-full"
                         >
                             <img
                                 src={c.image}
@@ -73,7 +73,7 @@ const CategoryCollection = () => {
                                 decoding="async"
                                 width="432"
                                 height="756"
-                                className=" w-full h-full  flex justify-center object-center object-cover  rounded-l-sm"
+                                className=" w-full h-full  flex justify-center object-center object-cover "
                             />
                         </AnimatedElement>
                         <div

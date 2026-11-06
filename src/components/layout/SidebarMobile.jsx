@@ -5,6 +5,7 @@ import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
 import brandLogo2 from "@/assets/logo/brandLogo.webp";
 import CatalogDropdown from "@/components/layout/NavbarDropdown";
 import { IoMdClose } from "react-icons/io";
+import SearchModal from "@/features/search/components/SearchModal";
 
 const SidebarMobile = ({ onClose }) => {
     const { user, logout } = useAuth();
@@ -23,12 +24,12 @@ const SidebarMobile = ({ onClose }) => {
     };
     return (
         <div className="fixed bg-black/20 z-0 inset-0 flex justify-start">
-            <div className="w-1/2 h-screen z-10 bg-white p-5 flex flex-col ">
+            <div className="w-2/3 h-screen z-10 bg-white p-5 flex flex-col text-black">
                 {/* Logos */}
                 <div className="flex justify-between items-center gap-3 pb-4">
                     <h1
                         onClick={() => handleNavigate("/")}
-                        className="w-full h-auto  text-xl md:text-4xl font-moda"
+                        className="w-full h-auto text-xl md:text-4xl font-moda"
                     >
                         S H N TY
                     </h1>
@@ -57,13 +58,16 @@ const SidebarMobile = ({ onClose }) => {
                 {/* Sidebar Menu */}
                 <div className="">
                     <div className="flex flex-col  text-sm ">
+                        <div className="flex lg:hidden justify-center md:justify-start items-center w-full">
+                            <SearchModal />
+                        </div>
                         <p
                             onClick={() => handleNavigate("/")}
-                            className="cursor-pointer hover:text-yellow-500 transition duration-100 py-4 border-t border-gray-300"
+                            className="cursor-pointer hover:text-yellow-500 transition duration-100 py-4 "
                         >
                             Home
                         </p>
-                        <div className="z-20">
+                        <div className="">
                             <CatalogDropdown onClose={onClose} />
                         </div>
                         {!user ? (
@@ -102,7 +106,7 @@ const SidebarMobile = ({ onClose }) => {
                     </div>
                 </div>
             </div>
-            <div className="w-1/2 h-screen" onClick={onClose}></div>
+            <div className="w-1/3 h-screen" onClick={onClose}></div>
         </div>
     );
 };

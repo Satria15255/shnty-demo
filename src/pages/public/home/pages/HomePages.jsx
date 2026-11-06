@@ -5,6 +5,7 @@ import BestSeller from "@/pages/public/home/sections/BestSeller";
 import DiscountSection from "@/pages/public/home/sections/Discount";
 import NewArrival from "@/pages/public/home/sections/NewArrival";
 import CategoryCollection from "@/pages/public/home/sections/CategorySection";
+import Subs from "@/pages/public/home/sections/Subs";
 
 const HomePages = () => {
 	return (
@@ -15,7 +16,7 @@ const HomePages = () => {
 			<BestSeller />
 			<DiscountSection />
 			<NewArrival />
-			<CallAction />
+			<Subs />
 		</main>
 	);
 };

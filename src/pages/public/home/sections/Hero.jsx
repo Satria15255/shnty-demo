@@ -47,14 +47,14 @@ const Hero = () => {
                 </div>
 
                 <div className="absolute inset-0 bg-black/30 z-20 flex flex-col justify-center items-center h-full w-full md:p-5 ">
-                    <div className="w-full font-sans flex flex-col text-white  items-center gap-3 justify-center">
+                    <div className="w-full font-sans flex flex-col text-white  items-center gap-3 p-3 justify-center">
                         <span className=" text-sm lg:text-lg max-w-xs text-center ">
                             New Collection
                         </span>
-                        <h1 className="text-xl lg:text-2xl 2xl:text-6xl font-moda">
+                        <h1 className="text-2xl lg:text-2xl 2xl:text-6xl font-moda text-center">
                             Looking Elegant in Simplicity Every Day
                         </h1>
-                        <p className="text-sm lg:text-lg max-w-sm text-center ">
+                        <p className="hidden md:block text-sm lg:text-lg max-w-sm text-center ">
                             The Women’s Collection features modern cuts that are
                             comfortable to wear.
                         </p>

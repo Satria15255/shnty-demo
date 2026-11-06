@@ -63,11 +63,16 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         <AnimatedElement
             variant="slideDown"
             duration={0.6}
-            className={`fixed top-0 z-40 animate-navbar text-white font-ysabeau md:pb-5 py-3  pb-3 md:py-2 lg:py-3 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
+            className={`fixed top-0 z-40 animate-navbar text-white font-ysabeau md:pb-5  pb-3  md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out
   ${scrolled ? "   bg-[#0C0C0C]  shadow-md  " : ""}`}
         >
+            <div className="w-full py-2 bg-black flex justify-center items-center">
+                <p className="text-xs lg:text-sm text-white">
+                    FREE SHIPPING ON ALL ORDERS OVER $100
+                </p>
+            </div>
             {/* Top Section */}
-            <div className="grid grid-cols-3 place-items-center w-full px-3 lg:px-7">
+            <div className="grid grid-cols-3 place-items-center w-full px-3 lg:px-7 py-2 lg:py-3">
                 <div className=" gap-7 flex   text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
@@ -98,7 +103,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         onClick={() => navigate("/")}
                         className="w-full h-auto  text-xl md:text-4xl font-moda"
                     >
-                        S H N TY
+                        S H N T Y
                     </h1>
                 </div>
                 <div className="flex justify-end gap-3 lg:gap-6 items-center w-full px-2">
@@ -174,9 +179,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </div>
             </div>
             {/* Bottom Section */}
-            <div className="flex lg:hidden justify-center md:justify-start items-center w-full  px-3 lg:px-7">
-                <SearchModal />
-            </div>
+
             {isSidebarOpen && (
                 <SidebarMobile
                     user={user}

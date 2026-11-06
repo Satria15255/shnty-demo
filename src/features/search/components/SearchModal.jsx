@@ -32,17 +32,17 @@ const SearchModal = ({ onClose }) => {
 	};
 
 	return (
-		<main className="w-full flex text-white">
+		<main className="w-full flex border px-3 rounded-2xl">
 			<form onSubmit={handleSearch} className="w-full">
 				<input
 					type="text"
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
-					placeholder=""
-					className="w-full  px-2 rounded-l-xl text-white font-ysabeau py-2"
+					placeholder="Search.."
+					className="w-full px-2  py-2"
 				/>
 			</form>
-			<button className="rounded-r-xl text-2xl text-white">
+			<button className="  text-2xl ">
 				<IoIosSearch />
 			</button>
 		</main>

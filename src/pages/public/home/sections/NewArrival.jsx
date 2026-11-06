@@ -47,19 +47,7 @@ function ProductList() {
                 </header>
             </motion.div>
             <LazyMotion features={domAnimation}>
-                <div
-                    className="
-                        grid
-                        grid-cols-2
-                        md:grid-cols-4
-                        gap-2
-                        md:mt-2
-                        lg:mt-4
-                        
-                        w-full
-                        p-2
-                    "
-                >
+                <div className=" grid grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4  w-full  p-2  2xl:max-w-4/5 ">
                     {loading
                         ? Array.from({ length: 8 }).map((_, index) => (
                               <div
