@@ -184,7 +184,9 @@ const ProductManagement = () => {
       <section>
         <ProductsTable
           products={currentProducts}
-          onEdit={(product) => setEditingProduct(product)}
+          onEdit={() =>
+            navigate(`/admin/product/update-product/${products.id}`)
+          }
           onDelete={handleDelete}
           search={filter.search}
           onChange={(e) =>

@@ -557,7 +557,7 @@ const ProductsUploadForm = ({ onClose, onSucces }) => {
                 <div className="flex justify-end gap-3">
                   <button
                     type="button"
-                    onClick={onClose}
+                    onClick={() => navigate("/admin/product")}
                     className="rounded-lg border px-5 py-3"
                   >
                     Cancel

@@ -5,9 +5,5 @@ import API from "@/utils/axios";
 // =======================
 export const createProduct = (data) => API.post("/api/products", data);
 export const updateProduct = (id, formData) =>
-	API.put(`/api/products/${id}`, formData, {
-		headers: {
-			"Content-Type": "multipart/form-data",
-		},
-	});
+	API.put(`/api/products/${id}`, formData);
 export const deleteProduct = (id) => API.delete(`/api/products/${id}`);
