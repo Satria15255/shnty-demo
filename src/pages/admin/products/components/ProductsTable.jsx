@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { DeleteModal } from "@/components/admin/ui/DeleteModal";
 
 const ProductsTable = ({
   products,
@@ -12,7 +13,9 @@ const ProductsTable = ({
   category,
   setFilter,
 }) => {
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
+  console.log(products);
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
       <div className="p-4 flex items-center gap-4 rounded-t-lg">
@@ -108,12 +111,8 @@ const ProductsTable = ({
                   >
                     <FaEdit />
                   </button>
-                  <button
-                    onClick={() => onDelete(p._id)}
-                    className="text-gray-900 border border-gray-400 hover:bg-gray-900 hover:text-white transition duration-100 rounded-lg p-4"
-                  >
-                    <FaTrashAlt />
-                  </button>
+
+                  <DeleteModal productId={p._id} onDeleted={onDelete} />
                 </td>
               </tr>
             ))}
