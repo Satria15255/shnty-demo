@@ -40,7 +40,6 @@ const AdminSidebar = () => {
     `flex text-sm items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
   ${isActive ? "bg-gray-900 text-[#F3E5AB] shadow-sm shadow-[#F3E5AB]" : "text-gray-600 hover:bg-gray-200"}`;
 
-  console.log(menuItems);
   return (
     <div className="h-screen bg-gray-900 border-r border-gray-300 flex flex-col">
       {/* Header / Logo */}

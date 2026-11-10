@@ -71,6 +71,10 @@ const UploadProduct = lazy(
   () => import("@/pages/admin/products/components/ProductsUploadForm"),
 );
 
+const EditProduct = lazy(
+  () => import("@/pages/admin/products/components/ProductsEditForm"),
+);
+
 const AdminOrder = lazy(() => import("@/pages/admin/orders/AdminOrders"));
 
 const AdminUserList = lazy(() => import("@/pages/admin/users/AdminUserList"));
@@ -146,6 +150,10 @@ function App() {
             <Route
               path="/admin/product/new-product"
               element={<UploadProduct />}
+            />
+            <Route
+              path="/admin/product/update-product/:id"
+              element={<EditProduct />}
             />
             <Route path="/admin/all-orders" element={<AdminOrder />} />
             <Route path="/admin/user" element={<AdminUserList />} />

@@ -37,7 +37,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
         >
             {product ? (
                 <div>
-                    <div className="w-full h-auto relative ">
+                    <div className="w-full h-auto lg:h-90 relative ">
                         <img
                             src={optimizeCloudinaryImage(product.image, 500)}
                             alt={product.name}
@@ -55,7 +55,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                             height="500"
                             loading="lazy"
                             decoding="async"
-                            className="w-full h-auto object-cover    object-center"
+                            className="w-full h-full object-cover    object-center"
                         />
                         <div>
                             {product.isBestSeller === true && (

@@ -105,7 +105,7 @@ function ProductModal() {
 
     return (
         <main className="w-full flex justify-center">
-            <div className="mt-16 pt-12 bg-white rounded-lg w-full  flex-col items-center  xl:max-w-7xl px-4">
+            <div className="mt-16 pt-12 bg-white rounded-lg w-full  flex-col items-center  xl:max-w-4/5 px-4">
                 <article className="relative flex flex-col md:flex-row justify-center  ">
                     <div className="w-full h-full flex justify-center">
                         <img
@@ -129,7 +129,7 @@ function ProductModal() {
                             {isDiscount ? (
                                 <div className="flex gap-2">
                                     <p className="text-lg lg:text-3xl font-bold line-through">
-                                        USD {product.price}.00
+                                        USD {product.price}
                                     </p>
                                     <p className="text-lg lg:text-3xl  font-bold">
                                         USD {product.discountPrice.toFixed(2)}
@@ -138,7 +138,7 @@ function ProductModal() {
                             ) : (
                                 <div className="">
                                     <p className="text-lg lg:text-3xl font-bold">
-                                        USD {product.price}.00
+                                        USD {product.price}
                                     </p>
                                 </div>
                             )}

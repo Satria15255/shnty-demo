@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ProductsTable = ({
   products,
@@ -11,6 +12,7 @@ const ProductsTable = ({
   category,
   setFilter,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
       <div className="p-4 flex items-center gap-4 rounded-t-lg">
@@ -99,7 +101,9 @@ const ProductsTable = ({
                 <td className="p-2">{p.category}</td>
                 <td className="space-x-2">
                   <button
-                    onClick={() => onEdit(p)}
+                    onClick={() =>
+                      navigate(`/admin/product/update-product/${p._id}`)
+                    }
                     className="text-gray-900 border border-gray-400 hover:bg-gray-900 hover:text-white transition duration-100 rounded-lg p-4"
                   >
                     <FaEdit />
