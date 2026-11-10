@@ -108,9 +108,9 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     }
 
     return (
-        <main className="pt-16 flex flex-col items-center">
+        <main className="pt-16 md:mt-16 flex flex-col items-center">
             {/* Product Section */}
-            <div className="h-30 mt-6 flex bg-gray-100 justify-center items-center md:justify-start w-full xl:max-w-7xl py-7">
+            <div className="h-30 mt-6 flex bg-gray-100 justify-center items-center w-full xl:max-w-7xl py-7">
                 <p className="text-sm "> Home / Products</p>
             </div>
             <section className="flex justify-center w-full xl:max-w-7xl ">

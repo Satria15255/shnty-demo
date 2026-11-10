@@ -40,7 +40,7 @@ const OnSale = () => {
         <main className=" mt-6 flex justify-center w-full pb-6 h-auto">
             <div className="flex flex-col md:flex-row w-full h-auto xl:h-170 bg-[#ffff]">
                 <div className="w-full md:w-full flex flex-col md:flex-row place-items-center">
-                    <div className=" relative w-full md:w-2/3 h-150 xl:h-full ">
+                    <div className=" relative w-full xl:w-2/3 h-150 xl:h-full ">
                         <div className="w-full h-full">
                             <img
                                 src="/homeSection/discountImage.jpg"
@@ -90,7 +90,7 @@ const OnSale = () => {
                         </div>
                     </div>
 
-                    <div className="bg-[#F1EEEA] hidden lg:block p-3 w-full h-full md:w-1/3">
+                    <div className="bg-[#F1EEEA] hidden xl:block p-3 w-full h-full md:w-1/3">
                         <div className="py-3 px-3 border-b border-gray-400">
                             <p className="text-lg text-gray-700">
                                 Other Discount Products

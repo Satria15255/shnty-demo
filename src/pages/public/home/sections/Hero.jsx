@@ -31,7 +31,7 @@ const Hero = () => {
     console.log(newProduct);
 
     return (
-        <main className="  w-full h-150 lg:h-120 xl:h-screen  ">
+        <main className="  w-full h-150 lg:h-150 xl:h-screen  ">
             <div className="relative animate-hero-image inset-0 bg-cover bg-center">
                 <div className="grid grid-cols-2 h-150 xl:h-screen">
                     <img
@@ -51,10 +51,10 @@ const Hero = () => {
                         <span className=" text-sm lg:text-lg max-w-xs text-center ">
                             New Collection
                         </span>
-                        <h1 className="text-2xl lg:text-2xl 2xl:text-6xl font-moda text-center">
+                        <h1 className="text-2xl lg:text-2xl xl:text-4xl 2xl:text-6xl font-moda text-center">
                             Looking Elegant in Simplicity Every Day
                         </h1>
-                        <p className="hidden md:block text-sm lg:text-lg max-w-sm text-center ">
+                        <p className="hidden xl:block text-sm lg:text-lg max-w-sm text-center ">
                             The Women’s Collection features modern cuts that are
                             comfortable to wear.
                         </p>

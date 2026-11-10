@@ -58,9 +58,9 @@ export default function CatalogDropdown({ onClose }) {
               aria-expanded={isOpen}
               aria-controls={isOpen ? `menu-${menu.id}` : undefined}
               onClick={() => handleToggle(menu.id)}
-              className="group flex items-center gap-2 py-4 text-xs lg:text-sm border-t lg:border-none border-gray-300 w-full text-[#0C0C0C]"
+              className="group flex items-center gap-2 py-4 text-xs xl:text-sm border-t lg:border-none border-gray-300 w-full text-[#0C0C0C]"
             >
-              <span className="text-curent  lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3">
+              <span className="text-white  lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3">
                 {menu.label}
               </span>
 

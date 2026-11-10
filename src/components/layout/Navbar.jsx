@@ -81,7 +81,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             </div>
             {/* Top Section */}
             <div className="grid grid-cols-3 place-items-center w-full px-3 lg:px-7 py-2 lg:py-3">
-                <div className=" gap-7 flex   text-xs lg:text-sm items-center w-full">
+                <div className=" gap-7 flex   text-xs xl:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
                         className="cursor-pointer hidden lg:block border-b border-transparent hover:border-black transition duration-300 pb-3 pt-3"
