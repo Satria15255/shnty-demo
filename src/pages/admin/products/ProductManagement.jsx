@@ -63,19 +63,13 @@ const ProductManagement = () => {
     setProducts(res.data);
   };
 
+  console.log(products);
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      if (!window.confirm("Are you sure want to delete this product?")) return;
-      await deleteProduct(id);
-      toast.success("Product deleted!");
-      fetchProducts();
-    } catch (err) {
-      toast.error("Failed delete product");
-    }
+  const handleProductDeleted = (id) => {
+    setProducts((prev) => prev.filter((p) => p._id !== id));
   };
 
   const handleUploadSuccess = () => {
@@ -187,7 +181,7 @@ const ProductManagement = () => {
           onEdit={() =>
             navigate(`/admin/product/update-product/${products.id}`)
           }
-          onDelete={handleDelete}
+          onDelete={handleProductDeleted}
           search={filter.search}
           onChange={(e) =>
             setFilter((prev) => ({
