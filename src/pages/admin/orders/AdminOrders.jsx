@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OrdersTable from "@/pages/admin/orders/components/OrdersTable";
-import OrdersDetails from "@/pages/admin/orders/components/OrdersDetails";
+import OrdersDetails from "./OrdersDetails";
 import { toast } from "react-toastify";
 import { getOrdersSummary } from "@/pages/admin/dashboard/services/adminDashboardService";
 import { getAllTransactions } from "@/pages/admin/orders/services/adminOrderService";

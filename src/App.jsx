@@ -83,7 +83,7 @@ const AdminDashboard = lazy(
   () => import("@/pages/admin/dashboard/AdminDashboard"),
 );
 const OrderDetailAdmin = lazy(
-  () => import("@/pages/admin/orders/components/OrdersDetails"),
+  () => import("@/pages/admin/orders/OrdersDetails"),
 );
 
 // CONDITIONAL UI

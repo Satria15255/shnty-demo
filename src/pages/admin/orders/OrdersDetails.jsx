@@ -1,15 +1,17 @@
 import React from "react";
 import { getUserTransaction } from "@/pages/admin/orders/services/adminOrderService";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { formatDate } from "@/utils/FormatedDate";
 import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
-
 import PaymentStatusBadge from "@/components/ui/PaymentStatusBadge";
+import ProductOrderTable from "./orderDetails/ProductOrderTable";
+import CustInformation from "./orderDetails/CustInformation";
 
 const OrdersDetails = ({ onClose, onStatusChange }) => {
   const { id } = useParams();
   const [order, setOrder] = useState([]);
+  const navigate = useNavigate();
 
   const fetchOrder = async () => {
     try {
@@ -29,7 +31,14 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
 
   const user = order || {};
   const items = order.products || [];
-  const orderDate = formatDate(order?.createdAt);
+
+  const orderDate = () => {
+    if (!order.createdAt) {
+      return null;
+    } else {
+      return formatDate(order.createdAt);
+    }
+  };
 
   const orderStats = [
     {
@@ -60,7 +69,9 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
         <span className="text-xs">Dashboard / All-order / {order._id}</span>
         <div className="flex w-full justify-between items-center">
           <h1 className="text-2xl font-bold">Order Details</h1>
-          <p className="text-sm text-gray-500">Placed On {orderDate}</p>
+          <p className="text-sm text-gray-500">
+            Placed On formatDate {orderDate}
+          </p>
         </div>
         <div className="flex space-x-4 justify-center items-center">
           {orderStats.map((o) => (
@@ -79,35 +90,19 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
         </div>
       </header>
 
-      <p className="mt-2 font-bold">Products:</p>
-      <div className="w-full overflow-y-auto max-h-[45vh]">
-        {Array.isArray(items) && items.length > 0 ? (
-          items.map((item, index) => (
-            <div
-              key={index}
-              className="w-full flex items-center  justify-between"
-            >
-              <div className="flex py-1 items-center ">
-                <img
-                  src={item.image}
-                  alt={"Product"}
-                  className="inline-block w-20 h-20 mr-2"
-                />
-                <div className="flex flex-col ">
-                  <p className="font-bold text-md">{item.name}</p>
-                  <div className="text-xs flex gap-2">
-                    <p>Size {item.size}</p>
-                    <p>Qty: {item.quantity}</p>
-                    <p>${item.pricePerUnit}</p>
-                  </div>
-                </div>
-              </div>
-              <p className="font-bold text-yellow-500">${order.totalPrice}</p>
-            </div>
-          ))
-        ) : (
-          <li>No products found.</li>
-        )}
+      <div className="flex gap-4 w-full">
+        <section className="w-2/2">
+          <p className="mt-2 font-bold">Ordered Products:</p>
+          <ProductOrderTable
+            items={order.products || []}
+            totalPrice={order.totalPrice}
+          />
+        </section>
+        <section className="w-1/3">
+          <p className="mt-2 font-bold">Customer Information:</p>
+
+          <CustInformation details={user} />
+        </section>
       </div>
 
       <div>
@@ -148,7 +143,7 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
 
       <div className="mt-6 flex justify-end">
         <button
-          onClick={onClose}
+          onClick={() => navigate("/admin/all-orders")}
           className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600"
         >
           Close
