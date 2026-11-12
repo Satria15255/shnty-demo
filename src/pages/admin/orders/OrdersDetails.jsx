@@ -9,6 +9,9 @@ import ProductOrderTable from "./orderDetails/ProductOrderTable";
 import CustInformation from "./orderDetails/CustInformation";
 import CostSummary from "./orderDetails/CostSummary";
 import ShippingDetail from "./orderDetails/ShippingDetail";
+import StatusHistory from "./orderDetails/StatusHistory";
+import UpdateStatus from "./orderDetails/UpdateStatus";
+import { FaArrowLeft } from "react-icons/fa";
 
 const OrdersDetails = ({ onClose, onStatusChange }) => {
   const { id } = useParams();
@@ -68,7 +71,17 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
   return (
     <main className="bg-white rounded-xl p-6 w-full shadow-lg">
       <header className="flex flex-col gap-4 justify-center">
-        <span className="text-xs">Dashboard / All-order / {order._id}</span>
+        <div className="w-full flex justify-between items-center">
+          <span className="text-xs">Dashboard / All-order / {order._id}</span>
+
+          <button
+            onClick={() => navigate("/admin/all-orders")}
+            className="bg-gray-800 text-white flex gap-3 items-center px-4 py-2 rounded hover:bg-gray-600"
+          >
+            <FaArrowLeft />
+            Back to Orders
+          </button>
+        </div>
         <div className="flex w-full justify-between items-center">
           <h1 className="text-2xl font-bold">Order Details</h1>
           <p className="text-sm text-gray-500">
@@ -105,6 +118,20 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
             <p className="mt-2 text-xl font-bold">Cost Summary:</p>
             <CostSummary details={order} />
           </section>
+          <section className="w-full space-y-2">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-slate-900">
+                Status History
+              </h2>
+              <button
+                type="button"
+                className="text-sm font-semibold uppercase tracking-wider text-slate-500 transition-colors hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              >
+                Audit Log
+              </button>
+            </div>
+            <StatusHistory details={order} />
+          </section>
         </div>
         <div className="w-3/7 space-y-4">
           <section className="w-full space-y-2">
@@ -115,52 +142,10 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
             <p className="mt-2 text-xl font-bold">Shipping Detail:</p>
             <ShippingDetail details={order} />
           </section>
+          <section className="w-full space-y-2">
+            <UpdateStatus details={order} />
+          </section>
         </div>
-      </div>
-
-      <div>
-        <p className="flex justify-between">
-          <strong>User:</strong> {user.name || "Uknown user"}
-        </p>
-        <p className="flex justify-between">
-          <strong>Email:</strong> {user.email || "-"}
-        </p>
-        <p className="flex justify-between">
-          <strong>Message:</strong> {order.message || "-"}
-        </p>
-        <p className="flex justify-between">
-          <strong>Payment Method:</strong> {order.paymentMethod || "-"}
-        </p>
-        <p className="flex justify-between">
-          <strong>Shipping Method:</strong> {order.shippingMethod || "-"}
-        </p>
-        <p className="flex justify-between">
-          <strong>Shipping Address:</strong> {order.shippingAddress || "-"}
-        </p>
-      </div>
-
-      <div className="mt-4">
-        <label className="font-semibold">Update Status:</label>
-        <select
-          value={order.status}
-          onChange={(e) => onStatusChange(order._id, e.target.value)}
-          className="block mt-1 border px-2 py-1 rounded"
-        >
-          <option value="Waiting for Payment">Pending Confirmation</option>
-          <option value="Processing">Processing</option>
-          <option value="Shipped">Shipped</option>
-          <option value="Delivered">Delivered</option>
-          <option value="Cancelled">Cancelled</option>
-        </select>
-      </div>
-
-      <div className="mt-6 flex justify-end">
-        <button
-          onClick={() => navigate("/admin/all-orders")}
-          className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600"
-        >
-          Close
-        </button>
       </div>
     </main>
   );
