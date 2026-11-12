@@ -7,6 +7,8 @@ import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
 import PaymentStatusBadge from "@/components/ui/PaymentStatusBadge";
 import ProductOrderTable from "./orderDetails/ProductOrderTable";
 import CustInformation from "./orderDetails/CustInformation";
+import CostSummary from "./orderDetails/CostSummary";
+import ShippingDetail from "./orderDetails/ShippingDetail";
 
 const OrdersDetails = ({ onClose, onStatusChange }) => {
   const { id } = useParams();
@@ -91,18 +93,29 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
       </header>
 
       <div className="flex gap-4 w-full">
-        <section className="w-2/2">
-          <p className="mt-2 font-bold">Ordered Products:</p>
-          <ProductOrderTable
-            items={order.products || []}
-            totalPrice={order.totalPrice}
-          />
-        </section>
-        <section className="w-1/3">
-          <p className="mt-2 font-bold">Customer Information:</p>
-
-          <CustInformation details={user} />
-        </section>
+        <div className="w-4/7 space-y-4">
+          <section className="w-full space-y-2">
+            <p className="mt-2 text-xl font-bold">Ordered Products:</p>
+            <ProductOrderTable
+              items={order.products || []}
+              totalPrice={order.totalPrice}
+            />
+          </section>
+          <section className="w-full space-y-2">
+            <p className="mt-2 text-xl font-bold">Cost Summary:</p>
+            <CostSummary details={order} />
+          </section>
+        </div>
+        <div className="w-3/7 space-y-4">
+          <section className="w-full space-y-2">
+            <p className="mt-2 text-xl font-bold">Customer Information:</p>
+            <CustInformation details={user} />
+          </section>
+          <section className="w-full space-y-2">
+            <p className="mt-2 text-xl font-bold">Shipping Detail:</p>
+            <ShippingDetail details={order} />
+          </section>
+        </div>
       </div>
 
       <div>
