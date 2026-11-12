@@ -82,6 +82,9 @@ const AdminUserList = lazy(() => import("@/pages/admin/users/AdminUserList"));
 const AdminDashboard = lazy(
   () => import("@/pages/admin/dashboard/AdminDashboard"),
 );
+const OrderDetailAdmin = lazy(
+  () => import("@/pages/admin/orders/OrdersDetails"),
+);
 
 // CONDITIONAL UI
 const SidebarCart = lazy(
@@ -156,6 +159,11 @@ function App() {
               element={<EditProduct />}
             />
             <Route path="/admin/all-orders" element={<AdminOrder />} />
+            <Route
+              path="/admin/all-orders/:id"
+              element={<OrderDetailAdmin />}
+            />
+
             <Route path="/admin/user" element={<AdminUserList />} />
           </Route>
         </Routes>

@@ -1,9 +1,11 @@
 import React from "react";
 import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
 import PaymentStatusBadge from "@/components/ui/PaymentStatusBadge";
+import { useNavigate } from "react-router-dom";
 
 const OrdersTable = ({ order, onOpenModal }) => {
   console.log(order);
+  const navigate = useNavigate();
   return (
     <div className="w-full border border-gray-300 rounded-lg overflow-x-hidden">
       <table className="w-full table-fixed">
@@ -50,7 +52,7 @@ const OrdersTable = ({ order, onOpenModal }) => {
                 <td className="p-2">${o.totalPrice}</td>
                 <td className="">
                   <button
-                    onClick={() => onOpenModal(o)}
+                    onClick={() => navigate(`/admin/all-orders/${o._id}`)}
                     className="text-gray-900 border border-gray-400 hover:bg-gray-900 hover:text-white transition duration-100 rounded-lg px-5 py-2"
                   >
                     Details
