@@ -1,8 +1,9 @@
 import React from "react";
 import { PiUserCircle } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const UserList = ({ handleDetail, onOpenModal, users }) => {
-  console.log(users);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full border border-gray-300 rounded-lg overflow-x-hidden">
@@ -43,7 +44,7 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
               <td>🟢 Active</td>
               <td>
                 <button
-                  onClick={() => onOpenModal(user._id)}
+                  onClick={() => navigate(`/admin/user/${user._id}`)}
                   className="hover:bg-black hover:text-white border border-gray-300 transition duration-300 px-4 py-2 rounded"
                 >
                   View Details

@@ -1,6 +1,6 @@
 // AdminUserList.jsx
 import React, { useEffect, useState } from "react";
-import UserList from "@/pages/admin/users/components/UserList";
+import UserTable from "@/pages/admin/users/components/UserTable";
 import UserDetail from "@/pages/admin/users/components/UserDetails";
 import {
   getAllUsers,
@@ -96,7 +96,6 @@ const AdminUserList = () => {
     ];
   };
 
-  console.log(users);
   return (
     <main className="px-4 w-full flex flex-col gap-4 py-9">
       <header className="flex flex-col gap-2">
@@ -150,7 +149,9 @@ const AdminUserList = () => {
             </div>
           </div>
         </div>
-        <UserList users={currentUsers} onOpenModal={handleDetail} />
+        {/*User Table*/}
+        <UserTable users={currentUsers} onOpenModal={handleDetail} />
+
         <nav className="flex justify-between items-center mt-4">
           <p className="text-xs text-gray-500">
             Showing {indexOfFirstProduct + 1} -{" "}
