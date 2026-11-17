@@ -86,6 +86,7 @@ const CustomerDetailPage = ({
   const { id } = useParams();
   const [isCust, setIsCust] = useState({});
   const [loading, setLoading] = useState(true);
+
   const fetchCust = async () => {
     try {
       setLoading(true);
@@ -102,10 +103,12 @@ const CustomerDetailPage = ({
     fetchCust();
   }, [id]);
 
-  loading == <p>wait a minute</p>;
+  if (loading) {
+    return <p>Wait a minute...</p>;
+  }
 
   console.log(isCust);
-  const custDetail = isCust?.data;
+  const custDetail = isCust.data;
   console.log(custDetail);
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-6 font-sans text-slate-900 sm:px-6 lg:px-8">
@@ -148,8 +151,8 @@ const CustomerDetailPage = ({
         </header>
 
         {/* Children */}
-        <CustomerProfile customer={custDetail || customer} />
-        <SavedAddresses addresses={custDetail?.address || addresses} />
+        <CustomerProfile customer={custDetail} />
+        <SavedAddresses addresses={custDetail.address || addresses} />
         <CustomerOrders
           orders={custDetail?.transactions || orders}
           total={custDetail?.totalOrders || totalOrders}

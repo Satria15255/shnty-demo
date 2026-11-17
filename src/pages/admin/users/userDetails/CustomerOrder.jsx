@@ -6,6 +6,7 @@ import {
   ReceiptIcon,
   XCircleIcon,
 } from "./Icon";
+import { formatDate } from "@/utils/FormatedDate";
 
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -40,7 +41,6 @@ const COLUMNS = [
   "Order ID",
   "Username",
   "Order Time",
-  "Completed (Estimate)",
   "Total Price",
   "Total Product",
   "Order Status",
@@ -89,23 +89,21 @@ export default function CustomerOrders({
                 className="border-b border-slate-100 last:border-b-0"
               >
                 <td className="px-4 py-4 text-xs font-medium text-slate-800">
-                  #{order.id}
+                  #{order._id}
                 </td>
                 <td className="px-4 py-4 text-xs font-medium text-blue-700">
-                  {order.username}
+                  {order.name}
                 </td>
                 <td className="px-4 py-4 font-mono text-[11px] leading-relaxed text-slate-600">
-                  {order.orderTime}
+                  {formatDate(order.createdAt)}
                 </td>
-                <td className="px-4 py-4 font-mono text-[11px] text-slate-600">
-                  {order.completedEstimate}
-                </td>
+
                 <td className="px-4 py-4 text-sm font-bold text-slate-900">
                   {currency.format(order.totalPrice)}
                 </td>
                 <td className="px-4 py-4">
                   <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-100 px-1.5 text-[11px] font-semibold text-slate-700">
-                    {order.totalProduct}
+                    {order.products.length}
                   </span>
                 </td>
                 <td className="px-4 py-4">

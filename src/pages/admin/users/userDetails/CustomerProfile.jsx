@@ -16,7 +16,6 @@ function InfoTile({ label, children }) {
 }
 
 const CustomerProfile = ({ customer }) => {
-  console.log(customer);
   const {
     name,
     email,

@@ -18,6 +18,8 @@ const AddressPages = () => {
         label: "",
         country: "",
         city: "",
+        fullName: "",
+        phone: "",
         specificAddress: "",
     });
 
@@ -37,6 +39,8 @@ const AddressPages = () => {
             label: "",
             country: "",
             city: "",
+            fullName: "",
+            phone: "",
             specificAddress: "",
         });
 
@@ -51,6 +55,8 @@ const AddressPages = () => {
             label: "",
             country: "",
             city: "",
+            fullName: "",
+            phone: "",
             specificAddress: "",
         });
 
@@ -64,6 +70,8 @@ const AddressPages = () => {
             label: address.label || "",
             country: address.country || "",
             city: address.city || "",
+            fullName: address.fullName || "",
+            phone: address.phone || "",
             specificAddress: address.specificAddress || "",
         });
 
@@ -264,6 +272,34 @@ const AddressPages = () => {
                         </div>
 
                         <div className="space-y-4">
+                            <div>
+                                <label className="block text-sm mb-2">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="fullName"
+                                    value={addressForm.fullName}
+                                    onChange={handleChange}
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:border-black"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm mb-2">
+                                    Phone Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    value={addressForm.phone}
+                                    onChange={handleChange}
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:border-black"
+                                />
+                            </div>
+
                             <div>
                                 <label className="block text-sm mb-2">
                                     Label
