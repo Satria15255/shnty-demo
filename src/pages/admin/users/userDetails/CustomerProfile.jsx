@@ -1,5 +1,6 @@
 import { Card, SectionHeader } from "./shared";
 import { CheckCircleIcon, IdCardIcon } from "./Icon";
+import { formatDate } from "@/utils/FormatedDate";
 
 function InfoTile({ label, children }) {
   return (
@@ -16,11 +17,11 @@ function InfoTile({ label, children }) {
 
 const CustomerProfile = ({ customer }) => {
   const {
-    username,
+    name,
     email,
     phone,
-    registeredAt,
-    lastLogin,
+    createdAt,
+    updatedAt,
     isActive = true,
   } = customer;
 
@@ -48,7 +49,7 @@ const CustomerProfile = ({ customer }) => {
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         <InfoTile label="Username">
           <span className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-900">
-            {username}
+            {name}
             <CheckCircleIcon className="h-3.5 w-3.5 text-slate-500" />
           </span>
         </InfoTile>
@@ -59,9 +60,9 @@ const CustomerProfile = ({ customer }) => {
           </p>
         </InfoTile>
 
-        <InfoTile label="Phone Number">{phone}</InfoTile>
-        <InfoTile label="Terdaftar">{registeredAt}</InfoTile>
-        <InfoTile label="Last Login">{lastLogin}</InfoTile>
+        <InfoTile label="Phone Number">{phone || "-"}</InfoTile>
+        <InfoTile label="Terdaftar">{formatDate(createdAt)}</InfoTile>
+        <InfoTile label="Last Login">{formatDate(updatedAt)}</InfoTile>
       </div>
     </Card>
   );

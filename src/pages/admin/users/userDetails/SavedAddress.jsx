@@ -9,7 +9,7 @@ import {
 } from "./Icon";
 
 function AddressCard({ address }) {
-  const isPrimary = address.variant === "primary";
+  const isPrimary = address.isDefault == true;
 
   return (
     <article
@@ -27,11 +27,17 @@ function AddressCard({ address }) {
           }`}
         >
           {isPrimary ? (
-            <StarIcon className="h-3 w-3 fill-current" />
+            <div className="flex items-center gap-2">
+              <StarIcon className="h-3 w-3 fill-current" />
+              <p>Default Address</p>
+            </div>
           ) : (
-            <BuildingIcon className="h-3 w-3" />
+            <div className="flex items-center gap-2">
+              <BuildingIcon className="h-3 w-3" />
+              <p>Secondary Address</p>
+            </div>
           )}
-          {address.label}
+          {address.default}
         </span>
         <span
           className={
@@ -46,43 +52,31 @@ function AddressCard({ address }) {
 
       {/* alamat */}
       <p className="text-[13px] font-semibold leading-relaxed text-slate-800">
-        {address.address}
+        {address.specificAddress} {address.city} {address.country}
       </p>
 
       {/* penerima (alamat utama) */}
-      {address.recipient && (
-        <p className="flex items-center gap-1.5 text-xs text-slate-600">
-          <IdCardIcon className="h-3.5 w-3.5 shrink-0" />
-          <span>
-            Recipient:{" "}
-            <span className="font-bold text-slate-800">
-              {address.recipient}
-            </span>
-            {address.phone && <> • {address.phone}</>}
-          </span>
-        </p>
-      )}
+
+      <p className="flex items-center gap-1.5 text-xs text-slate-600">
+        <IdCardIcon className="h-3.5 w-3.5 shrink-0" />
+        <span>
+          Recipient:{" "}
+          <span className="font-bold text-slate-800">{address.fullName}</span>
+          {address.phone && <> • {address.phone}</>}
+        </span>
+      </p>
 
       {/* detail (alamat kantor) */}
-      {address.detail && (
-        <p className="flex items-center gap-1.5 text-xs text-slate-600">
-          <BuildingIcon className="h-3.5 w-3.5 shrink-0" />
-          <span>{address.detail}</span>
-        </p>
-      )}
 
       {/* footer: terkunci */}
-      {address.locked && (
+      {address.isDefault == true ? (
         <div className="mt-auto pt-1">
           <span className="inline-flex items-center gap-2 rounded-full bg-slate-200/60 px-3 py-1.5 text-[11px] text-slate-600">
             <LockIcon className="h-3 w-3 shrink-0" />
             Address on orders is locked upon placement and permanent.
           </span>
         </div>
-      )}
-
-      {/* footer: tersedia untuk checkout */}
-      {address.availableForCheckout && (
+      ) : (
         <div className="mt-auto flex items-center justify-between pt-1 text-[11px] font-semibold text-slate-700">
           <span>Available for new checkouts</span>
           <CheckIcon className="h-3.5 w-3.5 text-emerald-600" />
@@ -93,6 +87,7 @@ function AddressCard({ address }) {
 }
 
 const SavedAddresses = ({ addresses = [] }) => {
+  console.log(addresses);
   return (
     <Card>
       <SectionHeader

@@ -5,7 +5,9 @@ import {
   ArrowLeftIcon,
   ChevronRightIcon,
 } from "@/pages/admin/users/userDetails/Icon";
-import { useNavigate } from "react-router-dom";
+import { getCustDetail } from "./services/adminUserService";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 // ---------------------------------------------------------------
 // Data contoh. Ganti dengan data dari API (Axios) lalu kirim lewat props.
 // ---------------------------------------------------------------
@@ -81,9 +83,36 @@ const CustomerDetailPage = ({
   onViewMoreOrders,
 }) => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [isCust, setIsCust] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const fetchCust = async () => {
+    try {
+      setLoading(true);
+      const res = await getCustDetail(id);
+      setIsCust(res.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCust();
+  }, [id]);
+
+  if (loading) {
+    return <p>Wait a minute...</p>;
+  }
+
+  console.log(isCust);
+  const custDetail = isCust.data;
+  console.log(custDetail);
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-6 font-sans text-slate-900 sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-5xl space-y-6">
+      <div className="mx-auto w-full  space-y-6">
         {/* Page header */}
         <header>
           <div className="flex flex-wrap items-start justify-between gap-3">
@@ -106,7 +135,7 @@ const CustomerDetailPage = ({
               <span>Customer</span>
               <ChevronRightIcon className="h-3 w-3 text-slate-400" />
               <span className="font-bold text-slate-900">
-                {customer.username}
+                {custDetail?.name}
               </span>
             </nav>
           </div>
@@ -122,11 +151,11 @@ const CustomerDetailPage = ({
         </header>
 
         {/* Children */}
-        <CustomerProfile customer={customer} />
-        <SavedAddresses addresses={addresses} />
+        <CustomerProfile customer={custDetail} />
+        <SavedAddresses addresses={custDetail.address || addresses} />
         <CustomerOrders
-          orders={orders}
-          total={totalOrders}
+          orders={custDetail?.transactions || orders}
+          total={custDetail?.totalOrders || totalOrders}
           onViewMore={onViewMoreOrders}
         />
       </div>
