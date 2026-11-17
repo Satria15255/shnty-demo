@@ -17,13 +17,17 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
   const { id } = useParams();
   const [order, setOrder] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const fetchOrder = async () => {
     try {
+      setLoading(true);
       const res = await getUserTransaction(id);
-      setOrder(res?.data);
+      setOrder(res.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -31,6 +35,10 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
   }, [id]);
 
   console.log(order);
+
+  if (loading) {
+    return <p>Wait a minute....</p>;
+  }
 
   if (!order) return null;
 
@@ -85,7 +93,7 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
         <div className="flex w-full justify-between items-center">
           <h1 className="text-2xl font-bold">Order Details</h1>
           <p className="text-sm text-gray-500">
-            Placed On formatDate {orderDate}
+            Placed On {formatDate(order.createdAt)}
           </p>
         </div>
         <div className="flex space-x-4 justify-center items-center">
