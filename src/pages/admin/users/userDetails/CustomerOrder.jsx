@@ -1,4 +1,4 @@
-import { Card, SectionHeader } from "./shared";
+import { Card, SectionHeader } from "./Shared";
 import {
   CheckCircleIcon,
   ChevronDownIcon,
