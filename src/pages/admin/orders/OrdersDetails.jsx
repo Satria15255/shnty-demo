@@ -57,22 +57,18 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
     {
       title: "Order Status",
       inf: <OrderStatusBadge status={order.status} />,
-      icon: "B",
     },
     {
       title: "Payment Status",
       inf: <PaymentStatusBadge status={order.paymentStatus} />,
-      icon: "B",
     },
     {
       title: "Payment Method",
       inf: `${order.paymentMethod}`,
-      icon: "B",
     },
     {
       title: "Total Amount",
       inf: `$${order.finalPrice}`,
-      icon: "B",
     },
   ];
 
@@ -99,11 +95,6 @@ const OrdersDetails = ({ onClose, onStatusChange }) => {
         <div className="flex space-x-4 justify-center items-center">
           {orderStats.map((o) => (
             <div className="w-1/4 h-auto bg-white py-6 px-2 flex items-center justify-center gap-5 rounded-xl border border-gray-300 ">
-              <div className=" h-full flex items-center">
-                <p className="text-xl flex justify-center items-center p-3 text-[#F3E5AB] bg-gray-900 rounded-full">
-                  {o.icon}
-                </p>
-              </div>
               <div className="w-full flex flex-col">
                 <p className="text-sm text-gray-600">{o.title}</p>
                 <p className="text-xl font-bold">{o.inf}</p>
