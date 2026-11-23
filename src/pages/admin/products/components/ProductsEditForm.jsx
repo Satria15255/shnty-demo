@@ -182,8 +182,8 @@ const ProductsEditForm = ({ onClose, onSucces }) => {
   };
 
   return (
-    <main className="bg-[#ECF0FF] p-8">
-      <header className="flex flex-col space-y-1 pb-8 border-b border-gray-400">
+     <main className="fixed z-100 inset-0 bg-black/40 p-8 flex justify-center">
+      <div className="bg-white w-full max-w-4/5 max-h-[90vh] overflow-y-auto rounded-lg p-5">
         <p className="text-gray-500 text-sm">
           Product{" "}
           <span className="text-gray-900 font-semibold">/ Edit Product</span>

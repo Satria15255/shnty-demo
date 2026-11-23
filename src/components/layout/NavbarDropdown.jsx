@@ -3,7 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 
 import { catalogMenus } from "@/constants/catalogMenu";
 
-export default function CatalogDropdown({ onClose }) {
+export default function CatalogDropdown({
+  onClose,
+  classes,
+  scrolled,
+  isHome,
+}) {
   const [openMenu, setOpenMenu] = useState(null);
 
   const containerRef = useRef(null);
@@ -58,11 +63,9 @@ export default function CatalogDropdown({ onClose }) {
               aria-expanded={isOpen}
               aria-controls={isOpen ? `menu-${menu.id}` : undefined}
               onClick={() => handleToggle(menu.id)}
-              className="group flex items-center gap-2 py-4 text-xs xl:text-sm border-t lg:border-none border-gray-300 w-full text-[#0C0C0C]"
+              className={`group flex items-center gap-2 py-4 text-xs xl:text-sm border-t lg:border-none border-gray-300 w-full ${scrolled ? "  text-white" : isHome ? " text-white" : "  text-black"}`}
             >
-              <span className="text-white  lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3">
-                {menu.label}
-              </span>
+              <span className={classes}>{menu.label}</span>
 
               <svg
                 width="14"
@@ -73,7 +76,7 @@ export default function CatalogDropdown({ onClose }) {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`transition-transform text-black md:text-white duration-200 ${
+                className={`transition-transform duration-200 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               >

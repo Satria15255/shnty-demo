@@ -40,7 +40,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
     }, [pathname]);
 
     const navbarClass = `fixed top-0 z-40 animate-navbar   font-ysabeau md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-300 ease-in-out   ${scrolled ? "bg-[#0C0C0C] text-white" : isHome ? "bg-transparent text-white" : " bg-transparent text-black"}`;
-
+    const categoryClass = `text-black relative lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3${scrolled ? "  text-white" : isHome ? " text-white" : "  text-black"}`;
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
     // HANDLE NAVIGATION TO FAVORITES
@@ -95,7 +95,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         SHOP
                     </p>
                     <div className="hidden lg:block">
-                        <CatalogDropdown />
+                        <CatalogDropdown
+                            classes={categoryClass}
+                            scrolled={scrolled}
+                            isHome={isHome}
+                        />
                     </div>
                     {/* Hamburger icon */}
                     <button
